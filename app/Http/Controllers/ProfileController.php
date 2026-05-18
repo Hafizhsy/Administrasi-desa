@@ -31,7 +31,12 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
-
+        //create notife model
+        // $notif::create([
+        //     'user_id' => $request->user()->id,
+        //     'title' => 'Profil Diperbarui',
+        //     'message' => 'Profil Anda telah diperbarui. Pastikan informasi Anda selalu terbaru.',
+        // ]);
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');

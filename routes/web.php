@@ -2,9 +2,21 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\Auth\AdminLoginController;
 
 Route::get('/', function () {
-    return redirect()->route('dashboard');
+    return view('welcome');
+});
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
+
+Route::middleware('guest')->group(function () {
+    Route::get('/admin/login', [AdminLoginController::class, 'create'])
+        ->name('admin.login');
+
+    Route::post('/admin/login', [AdminLoginController::class, 'store'])
+        ->name('admin.login.store');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -26,4 +38,4 @@ Route::middleware(['auth'])->group(function () {
             ->name('user.dashboard');
     });
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
