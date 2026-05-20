@@ -38,4 +38,17 @@ Route::middleware(['auth'])->group(function () {
             ->name('user.dashboard');
     });
 });
+
+Route::get('/layanan/nikah', function () {
+    return view('layanan.nikah');
+})->name('layanan.nikah');
+
+Route::get('/layanan/usaha', function () {
+    return view('layanan.usaha');
+})->name('layanan.usaha');
+
+Route::get('/layanan/sktm', function () {
+    return view('layanan.sktm');
+})->name('layanan.sktm');
+
 require __DIR__ . '/auth.php';

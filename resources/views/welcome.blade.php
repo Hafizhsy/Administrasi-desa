@@ -229,9 +229,10 @@
                 <p class="text-body-md text-on-surface-variant mb-6 max-w-md">Pengurusan surat keterangan nikah dan
                   persyaratan administrasi pernikahan lainnya untuk warga Desa Kopandakan I.</p>
               </div>
-              <button
-                class="w-fit px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors">Pilih
-                Layanan</button>
+              <a href="{{ route('layanan.nikah') }}"
+                class="w-fit px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors">
+                Pilih Layanan
+              </a>
             </div>
           </div>
           <!-- Service Card 2 -->
@@ -244,9 +245,10 @@
             <p class="text-body-md text-on-surface-variant mb-6">Surat Keterangan Usaha (SKU) untuk keperluan perizinan
               atau pengajuan bantuan UMKM.</p>
             <div class="mt-auto">
-              <button
-                class="w-full px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors">Pilih
-                Layanan</button>
+              <a href="{{ route('layanan.usaha') }}"
+                class="w-full px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors text-center block">
+                Pilih Layanan
+              </a>
             </div>
           </div>
           <!-- Service Card 3 -->
@@ -259,9 +261,10 @@
             <p class="text-body-md text-on-surface-variant mb-6">Dokumen untuk warga yang memerlukan keringanan biaya
               pendidikan atau kesehatan.</p>
             <div class="mt-auto">
-              <button
-                class="w-full px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors">Pilih
-                Layanan</button>
+              <a href="{{ route('layanan.sktm') }}"
+                class="w-full px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors text-center block">
+                Pilih Layanan
+              </a>
             </div>
           </div>
           <!-- Service Card 4 -->

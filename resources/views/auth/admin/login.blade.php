@@ -139,7 +139,7 @@
                     <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-2 shadow-lg">
                         <img alt="Village Seal" class="w-full h-full object-contain"
                             data-alt="Official heraldic seal of Kopandakan I village featuring local cultural symbols in gold and green on a white circular crest"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGQSMrImaXAvMeiLqEPckhetI8I3dBr1ydTctwdQcn8V1or4QgriYZ9u-eRlLgBl8emnH6pK9EgbZXNu4bI07HOq_GLbL6oOafibZYIxUxuGqyeEsCyzv6MD6BQYXGst-2j67Yc49qvJc2kG--VkEPiRkFrMovLEv3rLYjMCSwKSuYECMTXOV_S9ZLhpBM_-plGQHUnjinZtwCUpMtH4hRlebaGclFACHl-CV9Qc11DETBgounhUpwHQbMjoYJN-UmVuvHMTJ9eck" />
+                            src="https://tse2.mm.bing.net/th/id/OIP.e3qAPtdwr3_s22nmrHur3AHaIo?rs=1&pid=ImgDetMain&o=7&rm=3" />
                     </div>
                     <div>
                         <h1 class="font-h1 text-h1 text-white leading-tight">Sistem Informasi<br />Administrasi Desa

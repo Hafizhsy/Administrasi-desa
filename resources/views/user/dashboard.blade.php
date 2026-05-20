@@ -137,7 +137,7 @@
       <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
         <img alt="Village Emblem" class="w-full h-full object-cover"
           data-alt="Official village emblem of Kopandakan I featuring traditional motifs and local symbols in gold and green tones"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJAGpMWIrQ5mOjPhnNuwbIMn-uo3FIOX8DtcfDrpyrSU9UdiKLHPZU00rEKHmF5Uej_KVZoI6k3LY_JwdcZAMtfHLWYgvsnud9jovZ5yzW3gdlazsEuCnlVAQKhg2xC61AW0sJCR-tXK1juBQgJ020q_vk1OdCqJbFWav4zh-FsDH5MbsKj14yKPNAG3UL0UwdzM5Ser38DD9JK0UkVyJhu3wT0AV7OgZHwuOjQZ6CodHTZaiV7bfbFI1XacJz-HlhdbBut1TXnds" />
+          src="https://tse2.mm.bing.net/th/id/OIP.e3qAPtdwr3_s22nmrHur3AHaIo?rs=1&pid=ImgDetMain&o=7&rm=3" />
       </div>
       <span class="font-public-sans font-bold text-lg text-emerald-900">Kopandakan I</span>
     </div>
@@ -294,8 +294,10 @@
           <p class="text-label-sm text-slate-500 mb-4">Temukan titik-titik penting di Kopandakan I dengan peta digital.
           </p>
           <button
-            class="w-full py-2 bg-white border border-slate-300 rounded-lg text-slate-700 font-semibold hover:bg-slate-100 transition-colors">Buka
-            Peta</button>
+            class="w-full py-2 bg-white border border-slate-300 rounded-lg text-slate-700 font-semibold hover:bg-slate-100 transition-colors"
+            onclick="window.open('https://maps.app.goo.gl/LtfdfQzweUsmArGP8', '_blank')">
+            Buka Peta
+          </button>
         </div>
       </div>
     </div>
@@ -327,10 +329,11 @@
   <!-- Footer -->
   <footer class="w-full py-8 bg-slate-50 border-t border-slate-200 mt-stack-lg hidden md:block">
     <div class="max-w-container-max mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="font-public-sans text-xs text-slate-500">© 2024 Pemerintah Desa Kopandakan 1.</p>
+      <p class="font-public-sans text-xs text-slate-500">&copy; 2026 Pemerintah Desa Kopandakan 1.</p>
       <div class="flex gap-6">
         <a class="font-public-sans text-xs text-slate-500 hover:text-emerald-700" href="#">Kontak</a>
-        <a class="font-public-sans text-xs text-slate-500 hover:text-emerald-700" href="#">Peta Desa</a>
+        <a class="font-public-sans text-xs text-slate-500 hover:text-emerald-700"
+          href="https://maps.app.goo.gl/LtfdfQzweUsmArGP8" target="_blank">Peta Desa</a>
         <a class="font-public-sans text-xs text-slate-500 hover:text-emerald-700" href="#">Kebijakan Privasi</a>
       </div>
     </div>
