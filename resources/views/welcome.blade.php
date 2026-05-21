@@ -127,7 +127,7 @@
           data-alt="Official village emblem of Kopandakan I, featuring traditional Indonesian symbolic elements in a gold and green shield."
           src="https://tse2.mm.bing.net/th/id/OIP.e3qAPtdwr3_s22nmrHur3AHaIo?rs=1&pid=ImgDetMain&o=7&rm=3" />
       </div>
-      <h1 class="text-xl font-black text-emerald-900 dark:text-emerald-500 font-public-sans">Kopandakan I</h1>
+      <h1 class="text-xl font-black text-emerald-900 dark:text-emerald-500 font-public-sans">Kopandakan Satu</h1>
     </div>
     <nav class="hidden md:flex items-center gap-gutter">
       <a class="text-emerald-700 dark:text-emerald-300 font-bold font-public-sans text-lg" href="#">Beranda</a>

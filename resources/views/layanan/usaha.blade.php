@@ -295,17 +295,23 @@
             </div>
         </div>
     </main>
-    <!-- Bottom Action Bar / CTA -->
-    <div class="fixed bottom-0 left-0 w-full z-50 bg-white border-t border-slate-200 p-4 md:px-8">
-        <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="hidden md:block">
-                <p class="text-sm text-on-surface-variant font-medium">Butuh bantuan?</p>
-                <p class="text-xs text-on-surface-variant">Hubungi WhatsApp Pelayanan: 0812-3456-7890</p>
+    <!-- Bottom Action Area -->
+    <div
+        class="fixed bottom-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 p-4 md:px-margin-desktop shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.1)]">
+        <div class="max-w-container-max mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <div class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-primary-container text-3xl"
+                    data-icon="support_agent">support_agent</span>
+                <div>
+                    <p class="font-button text-primary-container">Siap mengajukan permohonan?</p>
+                    <p class="text-label-sm text-on-surface-variant">Pastikan berkas lengkap. Bantuan WhatsApp:
+                        0812-3456-7890</p>
+                </div>
             </div>
             <a href="{{ route('login') }}"
-                class="w-full md:w-auto px-12 py-4 bg-primary-container text-white font-button rounded-lg hover:brightness-110 transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20">
+                class="w-full md:w-auto md:min-w-[240px] h-14 px-8 bg-primary-container text-white font-button text-button rounded-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20">
+                <span class="material-symbols-outlined" data-icon="send">send</span>
                 Ajukan Permohonan
-                <span class="material-symbols-outlined">arrow_forward</span>
             </a>
         </div>
     </div>

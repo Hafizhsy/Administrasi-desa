@@ -295,21 +295,25 @@
         </div>
     </main>
     <!-- Bottom Action Area -->
-    <footer
-        class="fixed bottom-0 left-0 w-full z-50 p-4 md:px-margin-desktop bg-white/90 backdrop-blur-md border-t border-slate-200 flex flex-col items-center">
-        <a href="{{route('login')}}"
-            class="w-full max-w-container-max bg-primary-container text-white font-button text-button py-4 rounded-full shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
-            <span class="material-symbols-outlined" data-icon="send">send</span>
-            Ajukan Permohonan
-        </a>
-        <!-- Mobile Bottom Nav Reference (Suppressed for focused task) -->
-        <div class="hidden md:flex mt-4 gap-8 text-secondary text-sm">
-            <a class="hover:text-primary transition-colors" href="#">Home</a>
-            <a class="hover:text-primary transition-colors" href="#">Services</a>
-            <a class="hover:text-primary transition-colors" href="#">Requests</a>
-            <a class="hover:text-primary transition-colors" href="#">Profile</a>
+    <div
+        class="fixed bottom-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 p-4 md:px-margin-desktop shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.1)]">
+        <div class="max-w-container-max mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <div class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-primary-container text-3xl"
+                    data-icon="support_agent">support_agent</span>
+                <div>
+                    <p class="font-button text-primary-container">Siap mengajukan permohonan?</p>
+                    <p class="text-label-sm text-on-surface-variant">Pastikan berkas lengkap. Bantuan WhatsApp:
+                        0812-3456-7890</p>
+                </div>
+            </div>
+            <a href="{{ route('login') }}"
+                class="w-full md:w-auto md:min-w-[240px] h-14 px-8 bg-primary-container text-white font-button text-button rounded-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20">
+                <span class="material-symbols-outlined" data-icon="send">send</span>
+                Ajukan Permohonan
+            </a>
         </div>
-    </footer>
+    </div>
     <!-- Atmosphere/Interactions Scripts -->
     <script>
         // Subtle scroll behavior for the top bar

@@ -275,33 +275,26 @@
             </div>
         </div>
     </main>
-    <!-- Fixed Bottom CTA -->
+    <!-- Bottom Action Area -->
     <div
-        class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-4 z-50 shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.1)]">
-        <div class="max-w-container-max mx-auto flex gap-4">
+        class="fixed bottom-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 p-4 md:px-margin-desktop shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.1)]">
+        <div class="max-w-container-max mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <div class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-primary-container text-3xl"
+                    data-icon="support_agent">support_agent</span>
+                <div>
+                    <p class="font-button text-primary-container">Siap mengajukan permohonan?</p>
+                    <p class="text-label-sm text-on-surface-variant">Pastikan berkas lengkap. Bantuan WhatsApp:
+                        0812-3456-7890</p>
+                </div>
+            </div>
             <a href="{{ route('login') }}"
-                class="w-full md:w-auto px-12 py-4 bg-primary-container text-white font-button rounded-lg hover:brightness-110 transition-all duration-200 flex items-center justify-center gap-2 shadow-lg">
+                class="w-full md:w-auto md:min-w-[240px] h-14 px-8 bg-primary-container text-white font-button text-button rounded-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20">
+                <span class="material-symbols-outlined" data-icon="send">send</span>
                 Ajukan Permohonan
-                <span class="material-symbols-outlined">arrow_forward</span>
             </a>
-            <button class="p-4 border border-outline text-on-surface rounded-xl hover:bg-slate-50 transition-colors">
-                <span class="material-symbols-outlined">share</span>
-            </button>
         </div>
     </div>
-    <!-- Bottom Nav (Hidden on focus screens as per mandate, but included for structure if needed) -->
-    <!-- Suppressed for transactional focus -->
-    <script>
-        // Simple interaction for the button
-        const mainBtn = document.querySelector('button.bg-primary-container');
-        mainBtn.addEventListener('click', () => {
-            mainBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Memproses...';
-            setTimeout(() => {
-                alert('Sistem akan mengarahkan Anda ke formulir pengajuan digital.');
-                mainBtn.innerHTML = 'Ajukan Permohonan <span class="material-symbols-outlined">arrow_forward</span>';
-            }, 1000);
-        });
-    </script>
 </body>
 
 </html>

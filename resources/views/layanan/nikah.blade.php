@@ -142,7 +142,7 @@
         <h1 class="font-['Public_Sans'] font-semibold tracking-tight text-lg text-[#0D3B2E] dark:text-emerald-50">Detail
             Layanan</h1>
     </header>
-    <main class="mt-16 mb-24 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+    <main class="mt-16 mb-32 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
             <!-- Hero Card Section -->
             <div class="lg:col-span-8">
@@ -284,26 +284,29 @@
                             </div>
                         </div>
                     </div>
-                    <!-- CTA Section for Desktop -->
-                    <div class="hidden md:block">
-                        <a href="{{ route('login') }}"
-                            class="w-full h-14 bg-primary-container text-on-primary font-button text-button rounded-xl flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all">
-                            <span class="material-symbols-outlined"
-                                style="font-variation-settings: 'FILL' 1;">send</span>
-                            Ajukan Permohonan
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </main>
-    <!-- Bottom Action Bar (Mobile Only) -->
-    <div class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-white border-t border-slate-200 p-4 pb-safe shadow-lg">
-        <button
-            class="w-full h-14 bg-primary-container text-on-primary font-button text-button rounded-xl flex items-center justify-center gap-2">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
-            Ajukan Permohonan
-        </button>
+    <!-- Bottom Action Area -->
+    <div
+        class="fixed bottom-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 p-4 md:px-margin-desktop shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.1)]">
+        <div class="max-w-container-max mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <div class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-primary-container text-3xl"
+                    data-icon="support_agent">support_agent</span>
+                <div>
+                    <p class="font-button text-primary-container">Siap mengajukan permohonan?</p>
+                    <p class="text-label-sm text-on-surface-variant">Pastikan berkas lengkap. Bantuan WhatsApp:
+                        0812-3456-7890</p>
+                </div>
+            </div>
+            <a href="{{ route('login') }}"
+                class="w-full md:w-auto md:min-w-[240px] h-14 px-8 bg-primary-container text-white font-button text-button rounded-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20">
+                <span class="material-symbols-outlined" data-icon="send">send</span>
+                Ajukan Permohonan
+            </a>
+        </div>
     </div>
     <!-- BottomNavBar (Only for top-level destinations, but included as per requirements structure, we hide it here as this is a sub-page/detail-page based on "The Destination Rule") -->
     <!-- Suppression logic applied for detail page focus -->
