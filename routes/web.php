@@ -51,4 +51,8 @@ Route::get('/layanan/sktm', function () {
     return view('layanan.sktm');
 })->name('layanan.sktm');
 
+Route::get('/layanan/pbb', function () {
+    return view('layanan.pbb');
+})->name('layanan.pbb');
+
 require __DIR__ . '/auth.php';

@@ -265,6 +265,7 @@
                 class="w-full px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors text-center block">
                 Pilih Layanan
               </a>
+
             </div>
           </div>
           <!-- Service Card 4 -->
@@ -282,9 +283,10 @@
                 <p class="text-body-md text-on-surface-variant mb-6 max-w-md">Layanan administrasi terkait Pajak Bumi
                   dan Bangunan serta surat pengantar kepemilikan tanah.</p>
               </div>
-              <button
-                class="w-fit px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors">Pilih
-                Layanan</button>
+              <a href="{{ route('layanan.pbb') }}"
+                class="w-fit px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors">
+                Pilih Layanan
+              </a>
             </div>
           </div>
         </div>
