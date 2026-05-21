@@ -297,11 +297,11 @@
     <!-- Bottom Action Area -->
     <footer
         class="fixed bottom-0 left-0 w-full z-50 p-4 md:px-margin-desktop bg-white/90 backdrop-blur-md border-t border-slate-200 flex flex-col items-center">
-        <button
+        <a href="{{route('login')}}"
             class="w-full max-w-container-max bg-primary-container text-white font-button text-button py-4 rounded-full shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
             <span class="material-symbols-outlined" data-icon="send">send</span>
             Ajukan Permohonan
-        </button>
+        </a>
         <!-- Mobile Bottom Nav Reference (Suppressed for focused task) -->
         <div class="hidden md:flex mt-4 gap-8 text-secondary text-sm">
             <a class="hover:text-primary transition-colors" href="#">Home</a>
