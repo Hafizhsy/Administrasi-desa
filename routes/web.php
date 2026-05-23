@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\PengajuanSuratController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,11 +32,16 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])
             ->name('admin.dashboard');
+        Route::get('/admin/pengajuan', [PengajuanSuratController::class, 'adminIndex'])->name('admin.pengajuan.index');
+        Route::patch('/admin/pengajuan/{pengajuanSurat}/status', [PengajuanSuratController::class, 'updateStatus'])->name('admin.pengajuan.status');
     });
 
     Route::middleware(['user'])->group(function () {
         Route::get('/user/dashboard', [UserDashboardController::class, 'index'])
             ->name('user.dashboard');
+        Route::get('/user/pengajuan', [PengajuanSuratController::class, 'index'])->name('user.pengajuan.index');
+        Route::get('/user/pengajuan/create', [PengajuanSuratController::class, 'create'])->name('user.pengajuan.create');
+        Route::post('/user/pengajuan', [PengajuanSuratController::class, 'store'])->name('user.pengajuan.store');
     });
 });
 

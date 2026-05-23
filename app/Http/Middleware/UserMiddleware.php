@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
 class UserMiddleware
 {
     /**
@@ -17,7 +16,7 @@ class UserMiddleware
     {
         if (auth()->check() && auth()->user()->role === 'user') {
             return $next($request);
+        }
+        abort(403, 'Akses ditolak. Halaman ini hanya dapat diakses oleh User.');
     }
-    abort(403, 'Akses ditolak. Halaman ini hanya dapat diakses oleh User.');
-}
 }
