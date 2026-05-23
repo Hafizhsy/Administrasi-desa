@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PengajuanSurat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\PengajuanDokumen;
 
 class PengajuanSuratController extends Controller
 {
@@ -30,25 +31,33 @@ class PengajuanSuratController extends Controller
             'nik' => 'required|string|max:20',
             'alamat' => 'required|string',
             'keperluan' => 'nullable|string',
-            'file_persyaratan' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'dokumen' => 'nullable|array',
+            'dokumen.*' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
         ]);
 
-        $filePath = null;
-
-        if ($request->hasFile('file_persyaratan')) {
-            $filePath = $request->file('file_persyaratan')->store('persyaratan', 'public');
-        }
-
-        PengajuanSurat::create([
+        $pengajuan = PengajuanSurat::create([
             'user_id' => Auth::id(),
             'jenis_surat' => $request->jenis_surat,
             'nama_pemohon' => $request->nama_pemohon,
             'nik' => $request->nik,
             'alamat' => $request->alamat,
             'keperluan' => $request->keperluan,
-            'file_persyaratan' => $filePath,
             'status' => 'menunggu',
         ]);
+
+        if ($request->hasFile('dokumen')) {
+            foreach ($request->file('dokumen') as $namaDokumen => $file) {
+                if ($file) {
+                    $path = $file->store('persyaratan', 'public');
+
+                    PengajuanDokumen::create([
+                        'pengajuan_surat_id' => $pengajuan->id,
+                        'nama_dokumen' => $namaDokumen,
+                        'file_path' => $path,
+                    ]);
+                }
+            }
+        }
 
         return redirect()
             ->route('user.pengajuan.index')

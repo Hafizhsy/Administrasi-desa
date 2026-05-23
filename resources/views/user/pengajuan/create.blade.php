@@ -163,47 +163,65 @@
                 <div class="flex items-center gap-2 mb-stack-sm overflow-x-auto hide-scrollbar pb-2">
                     <div
                         class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-tertiary text-white font-bold text-sm">
-                        1</div>
+                        1
+                    </div>
                     <h2 class="font-h3 text-h3 text-on-surface whitespace-nowrap">Pilih Jenis Surat</h2>
                 </div>
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div
-                        class="cursor-pointer group relative bg-primary-container border-2 border-primary p-5 rounded-xl shadow-sm transition-all hover:shadow-md ring-2 ring-primary ring-offset-2">
-                        <div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4 text-white">
+
+                    <div class="surat-card cursor-pointer group relative bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50"
+                        data-surat="nikah">
+                        <div
+                            class="w-12 h-12 bg-primary-fixed/30 rounded-lg flex items-center justify-center mb-4 text-primary">
                             <span class="material-symbols-outlined text-3xl"
                                 style="font-variation-settings: 'FILL' 1;">favorite</span>
                         </div>
-                        <h3 class="font-bold text-white text-lg leading-tight">Surat Pernyataan Nikah</h3>
-                        <div class="absolute top-4 right-4 text-white">
+                        <h3 class="font-bold text-on-surface text-lg leading-tight">Surat Pernyataan Nikah</h3>
+                        <div class="check-icon hidden absolute top-4 right-4 text-white">
                             <span class="material-symbols-outlined">check_circle</span>
                         </div>
                     </div>
-                    <div
-                        class="cursor-pointer group bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50">
+
+                    <div class="surat-card cursor-pointer group relative bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50"
+                        data-surat="usaha">
                         <div
                             class="w-12 h-12 bg-primary-fixed/30 rounded-lg flex items-center justify-center mb-4 text-primary">
                             <span class="material-symbols-outlined text-3xl">storefront</span>
                         </div>
                         <h3 class="font-bold text-on-surface text-lg leading-tight">Surat Keterangan Usaha</h3>
+                        <div class="check-icon hidden absolute top-4 right-4 text-white">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
                     </div>
-                    <div
-                        class="cursor-pointer group bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50">
+
+                    <div class="surat-card cursor-pointer group relative bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50"
+                        data-surat="sktm">
                         <div
                             class="w-12 h-12 bg-primary-fixed/30 rounded-lg flex items-center justify-center mb-4 text-primary">
                             <span class="material-symbols-outlined text-3xl">volunteer_activism</span>
                         </div>
                         <h3 class="font-bold text-on-surface text-lg leading-tight">Surat Keterangan Tidak Mampu</h3>
+                        <div class="check-icon hidden absolute top-4 right-4 text-white">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
                     </div>
-                    <div
-                        class="cursor-pointer group bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50">
+
+                    <div class="surat-card cursor-pointer group relative bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50"
+                        data-surat="pbb">
                         <div
                             class="w-12 h-12 bg-primary-fixed/30 rounded-lg flex items-center justify-center mb-4 text-primary">
                             <span class="material-symbols-outlined text-3xl">receipt_long</span>
                         </div>
                         <h3 class="font-bold text-on-surface text-lg leading-tight">Surat Keterangan Lunas PBB</h3>
+                        <div class="check-icon hidden absolute top-4 right-4 text-white">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
                     </div>
+
                 </div>
             </section>
+            <div id="form-area" class="hidden lg:col-span-12 grid grid-cols-1 lg:grid-cols-12 gap-gutter">
             <section class="lg:col-span-8 bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-sm">
                 <div class="flex items-center gap-2 mb-stack-md">
                     <div
@@ -213,8 +231,9 @@
                 </div>
                 <form action="{{ route('user.pengajuan.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="jenis_surat" id="jenis_surat" value="" />
 
-                    <div class="space-y-2 mb-6">
+                    <!-- <div class="space-y-2 mb-6">
                         <label class="font-label-sm text-on-surface-variant block">Jenis Surat</label>
                         <select name="jenis_surat" required
                             class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all">
@@ -224,7 +243,7 @@
                             <option value="Surat Keterangan Tidak Mampu">Surat Keterangan Tidak Mampu</option>
                             <option value="Surat Keterangan Lunas PBB">Surat Keterangan Lunas PBB</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
@@ -262,15 +281,40 @@
                     <div class="border-t border-slate-100 pt-6 mt-6">
                         <h2 class="font-h3 text-h3 text-on-surface mb-4">Lampiran Dokumen</h2>
 
-                        <div
-                            class="relative group border-2 border-dashed border-slate-200 rounded-xl p-6 text-center hover:border-primary-fixed-dim hover:bg-emerald-50 transition-all">
-                            <span
-                                class="material-symbols-outlined text-3xl text-slate-400 mb-2 group-hover:text-primary">upload_file</span>
-                            <p class="font-bold text-on-surface text-sm">Upload Persyaratan</p>
-                            <p class="text-xs text-on-surface-variant mt-1">Format PDF, JPG, PNG Max 2MB</p>
-                            <input name="file_persyaratan" class="absolute inset-0 opacity-0 cursor-pointer" type="file"
-                                accept=".pdf,.jpg,.jpeg,.png" />
+                        <div id="dokumen-nikah" class="dokumen-group hidden space-y-4">
+                            <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Nikah</h3>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Fotokopi KTP Pemohon Suami dan Istri</label>
+                                <input type="file" name="dokumen[Fotokopi KTP Pemohon Suami dan Istri]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
+                                <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
+                                <input type="file" name="dokumen[Surat Pengantar RT RW]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Fotokopi Akta Nikah / Buku Nikah</label>
+                                <input type="file" name="dokumen[Fotokopi Akta Nikah atau Buku Nikah]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Pas Foto 3x4 Background Biru</label>
+                                <input type="file" name="dokumen[Pas Foto 3x4 Background Biru]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
                         </div>
+
                     </div>
 
                     <div class="pt-6">
@@ -299,8 +343,7 @@
                             <span>Pastikan file scan terlihat jelas dan tidak terpotong.</span>
                         </li>
                         <li class="flex gap-3">
-                            <span
-                                class="material-symbols-outlined text-tertiary-fixed text-lg">notifications_active</span>
+                            <span class="material-symbols-outlined text-tertiary-fixed text-lg">notifications_active</span>
                             <span>Notifikasi status akan dikirimkan melalui dashboard atau WhatsApp terdaftar.</span>
                         </li>
                     </ul>
@@ -330,6 +373,7 @@
                     </div>
                 </div>
             </aside>
+            </div>
         </div>
     </main>
     <footer class="w-full bg-slate-50 py-8 border-t border-slate-200">
@@ -363,6 +407,106 @@
             <span class="font-public-sans text-[11px] font-semibold">Status</span>
         </a>
     </nav>
+    <script>
+        const cards = document.querySelectorAll('.surat-card');
+        const jenisSuratInput = document.getElementById('jenis_surat');
+        const dokumenGroups = document.querySelectorAll('.dokumen-group');
+        const formArea = document.getElementById('form-area');
+
+        cards.forEach(card => {
+            card.addEventListener('click', function () {
+                if (formArea) {
+                    formArea.classList.remove('hidden');
+                }
+
+                cards.forEach(c => {
+                    c.classList.remove(
+                        'bg-primary-container',
+                        'border-2',
+                        'border-primary',
+                        'hover:shadow-md',
+                        'ring-2',
+                        'ring-primary',
+                        'ring-offset-2'
+                    );
+
+                    c.classList.add(
+                        'bg-white',
+                        'border',
+                        'border-slate-200',
+                        'hover:border-primary-fixed-dim',
+                        'hover:bg-slate-50'
+                    );
+
+                    const title = c.querySelector('h3');
+                    const iconBox = c.querySelector('div');
+                    const icon = c.querySelector('.check-icon');
+
+                    if (title) {
+                        title.classList.remove('text-white');
+                        title.classList.add('text-on-surface');
+                    }
+
+                    if (iconBox) {
+                        iconBox.classList.remove('bg-white/10', 'text-white');
+                        iconBox.classList.add('bg-primary-fixed/30', 'text-primary');
+                    }
+
+                    if (icon) {
+                        icon.classList.add('hidden');
+                    }
+                });
+
+                this.classList.remove(
+                    'bg-white',
+                    'border',
+                    'border-slate-200',
+                    'hover:border-primary-fixed-dim',
+                    'hover:bg-slate-50'
+                );
+                this.classList.add(
+                    'bg-primary-container',
+                    'border-2',
+                    'border-primary',
+                    'hover:shadow-md',
+                    'ring-2',
+                    'ring-primary',
+                    'ring-offset-2'
+                );
+
+                const title = this.querySelector('h3');
+                const iconBox = this.querySelector('div');
+                const icon = this.querySelector('.check-icon');
+
+                if (title) {
+                    title.classList.remove('text-on-surface');
+                    title.classList.add('text-white');
+                }
+
+                if (iconBox) {
+                    iconBox.classList.remove('bg-primary-fixed/30', 'text-primary');
+                    iconBox.classList.add('bg-white/10', 'text-white');
+                }
+
+                if (icon) {
+                    icon.classList.remove('hidden');
+                }
+
+                const jenis = this.dataset.surat;
+                jenisSuratInput.value = jenis;
+
+                dokumenGroups.forEach(group => {
+                    group.classList.add('hidden');
+                });
+
+                const activeGroup = document.getElementById('dokumen-' + jenis);
+
+                if (activeGroup) {
+                    activeGroup.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

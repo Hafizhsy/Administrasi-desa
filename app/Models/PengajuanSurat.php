@@ -22,4 +22,8 @@ class PengajuanSurat extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function dokumen()
+    {
+        return $this->hasMany(PengajuanDokumen::class);
+    }
 }

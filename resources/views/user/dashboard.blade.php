@@ -272,7 +272,9 @@
           <button
             class="w-full py-4 bg-primary text-on-primary rounded-xl font-button text-button flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
             <span class="material-symbols-outlined" data-icon="add">add</span>
-            Ajukan Surat Baru
+            <a href="{{ route('user.pengajuan.create') }}" class="text-inherit no-underline">
+              Ajukan Surat Baru
+            </a>
           </button>
         </div>
         <!-- Info Card -->
