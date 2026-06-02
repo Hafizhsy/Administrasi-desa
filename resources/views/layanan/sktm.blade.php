@@ -307,7 +307,7 @@
                         0812-3456-7890</p>
                 </div>
             </div>
-            <a href="{{ route('login') }}"
+            <a href="{{ route('user.pengajuan.create', ['jenis' => 'sktm']) }}"
                 class="w-full md:w-auto md:min-w-[240px] h-14 px-8 bg-primary-container text-white font-button text-button rounded-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20">
                 <span class="material-symbols-outlined" data-icon="send">send</span>
                 Ajukan Permohonan

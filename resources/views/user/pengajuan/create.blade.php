@@ -121,6 +121,108 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        input[type="file"] {
+            width: 100%;
+            cursor: pointer;
+            border: 1.5px dashed #a3d0be;
+            border-radius: 0.75rem;
+            background: #f8fffc;
+            padding: 0.875rem;
+            color: #414845;
+            transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+        }
+
+        input[type="file"]:hover {
+            border-color: #0d3b2e;
+            background: #f0fbf6;
+        }
+
+        input[type="file"]:focus {
+            outline: none;
+            border-color: #0d3b2e;
+            box-shadow: 0 0 0 3px rgba(13, 59, 46, 0.14);
+        }
+
+        input[type="file"]::file-selector-button {
+            margin-right: 1rem;
+            border: 0;
+            border-radius: 0.625rem;
+            background: #0d3b2e;
+            color: #ffffff;
+            padding: 0.65rem 1rem;
+            font-family: "Work Sans", sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 160ms ease, transform 160ms ease;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background: #00241a;
+        }
+
+        .file-input-hidden {
+            position: absolute;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .file-upload {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+            width: 100%;
+            cursor: pointer;
+            border: 1.5px dashed #a3d0be;
+            border-radius: 0.75rem;
+            background: #f8fffc;
+            padding: 0.875rem;
+            transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+        }
+
+        .file-upload:hover {
+            border-color: #0d3b2e;
+            background: #f0fbf6;
+            transform: translateY(-1px);
+        }
+
+        .file-upload:focus-within {
+            border-color: #0d3b2e;
+            box-shadow: 0 0 0 3px rgba(13, 59, 46, 0.14);
+        }
+
+        .file-upload-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 0.75rem;
+            background: #0d3b2e;
+            color: #ffffff;
+        }
+
+        .file-upload-title {
+            display: block;
+            font-family: "Work Sans", sans-serif;
+            font-weight: 700;
+            color: #0d3b2e;
+        }
+
+        .file-upload-name {
+            display: block;
+            margin-top: 0.125rem;
+            font-size: 0.875rem;
+            color: #717974;
+            word-break: break-word;
+        }
     </style>
     <style>
         body {
@@ -141,15 +243,15 @@
             </div>
             <span class="font-public-sans font-bold text-lg text-emerald-900">Kopandakan I</span>
         </div>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3">
             <button class="p-2 rounded-full hover:bg-slate-100 transition-colors active:scale-95 duration-150">
                 <span class="material-symbols-outlined text-slate-600">notifications</span>
             </button>
-            <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
-                <a class="text-emerald-700 font-bold" href="#">Beranda</a>
-                <a class="hover:text-emerald-700" href="#">Layanan</a>
-                <a class="hover:text-emerald-700" href="#">Status</a>
-            </div>
+            <a href="{{ route('user.dashboard') }}"
+                class="h-10 px-4 rounded-xl bg-primary-container text-white font-button text-sm flex items-center gap-2 hover:bg-primary transition-all active:scale-95">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                <span class="hidden sm:inline">Dashboard</span>
+            </a>
         </div>
     </header>
     <main class="pt-24 pb-32 px-4 md:px-margin-desktop max-w-container-max mx-auto">
@@ -315,6 +417,102 @@
                             </div>
                         </div>
 
+                        <div id="dokumen-usaha" class="dokumen-group hidden space-y-4">
+                            <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Keterangan Usaha</h3>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
+                                <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
+                                <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
+                                <input type="file" name="dokumen[Surat Pengantar RT RW]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Foto Tempat Usaha</label>
+                                <input type="file" name="dokumen[Foto Tempat Usaha]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Surat Pernyataan Kepemilikan Usaha</label>
+                                <input type="file" name="dokumen[Surat Pernyataan Kepemilikan Usaha]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+                        </div>
+
+                        <div id="dokumen-sktm" class="dokumen-group hidden space-y-4">
+                            <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan SKTM</h3>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
+                                <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
+                                <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
+                                <input type="file" name="dokumen[Surat Pengantar RT RW]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Foto Rumah Tampak Depan</label>
+                                <input type="file" name="dokumen[Foto Rumah Tampak Depan]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Slip Gaji atau Surat Pernyataan Penghasilan</label>
+                                <input type="file" name="dokumen[Slip Gaji atau Surat Pernyataan Penghasilan]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+                        </div>
+
+                        <div id="dokumen-pbb" class="dokumen-group hidden space-y-4">
+                            <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Keterangan Lunas PBB</h3>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
+                                <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
+                                <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Bukti Bayar PBB Tahun Berjalan</label>
+                                <input type="file" name="dokumen[Bukti Bayar PBB Tahun Berjalan]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold mb-2">Fotokopi SPPT PBB Terakhir</label>
+                                <input type="file" name="dokumen[Fotokopi SPPT PBB Terakhir]"
+                                    class="w-full border rounded-lg p-3">
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="pt-6">
@@ -413,6 +611,34 @@
         const dokumenGroups = document.querySelectorAll('.dokumen-group');
         const formArea = document.getElementById('form-area');
 
+        document.querySelectorAll('input[type="file"]').forEach((input) => {
+            const uploadBox = document.createElement('label');
+            const fileName = document.createElement('span');
+
+            uploadBox.className = 'file-upload';
+            fileName.className = 'file-upload-name';
+            fileName.textContent = 'PDF, JPG, JPEG, PNG maksimal 2 MB';
+
+            input.parentNode.insertBefore(uploadBox, input);
+            uploadBox.appendChild(input);
+            input.classList.add('file-input-hidden');
+
+            const icon = document.createElement('span');
+            icon.className = 'material-symbols-outlined file-upload-icon';
+            icon.textContent = 'upload_file';
+
+            const textWrapper = document.createElement('span');
+            textWrapper.innerHTML = '<span class="file-upload-title">Pilih File</span>';
+            textWrapper.appendChild(fileName);
+
+            uploadBox.appendChild(icon);
+            uploadBox.appendChild(textWrapper);
+
+            input.addEventListener('change', function () {
+                fileName.textContent = this.files.length ? this.files[0].name : 'PDF, JPG, JPEG, PNG maksimal 2 MB';
+            });
+        });
+
         cards.forEach(card => {
             card.addEventListener('click', function () {
                 if (formArea) {
@@ -506,6 +732,13 @@
                 }
             });
         });
+
+        const selectedJenis = new URLSearchParams(window.location.search).get('jenis');
+        const selectedCard = selectedJenis ? document.querySelector(`.surat-card[data-surat="${selectedJenis}"]`) : null;
+
+        if (selectedCard) {
+            selectedCard.click();
+        }
     </script>
 </body>
 

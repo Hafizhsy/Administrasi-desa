@@ -9,6 +9,13 @@ use App\Models\PengajuanDokumen;
 
 class PengajuanSuratController extends Controller
 {
+    private const JENIS_SURAT = [
+        'nikah' => 'Surat Pernyataan Nikah',
+        'usaha' => 'Surat Keterangan Usaha',
+        'sktm' => 'Surat Keterangan Tidak Mampu',
+        'pbb' => 'Surat Keterangan Lunas PBB',
+    ];
+
     public function index()
     {
         $pengajuan = PengajuanSurat::where('user_id', Auth::id())
@@ -26,7 +33,7 @@ class PengajuanSuratController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'jenis_surat' => 'required',
+            'jenis_surat' => 'required|in:' . implode(',', array_keys(self::JENIS_SURAT)),
             'nama_pemohon' => 'required|string|max:255',
             'nik' => 'required|string|max:20',
             'alamat' => 'required|string',
@@ -37,7 +44,7 @@ class PengajuanSuratController extends Controller
 
         $pengajuan = PengajuanSurat::create([
             'user_id' => Auth::id(),
-            'jenis_surat' => $request->jenis_surat,
+            'jenis_surat' => self::JENIS_SURAT[$request->jenis_surat],
             'nama_pemohon' => $request->nama_pemohon,
             'nik' => $request->nik,
             'alamat' => $request->alamat,
