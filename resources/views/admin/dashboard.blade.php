@@ -210,7 +210,7 @@
           </div>
           <div>
             <p class="text-slate-500 font-label-sm text-label-sm">Pending Requests</p>
-            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">24</h4>
+            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $pending }}</h4>
           </div>
         </a>
         <div class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4">
@@ -222,7 +222,7 @@
           </div>
           <div>
             <p class="text-slate-500 font-label-sm text-label-sm">Processed Today</p>
-            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">12</h4>
+            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $today }}</h4>
           </div>
         </div>
         <div class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4">
@@ -234,7 +234,7 @@
           </div>
           <div>
             <p class="text-slate-500 font-label-sm text-label-sm">Total Letters Issued</p>
-            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">348</h4>
+            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $all }}</h4>
           </div>
         </div>
       </div>

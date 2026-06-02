@@ -130,11 +130,17 @@
       <h1 class="text-xl font-black text-emerald-900 dark:text-emerald-500 font-public-sans">Kopandakan Satu</h1>
     </div>
     <nav class="hidden md:flex items-center gap-gutter">
-      <a class="text-emerald-700 dark:text-emerald-300 font-bold font-public-sans text-lg" href="#">Beranda</a>
-      <a class="text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors px-3 py-2 rounded-lg"
-        href="#layanan">Layanan</a>
-      <a class="text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors px-3 py-2 rounded-lg"
-        href="#profil">Profil</a>
+      <nav class="hidden md:flex items-center gap-10">
+        <a href="#beranda" class="nav-link text-green-700 font-bold transition-all duration-300">
+          Beranda
+        </a>
+        <a href="#layanan" class="nav-link text-slate-600 hover:text-green-700 transition-all duration-300">
+          Layanan
+        </a>
+        <a href="#profil" class="nav-link text-slate-600 hover:text-green-700 transition-all duration-300">
+          Profil
+        </a>
+      </nav>
       <div class="h-6 w-px bg-slate-200 mx-2"></div>
       <a class="px-5 py-2 font-button text-button bg-primary text-on-primary rounded-xl active:scale-95 duration-150 transition-all"
         href="{{ route('login') }}">Login</a>
@@ -145,7 +151,7 @@
   </header>
   <main class="pt-16">
     <!-- Hero Section -->
-    <section class="relative min-h-[751px] flex items-center overflow-hidden">
+    <section class="relative min-h-[751px] flex items-center overflow-hidden" id="beranda">
       <div class="absolute inset-0 z-0">
         <img alt="Indonesian Village Scenery" class="w-full h-full object-cover"
           data-alt="Stunning aerial view of a vibrant Indonesian village surrounded by lush green rice terraces and tropical trees at sunrise."
@@ -407,6 +413,46 @@
       </div>
     </div>
   </footer>
+  <script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('#beranda, #layanan, #profil');
+
+    function setActiveLink() {
+      let current = 'beranda';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('text-green-700', 'font-bold');
+        link.classList.add('text-slate-600');
+
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.remove('text-slate-600');
+          link.classList.add('text-green-700', 'font-bold');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', setActiveLink);
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        navLinks.forEach(item => {
+          item.classList.remove('text-green-700', 'font-bold');
+          item.classList.add('text-slate-600');
+        });
+
+        this.classList.remove('text-slate-600');
+        this.classList.add('text-green-700', 'font-bold');
+      });
+    });
+  </script>
 </body>
 
 </html>

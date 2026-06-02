@@ -213,9 +213,50 @@
         </section>
         <!-- Status Permohonan Section -->
         <section>
-          <h2 class="font-h2 text-h2 text-primary mb-4">Status Permohonan Terbaru</h2>
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="font-h2 text-h2 text-primary">Status Permohonan Terbaru</h2>
+            <a href="{{ route('user.pengajuan.index') }}"
+              class="text-on-primary-container font-button text-label-sm hover:underline">Lihat Riwayat</a>
+          </div>
           <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
             <div class="divide-y divide-slate-100">
+              @forelse($pengajuanTerbaru as $item)
+                @php
+                  $statusMeta = [
+                    'menunggu' => ['label' => 'Menunggu', 'class' => 'bg-yellow-100 text-yellow-700'],
+                    'diproses' => ['label' => 'Diproses', 'class' => 'bg-blue-100 text-blue-700'],
+                    'disetujui' => ['label' => 'Disetujui', 'class' => 'bg-green-100 text-green-700'],
+                    'ditolak' => ['label' => 'Ditolak', 'class' => 'bg-red-100 text-red-700'],
+                  ][$item->status] ?? ['label' => ucfirst($item->status), 'class' => 'bg-slate-100 text-slate-600'];
+                @endphp
+                <div class="p-4 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+                  <div class="flex items-center gap-4 min-w-0">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0">
+                      <span class="material-symbols-outlined text-on-surface-variant"
+                        data-icon="description">description</span>
+                    </div>
+                    <div class="min-w-0">
+                      <h4 class="font-body-md font-semibold text-slate-900 truncate">{{ $item->jenis_surat }}</h4>
+                      <p class="text-label-sm text-slate-500">
+                        {{ $item->created_at->translatedFormat('d M Y') }} &bull; ID: {{ $item->id }}
+                      </p>
+                    </div>
+                  </div>
+                  <span class="px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap {{ $statusMeta['class'] }}">
+                    {{ $statusMeta['label'] }}
+                  </span>
+                </div>
+              @empty
+                <div class="p-6 text-center">
+                  <div class="w-12 h-12 mx-auto mb-3 rounded-lg bg-surface-container flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-surface-variant"
+                      data-icon="description">description</span>
+                  </div>
+                  <h4 class="font-body-md font-semibold text-slate-900">Belum ada permohonan</h4>
+                  <p class="text-label-sm text-slate-500 mt-1">Pengajuan surat terbaru Anda akan muncul di sini.</p>
+                </div>
+              @endforelse
+              @if(false)
               <!-- List Item 1 -->
               <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
                 <div class="flex items-center gap-4">
@@ -258,6 +299,7 @@
                 </div>
                 <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600">Pending</span>
               </div>
+              @endif
             </div>
           </div>
         </section>

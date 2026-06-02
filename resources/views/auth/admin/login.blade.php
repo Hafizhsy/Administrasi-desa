@@ -248,7 +248,6 @@
                 <div class="text-center">
                     <p class="font-body-md text-[12px] text-outline">
                         &copy 2026 Pemerintah Desa Kopandakan I.<br />
-                        Dikelola oleh Divisi Teknologi Informasi &amp; Komunikasi.
                     </p>
                 </div>
             </footer>

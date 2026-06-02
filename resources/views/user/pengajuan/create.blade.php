@@ -324,18 +324,18 @@
                 </div>
             </section>
             <div id="form-area" class="hidden lg:col-span-12 grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-            <section class="lg:col-span-8 bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-sm">
-                <div class="flex items-center gap-2 mb-stack-md">
-                    <div
-                        class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-tertiary text-white font-bold text-sm">
-                        2</div>
-                    <h2 class="font-h3 text-h3 text-on-surface">Detail Data Diri</h2>
-                </div>
-                <form action="{{ route('user.pengajuan.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <input type="hidden" name="jenis_surat" id="jenis_surat" value="" />
+                <section class="lg:col-span-8 bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-sm">
+                    <div class="flex items-center gap-2 mb-stack-md">
+                        <div
+                            class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-tertiary text-white font-bold text-sm">
+                            2</div>
+                        <h2 class="font-h3 text-h3 text-on-surface">Detail Data Diri</h2>
+                    </div>
+                    <form action="{{ route('user.pengajuan.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="jenis_surat" id="jenis_surat" value="" />
 
-                    <!-- <div class="space-y-2 mb-6">
+                        <!-- <div class="space-y-2 mb-6">
                         <label class="font-label-sm text-on-surface-variant block">Jenis Surat</label>
                         <select name="jenis_surat" required
                             class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all">
@@ -347,230 +347,238 @@
                         </select>
                     </div> -->
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="font-label-sm text-on-surface-variant block">Nama Lengkap Sesuai KTP</label>
-                            <input name="nama_pemohon" required
-                                class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
-                                placeholder="Masukkan nama lengkap" type="text" />
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="font-label-sm text-on-surface-variant block">Nama Lengkap Sesuai
+                                    KTP</label>
+                                <input name="nama_pemohon" required
+                                    class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
+                                    placeholder="Masukkan nama lengkap" type="text" />
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="font-label-sm text-on-surface-variant block">NIK</label>
+                                <input name="nik" required
+                                    class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
+                                    placeholder="16 digit nomor NIK" type="text" />
+                            </div>
                         </div>
 
-                        <div class="space-y-2">
-                            <label class="font-label-sm text-on-surface-variant block">NIK</label>
-                            <input name="nik" required
-                                class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
-                                placeholder="16 digit nomor NIK" type="text" />
+                        <div class="space-y-2 mt-6">
+                            <label class="font-label-sm text-on-surface-variant block">Alamat Lengkap</label>
+                            <textarea name="alamat" required
+                                class="w-full p-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all resize-none"
+                                placeholder="Jl. Raya Kopandakan I, No..." rows="3"></textarea>
+                        </div>
+
+                        <div class="border-t border-slate-100 pt-6 mt-6">
+                            <h3 class="font-bold text-on-surface mb-4">Informasi Khusus Surat</h3>
+                            <div class="space-y-2">
+                                <label class="font-label-sm text-on-surface-variant block">Tujuan Pengajuan
+                                    Surat</label>
+                                <input name="keperluan"
+                                    class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
+                                    placeholder="Contoh: Persyaratan pendaftaran pernikahan" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-100 pt-6 mt-6">
+                            <h2 class="font-h3 text-h3 text-on-surface mb-4">Lampiran Dokumen</h2>
+
+                            <div id="dokumen-nikah" class="dokumen-group hidden space-y-4">
+                                <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Nikah</h3>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Fotokopi KTP Pemohon Suami dan Istri</label>
+                                    <input type="file" name="dokumen[Fotokopi KTP Pemohon Suami dan Istri]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
+                                    <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
+                                    <input type="file" name="dokumen[Surat Pengantar RT RW]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Fotokopi Akta Nikah / Buku Nikah</label>
+                                    <input type="file" name="dokumen[Fotokopi Akta Nikah atau Buku Nikah]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Pas Foto 3x4 Background Biru</label>
+                                    <input type="file" name="dokumen[Pas Foto 3x4 Background Biru]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+                            </div>
+
+                            <div id="dokumen-usaha" class="dokumen-group hidden space-y-4">
+                                <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Keterangan Usaha
+                                </h3>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
+                                    <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
+                                    <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
+                                    <input type="file" name="dokumen[Surat Pengantar RT RW]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Foto Tempat Usaha</label>
+                                    <input type="file" name="dokumen[Foto Tempat Usaha]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Surat Pernyataan Kepemilikan Usaha</label>
+                                    <input type="file" name="dokumen[Surat Pernyataan Kepemilikan Usaha]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+                            </div>
+
+                            <div id="dokumen-sktm" class="dokumen-group hidden space-y-4">
+                                <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan SKTM</h3>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
+                                    <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
+                                    <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
+                                    <input type="file" name="dokumen[Surat Pengantar RT RW]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Foto Rumah Tampak Depan</label>
+                                    <input type="file" name="dokumen[Foto Rumah Tampak Depan]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Slip Gaji atau Surat Pernyataan
+                                        Penghasilan</label>
+                                    <input type="file" name="dokumen[Slip Gaji atau Surat Pernyataan Penghasilan]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+                            </div>
+
+                            <div id="dokumen-pbb" class="dokumen-group hidden space-y-4">
+                                <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Keterangan Lunas
+                                    PBB</h3>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
+                                    <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
+                                    <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Bukti Bayar PBB Tahun Berjalan</label>
+                                    <input type="file" name="dokumen[Bukti Bayar PBB Tahun Berjalan]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold mb-2">Fotokopi SPPT PBB Terakhir</label>
+                                    <input type="file" name="dokumen[Fotokopi SPPT PBB Terakhir]"
+                                        class="w-full border rounded-lg p-3">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="pt-6">
+                            <button
+                                class="w-full md:w-auto px-10 h-14 bg-primary text-white font-button rounded-xl hover:bg-primary-container transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95"
+                                type="submit">
+                                <span>Kirim Permohonan</span>
+                                <span class="material-symbols-outlined">send</span>
+                            </button>
+                        </div>
+                    </form>
+                </section>
+                <aside class="lg:col-span-4 space-y-gutter">
+                    <div class="bg-primary-container text-white rounded-xl p-6 shadow-sm">
+                        <h3 class="font-h3 text-lg mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined">info</span>
+                            Informasi Penting
+                        </h3>
+                        <ul class="space-y-4 text-sm opacity-90">
+                            <li class="flex gap-3">
+                                <span class="material-symbols-outlined text-tertiary-fixed text-lg">history</span>
+                                <span>Proses verifikasi dokumen memerlukan waktu 1-2 hari kerja.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="material-symbols-outlined text-tertiary-fixed text-lg">check_circle</span>
+                                <span>Pastikan file scan terlihat jelas dan tidak terpotong.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span
+                                    class="material-symbols-outlined text-tertiary-fixed text-lg">notifications_active</span>
+                                <span>Notifikasi status akan dikirimkan melalui dashboard atau WhatsApp
+                                    terdaftar.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                        <h3 class="font-bold text-on-surface mb-4">Statistik Layanan</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-on-surface-variant">Hari Ini</span>
+                                <span class="font-bold text-primary">12 Permohonan</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-primary h-full w-[65%]"></div>
+                            </div>
+                            <p class="text-xs text-on-surface-variant italic">Kapasitas harian kantor desa Kopandakan I
+                                saat
+                                ini beroperasi normal.</p>
                         </div>
                     </div>
-
-                    <div class="space-y-2 mt-6">
-                        <label class="font-label-sm text-on-surface-variant block">Alamat Lengkap</label>
-                        <textarea name="alamat" required
-                            class="w-full p-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all resize-none"
-                            placeholder="Jl. Raya Kopandakan I, No..." rows="3"></textarea>
-                    </div>
-
-                    <div class="border-t border-slate-100 pt-6 mt-6">
-                        <h3 class="font-bold text-on-surface mb-4">Informasi Khusus Surat</h3>
-                        <div class="space-y-2">
-                            <label class="font-label-sm text-on-surface-variant block">Tujuan Pengajuan Surat</label>
-                            <input name="keperluan"
-                                class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
-                                placeholder="Contoh: Persyaratan pendaftaran pernikahan" type="text" />
+                    <div class="relative rounded-xl overflow-hidden aspect-video group">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            data-alt="Modern government office interior with clean wooden desks, minimalist shelving, and soft natural lighting creating a professional atmosphere"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWntktMU2IsWGjUSdM1-zqcBP7WF39dhGq1E--jIYDwBU3Qt6aI3eEgarr1YttJkIedtbjtoQOEqv4Z1xNA9CFwA-gDbG5BloiO0LijLae14cSqP9IAw9kBnJ6rqzdivcumnkwDJjCzzavhyf7zDsLR73Dzy2g5aRPqQrNrYoSPQaJSRqYLVGTyQoO8k-kNT-SK7bFGU4xtzJGM-3kWFya_HnFxO9ydyG7Kd7lkTp8iqiffNqfc7-ym4LfxcIcPv4mCYzuvb7OTw" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-4">
+                            <p class="text-white font-bold">Butuh bantuan?</p>
+                            <p class="text-white/80 text-xs">Hubungi operator desa via WhatsApp</p>
                         </div>
                     </div>
-
-                    <div class="border-t border-slate-100 pt-6 mt-6">
-                        <h2 class="font-h3 text-h3 text-on-surface mb-4">Lampiran Dokumen</h2>
-
-                        <div id="dokumen-nikah" class="dokumen-group hidden space-y-4">
-                            <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Nikah</h3>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Fotokopi KTP Pemohon Suami dan Istri</label>
-                                <input type="file" name="dokumen[Fotokopi KTP Pemohon Suami dan Istri]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
-                                <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
-                                <input type="file" name="dokumen[Surat Pengantar RT RW]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Fotokopi Akta Nikah / Buku Nikah</label>
-                                <input type="file" name="dokumen[Fotokopi Akta Nikah atau Buku Nikah]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Pas Foto 3x4 Background Biru</label>
-                                <input type="file" name="dokumen[Pas Foto 3x4 Background Biru]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-                        </div>
-
-                        <div id="dokumen-usaha" class="dokumen-group hidden space-y-4">
-                            <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Keterangan Usaha</h3>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
-                                <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
-                                <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
-                                <input type="file" name="dokumen[Surat Pengantar RT RW]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Foto Tempat Usaha</label>
-                                <input type="file" name="dokumen[Foto Tempat Usaha]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Surat Pernyataan Kepemilikan Usaha</label>
-                                <input type="file" name="dokumen[Surat Pernyataan Kepemilikan Usaha]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-                        </div>
-
-                        <div id="dokumen-sktm" class="dokumen-group hidden space-y-4">
-                            <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan SKTM</h3>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
-                                <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
-                                <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
-                                <input type="file" name="dokumen[Surat Pengantar RT RW]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Foto Rumah Tampak Depan</label>
-                                <input type="file" name="dokumen[Foto Rumah Tampak Depan]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Slip Gaji atau Surat Pernyataan Penghasilan</label>
-                                <input type="file" name="dokumen[Slip Gaji atau Surat Pernyataan Penghasilan]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-                        </div>
-
-                        <div id="dokumen-pbb" class="dokumen-group hidden space-y-4">
-                            <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Keterangan Lunas PBB</h3>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
-                                <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
-                                <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Bukti Bayar PBB Tahun Berjalan</label>
-                                <input type="file" name="dokumen[Bukti Bayar PBB Tahun Berjalan]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-
-                            <div>
-                                <label class="block font-semibold mb-2">Fotokopi SPPT PBB Terakhir</label>
-                                <input type="file" name="dokumen[Fotokopi SPPT PBB Terakhir]"
-                                    class="w-full border rounded-lg p-3">
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="pt-6">
-                        <button
-                            class="w-full md:w-auto px-10 h-14 bg-primary text-white font-button rounded-xl hover:bg-primary-container transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95"
-                            type="submit">
-                            <span>Kirim Permohonan</span>
-                            <span class="material-symbols-outlined">send</span>
-                        </button>
-                    </div>
-                </form>
-            </section>
-            <aside class="lg:col-span-4 space-y-gutter">
-                <div class="bg-primary-container text-white rounded-xl p-6 shadow-sm">
-                    <h3 class="font-h3 text-lg mb-4 flex items-center gap-2">
-                        <span class="material-symbols-outlined">info</span>
-                        Informasi Penting
-                    </h3>
-                    <ul class="space-y-4 text-sm opacity-90">
-                        <li class="flex gap-3">
-                            <span class="material-symbols-outlined text-tertiary-fixed text-lg">history</span>
-                            <span>Proses verifikasi dokumen memerlukan waktu 1-2 hari kerja.</span>
-                        </li>
-                        <li class="flex gap-3">
-                            <span class="material-symbols-outlined text-tertiary-fixed text-lg">check_circle</span>
-                            <span>Pastikan file scan terlihat jelas dan tidak terpotong.</span>
-                        </li>
-                        <li class="flex gap-3">
-                            <span class="material-symbols-outlined text-tertiary-fixed text-lg">notifications_active</span>
-                            <span>Notifikasi status akan dikirimkan melalui dashboard atau WhatsApp terdaftar.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-                    <h3 class="font-bold text-on-surface mb-4">Statistik Layanan</h3>
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-on-surface-variant">Hari Ini</span>
-                            <span class="font-bold text-primary">12 Permohonan</span>
-                        </div>
-                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                            <div class="bg-primary h-full w-[65%]"></div>
-                        </div>
-                        <p class="text-xs text-on-surface-variant italic">Kapasitas harian kantor desa Kopandakan I saat
-                            ini beroperasi normal.</p>
-                    </div>
-                </div>
-                <div class="relative rounded-xl overflow-hidden aspect-video group">
-                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        data-alt="Modern government office interior with clean wooden desks, minimalist shelving, and soft natural lighting creating a professional atmosphere"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWntktMU2IsWGjUSdM1-zqcBP7WF39dhGq1E--jIYDwBU3Qt6aI3eEgarr1YttJkIedtbjtoQOEqv4Z1xNA9CFwA-gDbG5BloiO0LijLae14cSqP9IAw9kBnJ6rqzdivcumnkwDJjCzzavhyf7zDsLR73Dzy2g5aRPqQrNrYoSPQaJSRqYLVGTyQoO8k-kNT-SK7bFGU4xtzJGM-3kWFya_HnFxO9ydyG7Kd7lkTp8iqiffNqfc7-ym4LfxcIcPv4mCYzuvb7OTw" />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-4">
-                        <p class="text-white font-bold">Butuh bantuan?</p>
-                        <p class="text-white/80 text-xs">Hubungi operator desa via WhatsApp</p>
-                    </div>
-                </div>
-            </aside>
+                </aside>
             </div>
         </div>
     </main>
@@ -579,8 +587,7 @@
             class="w-full flex flex-col md:flex-row justify-between items-center px-8 gap-4 max-w-container-max mx-auto">
             <div class="text-center md:text-left">
                 <span class="font-bold text-slate-900 block mb-1">Pemerintah Desa Kopandakan 1</span>
-                <p class="font-public-sans text-xs text-slate-500">© 2024 Pemerintah Desa Kopandakan 1. Hak Cipta
-                    Dilindungi.</p>
+                <p class="font-public-sans text-xs text-slate-500">&copy; 2026 Pemerintah Desa Kopandakan 1.</p>
             </div>
             <div class="flex gap-6">
                 <a class="font-public-sans text-xs text-slate-500 hover:text-emerald-700" href="#">Kontak</a>
