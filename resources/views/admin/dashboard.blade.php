@@ -165,12 +165,12 @@
       </div>
       <nav class="space-y-1">
         <a class="flex items-center gap-3 bg-emerald-900 text-white rounded-lg mx-2 px-4 py-3 font-medium text-sm transition-all duration-200"
-          href="#">
+          href="{{ route('admin.dashboard') }}">
           <span class="material-symbols-outlined">dashboard</span>
           Dashboard
         </a>
         <a class="flex items-center gap-3 text-slate-600 hover:bg-slate-100 mx-2 rounded-lg px-4 py-3 font-medium text-sm transition-all duration-200"
-          href="#">
+          href="{{ route('admin.pengajuan.index') }}">
           <span class="material-symbols-outlined">folder_shared</span>
           Permohonan
         </a>
@@ -194,7 +194,7 @@
         </div>
         <button
           class="bg-primary-container text-on-primary-fixed-variant px-6 py-3 rounded-xl font-button text-button flex items-center gap-2 hover:bg-primary transition-colors active:scale-95 shadow-sm"
-          onclick="window.location.href='#'">
+          onclick="window.location.href='{{ route('admin.pengajuan.index', ['status' => 'menunggu']) }}'">
           <span class="material-symbols-outlined">rate_review</span>
           Review Pending Requests
         </button>
@@ -202,7 +202,7 @@
       <!-- Stats Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
-          href="#">
+          href="{{ route('admin.pengajuan.index', ['status' => 'menunggu']) }}">
           <div class="flex justify-between items-start">
             <div class="p-3 bg-error-container rounded-lg"><span
                 class="material-symbols-outlined text-on-error-container">pending_actions</span></div><span
@@ -244,7 +244,7 @@
         <div class="lg:col-span-2 bg-white border border-slate-200 rounded-xl overflow-hidden">
           <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
             <h3 class="text-lg font-bold text-emerald-900">Recent Activities</h3>
-            <a class="text-sm font-semibold text-primary hover:underline" href="#">Lihat Semua</a>
+            <a class="text-sm font-semibold text-primary hover:underline" href="{{ route('admin.pengajuan.index') }}">Lihat Semua</a>
           </div>
           <div class="divide-y divide-slate-100">
             <!-- Activity Item -->

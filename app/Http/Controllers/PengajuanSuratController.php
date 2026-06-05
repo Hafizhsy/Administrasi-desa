@@ -71,13 +71,34 @@ class PengajuanSuratController extends Controller
             ->with('success', 'Pengajuan surat berhasil dikirim.');
     }
 
-    public function adminIndex()
+    public function adminIndex(Request $request)
     {
-        $pengajuan = PengajuanSurat::with('user')
-            ->latest()
-            ->get();
+        $jenisSurat = PengajuanSurat::query()
+            ->select('jenis_surat')
+            ->distinct()
+            ->orderBy('jenis_surat')
+            ->pluck('jenis_surat');
 
-        return view('admin.pengajuan.index', compact('pengajuan'));
+        $pengajuan = PengajuanSurat::with(['user', 'dokumen'])
+            ->when($request->filled('search'), function ($query) use ($request) {
+                $search = $request->search;
+
+                $query->where(function ($query) use ($search) {
+                    $query->where('nama_pemohon', 'like', "%{$search}%")
+                        ->orWhere('nik', 'like', "%{$search}%");
+                });
+            })
+            ->when($request->filled('jenis_surat'), function ($query) use ($request) {
+                $query->where('jenis_surat', $request->jenis_surat);
+            })
+            ->when($request->filled('status'), function ($query) use ($request) {
+                $query->where('status', $request->status);
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('admin.pengajuan.index', compact('pengajuan', 'jenisSurat'));
     }
 
     public function updateStatus(Request $request, PengajuanSurat $pengajuanSurat)
