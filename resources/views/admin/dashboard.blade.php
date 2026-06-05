@@ -180,9 +180,6 @@
           Laporan
         </a>
       </nav>
-      <div class="mt-auto p-4 border-t border-slate-100">
-        <p class="text-xs font-bold text-emerald-900">Kopandakan I</p>
-      </div>
     </aside>
     <!-- Main Content -->
     <main class="flex-1 p-4 md:p-8 max-w-7xl mx-auto w-full">
@@ -200,161 +197,118 @@
         </button>
       </div>
       <!-- Stats Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
         <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
           href="{{ route('admin.pengajuan.index', ['status' => 'menunggu']) }}">
           <div class="flex justify-between items-start">
             <div class="p-3 bg-error-container rounded-lg"><span
                 class="material-symbols-outlined text-on-error-container">pending_actions</span></div><span
-              class="text-error font-bold text-sm">+5 hari ini</span>
+              class="text-error font-bold text-sm">Perlu review</span>
           </div>
           <div>
-            <p class="text-slate-500 font-label-sm text-label-sm">Pending Requests</p>
+            <p class="text-slate-500 font-label-sm text-label-sm">Menunggu</p>
             <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $pending }}</h4>
           </div>
         </a>
-        <div class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4">
+        <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
+          href="{{ route('admin.pengajuan.index', ['status' => 'diproses']) }}">
+          <div class="flex justify-between items-start">
+            <div class="p-3 bg-surface-container-high rounded-lg">
+              <span class="material-symbols-outlined text-blue-700">hourglass_top</span>
+            </div>
+            <span class="text-blue-700 font-bold text-sm">Sedang berjalan</span>
+          </div>
+          <div>
+            <p class="text-slate-500 font-label-sm text-label-sm">Diproses</p>
+            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $progress }}</h4>
+          </div>
+        </a>
+        <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
+          href="{{ route('admin.pengajuan.index', ['status' => 'disetujui']) }}">
           <div class="flex justify-between items-start">
             <div class="p-3 bg-primary-fixed rounded-lg">
               <span class="material-symbols-outlined text-primary-container">task_alt</span>
             </div>
-            <span class="text-emerald-700 font-bold text-sm">Target tercapai</span>
+            <span class="text-emerald-700 font-bold text-sm">Siap ambil</span>
           </div>
           <div>
-            <p class="text-slate-500 font-label-sm text-label-sm">Processed Today</p>
-            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $today }}</h4>
+            <p class="text-slate-500 font-label-sm text-label-sm">Disetujui</p>
+            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $approved }}</h4>
           </div>
-        </div>
+        </a>
         <div class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4">
           <div class="flex justify-between items-start">
             <div class="p-3 bg-tertiary-fixed rounded-lg">
               <span class="material-symbols-outlined text-on-tertiary-fixed-variant">description</span>
             </div>
-            <span class="text-slate-500 font-bold text-sm">Bulan ini</span>
+            <span class="text-slate-500 font-bold text-sm">Semua data</span>
           </div>
           <div>
-            <p class="text-slate-500 font-label-sm text-label-sm">Total Letters Issued</p>
+            <p class="text-slate-500 font-label-sm text-label-sm">Total Permohonan</p>
             <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $all }}</h4>
           </div>
         </div>
       </div>
-      <!-- Main Layout Bento -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-        <!-- Recent Activities (Feed) -->
-        <div class="lg:col-span-2 bg-white border border-slate-200 rounded-xl overflow-hidden">
+      <!-- Recent Activities -->
+      <div class="mb-20">
+        <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
           <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
             <h3 class="text-lg font-bold text-emerald-900">Recent Activities</h3>
-            <a class="text-sm font-semibold text-primary hover:underline" href="{{ route('admin.pengajuan.index') }}">Lihat Semua</a>
+            <a class="text-sm font-semibold text-primary hover:underline"
+              href="{{ route('admin.activity-logs.index') }}">Lihat Semua</a>
           </div>
           <div class="divide-y divide-slate-100">
-            <!-- Activity Item -->
-            <div class="p-6 hover:bg-slate-50 transition-colors">
-              <div class="flex gap-4">
-                <img alt="User" class="w-10 h-10 rounded-full object-cover"
-                  data-alt="Portrait of a young male citizen in casual wear, neutral background"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAN8e_FE2CfzVUFmCrvStEg8opfgQbfDWLv2Ny3bVsd_TBKn2H7Pv3FJWCOpihD6NVKjy4YptqbmwCoANXO-E85rw2qHc5O-8madl_X8NuLA03H3dkhNBSoDNqA9kgdvTKn-hiYbjluvVoFb4zJrwAwh_rOXtlc6XnEVHHv-LQ8mHic5AaGe3Wp58QmA_echUiN1vozD6xjZRD_QtfHGUl-7PAW7NZF02px-979-39iAyrTWBNR4YEvOE6AV6eNHdSz_aio9Jm-x8" />
-                <div class="flex-1">
-                  <div class="flex justify-between items-start">
-                    <p class="font-bold text-emerald-900">Andi Saputra</p>
-                    <span class="text-xs text-slate-400">10 Menit yang lalu</span>
+            @forelse($recentActivities as $activity)
+              @php
+                $status = $activity->metadata['status'] ?? null;
+                $statusMeta = [
+                  'menunggu' => ['label' => 'Menunggu', 'class' => 'bg-red-50 text-red-700 border-red-100'],
+                  'diproses' => ['label' => 'Diproses', 'class' => 'bg-blue-50 text-blue-700 border-blue-100'],
+                  'disetujui' => ['label' => 'Disetujui', 'class' => 'bg-emerald-50 text-emerald-700 border-emerald-100'],
+                  'ditolak' => ['label' => 'Ditolak', 'class' => 'bg-red-100 text-red-700 border-red-200'],
+                ][$status] ?? null;
+                $initials = collect(explode(' ', $activity->title))
+                  ->filter()
+                  ->take(2)
+                  ->map(fn($part) => strtoupper(substr($part, 0, 1)))
+                  ->join('');
+              @endphp
+              <div class="p-6 hover:bg-slate-50 transition-colors">
+                <div class="flex gap-4">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-primary-fixed-dim flex items-center justify-center font-bold text-primary shrink-0">
+                    {{ $initials ?: 'AL' }}
                   </div>
-                  <p class="text-sm text-slate-600">Mengajukan permohonan <span class="font-semibold">Surat Keterangan
-                      Usaha</span></p>
-                  <div class="mt-2 flex gap-2">
-                    <button class="text-xs font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full"
-                      onclick="window.location.href='#'">Review</button>
-                    <button class="text-xs font-bold text-slate-500 hover:text-slate-700">Abaikan</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Activity Item -->
-            <div class="p-6 hover:bg-slate-50 transition-colors">
-              <div class="flex gap-4">
-                <img alt="User" class="w-10 h-10 rounded-full object-cover"
-                  data-alt="Portrait of a friendly middle-aged woman, smiling, bright natural light"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuClfz6aRCliJU6tSOvo7GhhYL_8ijTPDcDTv84oync-x_H9F5ZuGvhaRjsC6mPGrJmo52b4ssC9wNeG1D0pzmbaEMc_QvDcZ9w9peg-cscZhBK1r5Q7vz37bgIcmTzn0V1nVJmUXNjA5LgZds0I7tb5D8Yov8GMicTt0rQXzMtpxsXz8GeDBcVmRhweJrR_dIH2xx6xvw2WwONSPA9s0UwZNZ6iW-BTDFoRVqok5vYjzgreHx5WQ3PwKVmEcqcwun3FMLzfqVF0Q-0" />
-                <div class="flex-1">
-                  <div class="flex justify-between items-start">
-                    <p class="font-bold text-emerald-900">Siti Rahayu</p>
-                    <span class="text-xs text-slate-400">2 Jam yang lalu</span>
-                  </div>
-                  <p class="text-sm text-slate-600">Mengajukan permohonan <span class="font-semibold">Surat Keterangan
-                      Domisili</span></p>
-                  <div class="mt-2">
-                    <span
-                      class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">Sedang
-                      Diproses</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Activity Item -->
-            <div class="p-6 hover:bg-slate-50 transition-colors">
-              <div class="flex gap-4">
-                <img alt="User" class="w-10 h-10 rounded-full object-cover"
-                  data-alt="Portrait of a professional man in spectacles, clean studio lighting"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBThG5ORJeC2H9v2XmXqWA3ZOQVxXSP1JP4vMI_uOBzIoUKI0vnsKGZ_IUg0CEeqfygyF28UbMhYpaKK5SMTE3htwWO8dZqskdyfkCr_81v37vN34UeC6_JBCf2g5sCxhPFl-sQmZHeDgCI8JW_snHCG3SNc4mRbmJBQea2gjYxa85X5B9c0Wf4UkIc6BXxZy20dUAZxr4kK2XDOSLaBTKIhNyJwvawJqH5zApQO4_CdkF77LBwizlhlxMC6PZgXmf7SOYQOL76Ju8" />
-                <div class="flex-1">
-                  <div class="flex justify-between items-start">
-                    <p class="font-bold text-emerald-900">Budi Santoso</p>
-                    <span class="text-xs text-slate-400">4 Jam yang lalu</span>
-                  </div>
-                  <p class="text-sm text-slate-600">Mengajukan permohonan <span class="font-semibold">Surat Pengantar
-                      Nikah</span></p>
-                  <div class="mt-2 flex gap-2">
-                    <button class="text-xs font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full"
-                      onclick="window.location.href='#'">Review</button>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex flex-col gap-1 sm:flex-row sm:justify-between sm:items-start">
+                      <p class="font-bold text-emerald-900 break-words">{{ $activity->title }}</p>
+                      <span
+                        class="text-xs text-slate-400 whitespace-nowrap">{{ $activity->created_at->diffForHumans() }}</span>
+                    </div>
+                    <p class="text-sm text-slate-600 break-words">{{ $activity->description }}</p>
+                    <div class="mt-2 flex flex-wrap gap-2">
+                      @if($statusMeta)
+                        <span
+                          class="text-xs font-bold px-3 py-1 rounded-full border {{ $statusMeta['class'] }}">{{ $statusMeta['label'] }}</span>
+                      @endif
+                      @if($activity->pengajuan_surat_id)
+                        <a class="text-xs font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full hover:bg-primary-fixed-dim"
+                          href="{{ route('admin.pengajuan.index', ['search' => $activity->pengajuanSurat?->nik]) }}">Lihat
+                          Permohonan</a>
+                      @endif
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <!-- Quick Actions / Mini Calendar -->
-        <div class="flex flex-col gap-6">
-          <div class="bg-emerald-900 text-white p-6 rounded-xl shadow-lg relative overflow-hidden">
-            <div class="relative z-10">
-              <h3 class="font-bold mb-2">Informasi Desa</h3>
-              <p class="text-emerald-100 text-sm mb-4">Agenda rapat koordinasi perangkat desa dijadwalkan besok pukul
-                09:00 WIB.</p>
-              <button class="w-full bg-white text-emerald-900 font-bold py-2 rounded-lg text-sm">Lihat Kalender</button>
-            </div>
-            <div class="absolute -right-4 -bottom-4 opacity-10">
-              <span class="material-symbols-outlined text-9xl">event_note</span>
-            </div>
-          </div>
-          <div class="bg-white border border-slate-200 p-6 rounded-xl">
-            <h3 class="font-bold text-emerald-900 mb-4">Statistik Bulanan</h3>
-            <div class="space-y-4">
-              <div>
-                <div class="flex justify-between text-xs font-bold mb-1">
-                  <span class="text-slate-600">Penyelesaian Surat</span>
-                  <span class="text-emerald-600">85%</span>
+            @empty
+              <div class="p-10 text-center">
+                <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-surface-container">
+                  <span class="material-symbols-outlined text-slate-500">history</span>
                 </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div class="bg-emerald-500 h-full w-[85%] rounded-full"></div>
-                </div>
+                <p class="font-bold text-emerald-900">Belum ada aktivitas</p>
+                <p class="mt-1 text-sm text-slate-500">Aktivitas pengajuan dan perubahan status akan tampil di sini.</p>
               </div>
-              <div>
-                <div class="flex justify-between text-xs font-bold mb-1">
-                  <span class="text-slate-600">Kepuasan Warga</span>
-                  <span class="text-emerald-600">92%</span>
-                </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div class="bg-emerald-500 h-full w-[92%] rounded-full"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between text-xs font-bold mb-1">
-                  <span class="text-slate-600">Efisiensi Admin</span>
-                  <span class="text-emerald-600">78%</span>
-                </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div class="bg-emerald-500 h-full w-[78%] rounded-full"></div>
-                </div>
-              </div>
-            </div>
+            @endforelse
           </div>
         </div>
       </div>

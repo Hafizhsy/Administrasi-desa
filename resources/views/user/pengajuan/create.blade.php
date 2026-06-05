@@ -260,6 +260,18 @@
             <p class="text-body-lg text-on-surface-variant max-w-2xl">Silakan pilih jenis surat dan lengkapi formulir di
                 bawah ini untuk mengajukan permohonan layanan administrasi desa.</p>
         </div>
+
+        @if ($errors->any())
+            <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-red-800">
+                <p class="font-bold">Pengajuan belum bisa dikirim.</p>
+                <ul class="mt-2 list-disc space-y-1 pl-5 text-sm">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
             <section class="lg:col-span-12 mb-stack-md">
                 <div class="flex items-center gap-2 mb-stack-sm overflow-x-auto hide-scrollbar pb-2">
@@ -333,7 +345,7 @@
                     </div>
                     <form action="{{ route('user.pengajuan.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="jenis_surat" id="jenis_surat" value="" />
+                        <input type="hidden" name="jenis_surat" id="jenis_surat" value="{{ old('jenis_surat') }}" />
 
                         <!-- <div class="space-y-2 mb-6">
                         <label class="font-label-sm text-on-surface-variant block">Jenis Surat</label>
@@ -351,14 +363,14 @@
                             <div class="space-y-2">
                                 <label class="font-label-sm text-on-surface-variant block">Nama Lengkap Sesuai
                                     KTP</label>
-                                <input name="nama_pemohon" required
+                                <input name="nama_pemohon" value="{{ old('nama_pemohon') }}" required
                                     class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
                                     placeholder="Masukkan nama lengkap" type="text" />
                             </div>
 
                             <div class="space-y-2">
                                 <label class="font-label-sm text-on-surface-variant block">NIK</label>
-                                <input name="nik" required
+                                <input name="nik" value="{{ old('nik') }}" required
                                     class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
                                     placeholder="16 digit nomor NIK" type="text" />
                             </div>
@@ -368,7 +380,7 @@
                             <label class="font-label-sm text-on-surface-variant block">Alamat Lengkap</label>
                             <textarea name="alamat" required
                                 class="w-full p-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all resize-none"
-                                placeholder="Jl. Raya Kopandakan I, No..." rows="3"></textarea>
+                                placeholder="Jl. Raya Kopandakan I, No..." rows="3">{{ old('alamat') }}</textarea>
                         </div>
 
                         <div class="border-t border-slate-100 pt-6 mt-6">
@@ -376,7 +388,7 @@
                             <div class="space-y-2">
                                 <label class="font-label-sm text-on-surface-variant block">Tujuan Pengajuan
                                     Surat</label>
-                                <input name="keperluan"
+                                <input name="keperluan" value="{{ old('keperluan') }}"
                                     class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
                                     placeholder="Contoh: Persyaratan pendaftaran pernikahan" type="text" />
                             </div>
@@ -616,7 +628,14 @@
         const cards = document.querySelectorAll('.surat-card');
         const jenisSuratInput = document.getElementById('jenis_surat');
         const dokumenGroups = document.querySelectorAll('.dokumen-group');
+        const dokumenInputs = document.querySelectorAll('.dokumen-group input[type="file"]');
         const formArea = document.getElementById('form-area');
+
+        dokumenInputs.forEach((input) => {
+            input.disabled = true;
+            input.required = false;
+            input.accept = '.pdf,.jpg,.jpeg,.png';
+        });
 
         document.querySelectorAll('input[type="file"]').forEach((input) => {
             const uploadBox = document.createElement('label');
@@ -730,17 +749,25 @@
 
                 dokumenGroups.forEach(group => {
                     group.classList.add('hidden');
+                    group.querySelectorAll('input[type="file"]').forEach((input) => {
+                        input.disabled = true;
+                        input.required = false;
+                    });
                 });
 
                 const activeGroup = document.getElementById('dokumen-' + jenis);
 
                 if (activeGroup) {
                     activeGroup.classList.remove('hidden');
+                    activeGroup.querySelectorAll('input[type="file"]').forEach((input) => {
+                        input.disabled = false;
+                        input.required = true;
+                    });
                 }
             });
         });
 
-        const selectedJenis = new URLSearchParams(window.location.search).get('jenis');
+        const selectedJenis = @json(old('jenis_surat')) || new URLSearchParams(window.location.search).get('jenis');
         const selectedCard = selectedJenis ? document.querySelector(`.surat-card[data-surat="${selectedJenis}"]`) : null;
 
         if (selectedCard) {

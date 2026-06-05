@@ -6,6 +6,8 @@ use App\Models\PengajuanSurat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PengajuanDokumen;
+use App\Models\ActivityLog;
+use Illuminate\Validation\ValidationException;
 
 class PengajuanSuratController extends Controller
 {
@@ -14,6 +16,36 @@ class PengajuanSuratController extends Controller
         'usaha' => 'Surat Keterangan Usaha',
         'sktm' => 'Surat Keterangan Tidak Mampu',
         'pbb' => 'Surat Keterangan Lunas PBB',
+    ];
+
+    private const DOKUMEN_PERSYARATAN = [
+        'nikah' => [
+            'Fotokopi KTP Pemohon Suami dan Istri',
+            'Fotokopi Kartu Keluarga',
+            'Surat Pengantar RT RW',
+            'Fotokopi Akta Nikah atau Buku Nikah',
+            'Pas Foto 3x4 Background Biru',
+        ],
+        'usaha' => [
+            'Fotokopi KTP Pemohon',
+            'Fotokopi Kartu Keluarga',
+            'Surat Pengantar RT RW',
+            'Foto Tempat Usaha',
+            'Surat Pernyataan Kepemilikan Usaha',
+        ],
+        'sktm' => [
+            'Fotokopi KTP Pemohon',
+            'Fotokopi Kartu Keluarga',
+            'Surat Pengantar RT RW',
+            'Foto Rumah Tampak Depan',
+            'Slip Gaji atau Surat Pernyataan Penghasilan',
+        ],
+        'pbb' => [
+            'Fotokopi KTP Pemohon',
+            'Fotokopi Kartu Keluarga',
+            'Bukti Bayar PBB Tahun Berjalan',
+            'Fotokopi SPPT PBB Terakhir',
+        ],
     ];
 
     public function index()
@@ -38,9 +70,21 @@ class PengajuanSuratController extends Controller
             'nik' => 'required|string|max:20',
             'alamat' => 'required|string',
             'keperluan' => 'nullable|string',
-            'dokumen' => 'nullable|array',
-            'dokumen.*' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'dokumen' => 'required|array',
+            'dokumen.*' => 'file|mimes:pdf,jpg,jpeg,png|max:2048',
         ]);
+
+        $requiredDokumen = self::DOKUMEN_PERSYARATAN[$request->jenis_surat];
+        $uploadedDokumen = $request->file('dokumen', []);
+        $missingDokumen = collect($requiredDokumen)
+            ->reject(fn ($namaDokumen) => isset($uploadedDokumen[$namaDokumen]) && $uploadedDokumen[$namaDokumen]->isValid())
+            ->values();
+
+        if ($missingDokumen->isNotEmpty()) {
+            throw ValidationException::withMessages([
+                'dokumen' => 'Dokumen berikut wajib diunggah: ' . $missingDokumen->implode(', '),
+            ]);
+        }
 
         $pengajuan = PengajuanSurat::create([
             'user_id' => Auth::id(),
@@ -52,19 +96,27 @@ class PengajuanSuratController extends Controller
             'status' => 'menunggu',
         ]);
 
-        if ($request->hasFile('dokumen')) {
-            foreach ($request->file('dokumen') as $namaDokumen => $file) {
-                if ($file) {
-                    $path = $file->store('persyaratan', 'public');
+        foreach ($requiredDokumen as $namaDokumen) {
+            $path = $uploadedDokumen[$namaDokumen]->store('persyaratan', 'public');
 
-                    PengajuanDokumen::create([
-                        'pengajuan_surat_id' => $pengajuan->id,
-                        'nama_dokumen' => $namaDokumen,
-                        'file_path' => $path,
-                    ]);
-                }
-            }
+            PengajuanDokumen::create([
+                'pengajuan_surat_id' => $pengajuan->id,
+                'nama_dokumen' => $namaDokumen,
+                'file_path' => $path,
+            ]);
         }
+
+        ActivityLog::create([
+            'user_id' => Auth::id(),
+            'pengajuan_surat_id' => $pengajuan->id,
+            'type' => 'pengajuan_created',
+            'title' => $pengajuan->nama_pemohon,
+            'description' => 'Mengajukan permohonan ' . $pengajuan->jenis_surat,
+            'metadata' => [
+                'status' => $pengajuan->status,
+                'jenis_surat' => $pengajuan->jenis_surat,
+            ],
+        ]);
 
         return redirect()
             ->route('user.pengajuan.index')
@@ -108,9 +160,24 @@ class PengajuanSuratController extends Controller
             'catatan_admin' => 'nullable|string',
         ]);
 
+        $statusLama = $pengajuanSurat->status;
+
         $pengajuanSurat->update([
             'status' => $request->status,
             'catatan_admin' => $request->catatan_admin,
+        ]);
+
+        ActivityLog::create([
+            'user_id' => Auth::id(),
+            'pengajuan_surat_id' => $pengajuanSurat->id,
+            'type' => 'pengajuan_status_updated',
+            'title' => $pengajuanSurat->nama_pemohon,
+            'description' => 'Status ' . $pengajuanSurat->jenis_surat . ' diubah dari ' . $statusLama . ' menjadi ' . $pengajuanSurat->status,
+            'metadata' => [
+                'status' => $pengajuanSurat->status,
+                'status_lama' => $statusLama,
+                'jenis_surat' => $pengajuanSurat->jenis_surat,
+            ],
         ]);
 
         return back()->with('success', 'Status pengajuan berhasil diperbarui.');

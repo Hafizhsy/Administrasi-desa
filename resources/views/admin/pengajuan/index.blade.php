@@ -80,6 +80,11 @@
         summary::-webkit-details-marker {
             display: none;
         }
+
+        dialog::backdrop {
+            background: rgba(11, 28, 48, 0.55);
+            backdrop-filter: blur(3px);
+        }
     </style>
 </head>
 
@@ -257,35 +262,12 @@
                                     </td>
                                     <td class="px-6 py-5">
                                         <div class="flex justify-end items-center gap-2 whitespace-nowrap">
-                                            <details class="relative">
-                                                <summary class="list-none w-10 h-10 text-primary hover:bg-primary-fixed-dim rounded-lg transition-colors cursor-pointer flex items-center justify-center">
+                                            <button type="button"
+                                                class="w-10 h-10 text-primary hover:bg-primary-fixed-dim rounded-lg transition-colors cursor-pointer flex items-center justify-center"
+                                                title="Lihat detail"
+                                                data-open-modal="detail-pengajuan-{{ $item->id }}">
                                                     <span class="material-symbols-outlined">visibility</span>
-                                                </summary>
-                                                <div class="absolute right-0 mt-2 w-80 bg-white border border-outline-variant rounded-xl shadow-xl p-4 z-20 text-left">
-                                                    <h3 class="font-bold text-primary mb-3">Detail Permohonan</h3>
-                                                    <div class="space-y-2 text-sm">
-                                                        <p><span class="font-bold">Nama:</span> {{ $item->nama_pemohon }}</p>
-                                                        <p><span class="font-bold">NIK:</span> {{ $item->nik }}</p>
-                                                        <p><span class="font-bold">Alamat:</span> {{ $item->alamat }}</p>
-                                                        <p><span class="font-bold">Keperluan:</span> {{ $item->keperluan ?: '-' }}</p>
-                                                        <p><span class="font-bold">Catatan:</span> {{ $item->catatan_admin ?: '-' }}</p>
-                                                    </div>
-                                                    <div class="mt-4">
-                                                        <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Dokumen Pendukung</p>
-                                                        <div class="space-y-2">
-                                                            @forelse($item->dokumen as $dokumen)
-                                                                <a href="{{ asset('storage/' . $dokumen->file_path) }}" target="_blank"
-                                                                    class="flex items-center gap-2 p-3 bg-surface-container-low border border-outline-variant rounded-xl text-sm font-medium hover:bg-slate-50">
-                                                                    <span class="material-symbols-outlined text-primary">attach_file</span>
-                                                                    {{ $dokumen->nama_dokumen }}
-                                                                </a>
-                                                            @empty
-                                                                <p class="text-sm text-slate-500">Tidak ada dokumen.</p>
-                                                            @endforelse
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </details>
+                                            </button>
 
                                             @if($item->status === 'menunggu')
                                                 <form method="POST" action="{{ route('admin.pengajuan.status', $item) }}">
@@ -340,6 +322,112 @@
                     </table>
                 </div>
 
+                @foreach($pengajuan as $item)
+                    @php
+                        $meta = $statusOptions[$item->status] ?? ['label' => ucfirst($item->status), 'class' => 'bg-slate-100 text-slate-700 border-slate-200'];
+                    @endphp
+                    <dialog id="detail-pengajuan-{{ $item->id }}"
+                        class="m-auto w-[min(94vw,920px)] max-h-[90dvh] rounded-xl border border-outline-variant bg-white p-0 text-left shadow-2xl backdrop:bg-slate-950/60">
+                        <div class="flex max-h-[90dvh] flex-col overflow-hidden">
+                            <div class="flex items-start justify-between gap-4 border-b border-outline-variant bg-surface-container-low px-5 py-4 md:px-6">
+                                <div class="min-w-0">
+                                    <p class="text-sm font-semibold uppercase tracking-wide text-secondary">Detail Permohonan</p>
+                                    <h2 class="mt-1 text-2xl font-bold leading-tight text-primary break-words">{{ $item->nama_pemohon }}</h2>
+                                    <div class="mt-2 flex flex-wrap items-center gap-2">
+                                        <span class="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-sm font-semibold text-on-surface border border-outline-variant">
+                                            <span class="material-symbols-outlined !text-[16px]">badge</span>
+                                            {{ $item->nik }}
+                                        </span>
+                                        <span class="px-3 py-1 rounded-full text-sm font-bold border {{ $meta['class'] }}">
+                                            {{ $meta['label'] }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                    class="w-10 h-10 shrink-0 rounded-lg text-slate-600 hover:bg-white hover:text-primary transition-colors flex items-center justify-center"
+                                    title="Tutup"
+                                    data-close-modal="detail-pengajuan-{{ $item->id }}">
+                                    <span class="material-symbols-outlined">close</span>
+                                </button>
+                            </div>
+
+                            <div class="overflow-y-auto px-5 py-5 md:px-6 md:py-6">
+                                <div class="grid gap-5 lg:grid-cols-[1fr_1.1fr]">
+                                    <section class="space-y-4">
+                                        <div class="rounded-xl border border-outline-variant bg-white p-4">
+                                            <h3 class="mb-4 text-base font-bold text-primary">Informasi Pemohon</h3>
+                                            <dl class="grid gap-4 sm:grid-cols-2">
+                                                <div>
+                                                    <dt class="text-xs font-bold uppercase tracking-wide text-secondary">Nama</dt>
+                                                    <dd class="mt-1 text-base font-semibold text-on-surface break-words">{{ $item->nama_pemohon }}</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="text-xs font-bold uppercase tracking-wide text-secondary">NIK</dt>
+                                                    <dd class="mt-1 text-base text-on-surface break-words">{{ $item->nik }}</dd>
+                                                </div>
+                                                <div class="sm:col-span-2">
+                                                    <dt class="text-xs font-bold uppercase tracking-wide text-secondary">Alamat</dt>
+                                                    <dd class="mt-1 text-base text-on-surface break-words">{{ $item->alamat }}</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="text-xs font-bold uppercase tracking-wide text-secondary">Tanggal Pengajuan</dt>
+                                                    <dd class="mt-1 text-base text-on-surface">{{ $item->created_at->format('d M Y') }}</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="text-xs font-bold uppercase tracking-wide text-secondary">Jenis Surat</dt>
+                                                    <dd class="mt-1 text-base font-semibold text-on-surface break-words">{{ $item->jenis_surat }}</dd>
+                                                </div>
+                                            </dl>
+                                        </div>
+
+                                        <div class="rounded-xl border border-outline-variant bg-surface-container-lowest p-4">
+                                            <h3 class="mb-3 text-base font-bold text-primary">Keperluan & Catatan</h3>
+                                            <dl class="space-y-4">
+                                                <div>
+                                                    <dt class="text-xs font-bold uppercase tracking-wide text-secondary">Keperluan</dt>
+                                                    <dd class="mt-1 text-base text-on-surface break-words">{{ $item->keperluan ?: '-' }}</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="text-xs font-bold uppercase tracking-wide text-secondary">Catatan Admin</dt>
+                                                    <dd class="mt-1 text-base text-on-surface break-words">{{ $item->catatan_admin ?: '-' }}</dd>
+                                                </div>
+                                            </dl>
+                                        </div>
+                                    </section>
+
+                                    <section class="rounded-xl border border-outline-variant bg-white p-4">
+                                        <div class="mb-4 flex items-center justify-between gap-3">
+                                            <h3 class="text-base font-bold text-primary">Dokumen Pendukung</h3>
+                                            <span class="rounded-full bg-surface-container-low px-3 py-1 text-sm font-bold text-secondary">
+                                                {{ $item->dokumen->count() }} dokumen
+                                            </span>
+                                        </div>
+
+                                        <div class="max-h-[46dvh] space-y-3 overflow-y-auto pr-1">
+                                            @forelse($item->dokumen as $dokumen)
+                                                <a href="{{ asset('storage/' . $dokumen->file_path) }}" target="_blank"
+                                                    class="group flex items-start gap-3 rounded-xl border border-outline-variant bg-surface-container-low p-3 text-sm font-medium text-on-surface transition-colors hover:bg-white hover:border-primary-fixed-dim">
+                                                    <span class="material-symbols-outlined mt-0.5 shrink-0 text-primary">attach_file</span>
+                                                    <span class="min-w-0 flex-1">
+                                                        <span class="block break-words font-semibold leading-snug">{{ $dokumen->nama_dokumen }}</span>
+                                                        <span class="mt-1 block break-all text-xs text-secondary">{{ basename($dokumen->file_path) }}</span>
+                                                    </span>
+                                                    <span class="material-symbols-outlined shrink-0 text-slate-400 transition-colors group-hover:text-primary">open_in_new</span>
+                                                </a>
+                                            @empty
+                                                <div class="rounded-xl border border-dashed border-outline-variant bg-surface-container-lowest p-6 text-center">
+                                                    <span class="material-symbols-outlined mx-auto mb-2 text-slate-400">folder_off</span>
+                                                    <p class="text-sm font-semibold text-slate-600">Tidak ada dokumen.</p>
+                                                </div>
+                                            @endforelse
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </dialog>
+                @endforeach
+
                 <div class="mt-6 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p class="text-label-sm text-secondary">
                         Menampilkan {{ $pengajuan->firstItem() ?? 0 }} sampai {{ $pengajuan->lastItem() ?? 0 }} dari {{ $pengajuan->total() }} permohonan
@@ -363,6 +451,31 @@
             <span class="text-[11px] font-semibold">Permohonan</span>
         </a>
     </nav>
+
+    <script>
+        document.querySelectorAll('[data-open-modal]').forEach((button) => {
+            button.addEventListener('click', () => {
+                const modal = document.getElementById(button.dataset.openModal);
+                if (modal) {
+                    modal.showModal();
+                }
+            });
+        });
+
+        document.querySelectorAll('[data-close-modal]').forEach((button) => {
+            button.addEventListener('click', () => {
+                document.getElementById(button.dataset.closeModal)?.close();
+            });
+        });
+
+        document.querySelectorAll('dialog[id^="detail-pengajuan-"]').forEach((modal) => {
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.close();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

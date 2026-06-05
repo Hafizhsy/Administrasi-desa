@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\Auth\AdminLoginController;
@@ -32,6 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])
             ->name('admin.dashboard');
+        Route::get('/admin/activity-logs', [ActivityLogController::class, 'index'])
+            ->name('admin.activity-logs.index');
         Route::get('/admin/pengajuan', [PengajuanSuratController::class, 'adminIndex'])->name('admin.pengajuan.index');
         Route::patch('/admin/pengajuan/{pengajuanSurat}/status', [PengajuanSuratController::class, 'updateStatus'])->name('admin.pengajuan.status');
     });
