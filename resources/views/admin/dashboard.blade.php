@@ -175,7 +175,7 @@
           Permohonan
         </a>
         <a class="flex items-center gap-3 text-slate-600 hover:bg-slate-100 mx-2 rounded-lg px-4 py-3 font-medium text-sm transition-all duration-200"
-          href="#">
+          href="{{ route('admin.laporan.index') }}">
           <span class="material-symbols-outlined">analytics</span>
           Laporan
         </a>
@@ -323,14 +323,14 @@
       <span class="font-public-sans text-[11px] font-semibold">Beranda</span>
     </a>
     <a class="flex flex-col items-center justify-center text-slate-500 px-4 py-1.5 hover:bg-slate-50 transition-transform active:scale-90"
-      href="#">
+      href="{{ route('admin.pengajuan.index') }}">
       <span class="material-symbols-outlined">description</span>
-      <span class="font-public-sans text-[11px] font-semibold">Layanan</span>
+      <span class="font-public-sans text-[11px] font-semibold">Permohonan</span>
     </a>
     <a class="flex flex-col items-center justify-center text-slate-500 px-4 py-1.5 hover:bg-slate-50 transition-transform active:scale-90"
-      href="#">
-      <span class="material-symbols-outlined">account_circle</span>
-      <span class="font-public-sans text-[11px] font-semibold">Status</span>
+      href="{{ route('admin.laporan.index') }}">
+      <span class="material-symbols-outlined">analytics</span>
+      <span class="font-public-sans text-[11px] font-semibold">Laporan</span>
     </a>
   </nav>
   <!-- Footer -->

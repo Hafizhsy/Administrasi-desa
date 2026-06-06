@@ -121,6 +121,11 @@
     .pb-safe {
       padding-bottom: env(safe-area-inset-bottom);
     }
+
+    dialog::backdrop {
+      background: rgba(11, 28, 48, 0.55);
+      backdrop-filter: blur(3px);
+    }
   </style>
   <style>
     body {
@@ -229,7 +234,9 @@
                     'ditolak' => ['label' => 'Ditolak', 'class' => 'bg-red-100 text-red-700'],
                   ][$item->status] ?? ['label' => ucfirst($item->status), 'class' => 'bg-slate-100 text-slate-600'];
                 @endphp
-                <div class="p-4 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+                <button type="button"
+                  class="w-full p-4 flex items-center justify-between gap-4 text-left hover:bg-slate-50 transition-colors"
+                  data-open-modal="detail-user-pengajuan-{{ $item->id }}">
                   <div class="flex items-center gap-4 min-w-0">
                     <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0">
                       <span class="material-symbols-outlined text-on-surface-variant"
@@ -245,7 +252,7 @@
                   <span class="px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap {{ $statusMeta['class'] }}">
                     {{ $statusMeta['label'] }}
                   </span>
-                </div>
+                </button>
               @empty
                 <div class="p-6 text-center">
                   <div class="w-12 h-12 mx-auto mb-3 rounded-lg bg-surface-container flex items-center justify-center">
@@ -302,6 +309,18 @@
               @endif
             </div>
           </div>
+
+          @foreach($pengajuanTerbaru as $item)
+            @php
+              $statusMeta = [
+                'menunggu' => ['label' => 'Menunggu', 'class' => 'bg-yellow-100 text-yellow-700'],
+                'diproses' => ['label' => 'Diproses', 'class' => 'bg-blue-100 text-blue-700'],
+                'disetujui' => ['label' => 'Disetujui', 'class' => 'bg-green-100 text-green-700'],
+                'ditolak' => ['label' => 'Ditolak', 'class' => 'bg-red-100 text-red-700'],
+              ][$item->status] ?? ['label' => ucfirst($item->status), 'class' => 'bg-slate-100 text-slate-600'];
+            @endphp
+            <x-user.pengajuan-detail-modal :item="$item" :status-meta="$statusMeta" />
+          @endforeach
         </section>
       </div>
       <!-- Right Column: Info & Action -->
@@ -382,6 +401,28 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.querySelectorAll('[data-open-modal]').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.getElementById(button.dataset.openModal)?.showModal();
+      });
+    });
+
+    document.querySelectorAll('[data-close-modal]').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.getElementById(button.dataset.closeModal)?.close();
+      });
+    });
+
+    document.querySelectorAll('dialog').forEach((modal) => {
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          modal.close();
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

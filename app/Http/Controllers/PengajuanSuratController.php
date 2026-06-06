@@ -51,10 +51,21 @@ class PengajuanSuratController extends Controller
     public function index()
     {
         $pengajuan = PengajuanSurat::where('user_id', Auth::id())
+            ->with('dokumen')
             ->latest()
             ->get();
 
         return view('user.pengajuan.index', compact('pengajuan'));
+    }
+
+    public function cetak(PengajuanSurat $pengajuanSurat)
+    {
+        abort_unless($pengajuanSurat->user_id === Auth::id(), 403);
+        abort_unless($pengajuanSurat->status === 'disetujui', 403);
+
+        return view('user.pengajuan.cetak', [
+            'pengajuan' => $pengajuanSurat->load('user'),
+        ]);
     }
 
     public function create()
@@ -157,7 +168,9 @@ class PengajuanSuratController extends Controller
     {
         $request->validate([
             'status' => 'required|in:menunggu,diproses,disetujui,ditolak',
-            'catatan_admin' => 'nullable|string',
+            'catatan_admin' => 'required_if:status,ditolak|nullable|string',
+        ], [
+            'catatan_admin.required_if' => 'Catatan admin wajib diisi jika permohonan ditolak.',
         ]);
 
         $statusLama = $pengajuanSurat->status;

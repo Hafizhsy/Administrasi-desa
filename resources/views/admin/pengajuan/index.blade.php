@@ -146,7 +146,7 @@
                     Permohonan
                 </a>
                 <a class="flex items-center gap-3 text-slate-600 hover:bg-slate-100 mx-2 rounded-lg px-4 py-3 font-medium text-sm transition-all duration-200"
-                    href="#">
+                    href="{{ route('admin.laporan.index') }}">
                     <span class="material-symbols-outlined">analytics</span>
                     Laporan
                 </a>
@@ -295,14 +295,12 @@
                                             @endif
 
                                             @if(in_array($item->status, ['menunggu', 'diproses']))
-                                                <form method="POST" action="{{ route('admin.pengajuan.status', $item) }}">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <input type="hidden" name="status" value="ditolak">
-                                                    <button class="w-10 h-10 text-error hover:bg-error-container rounded-lg transition-colors flex items-center justify-center" title="Tolak">
-                                                        <span class="material-symbols-outlined">cancel</span>
-                                                    </button>
-                                                </form>
+                                                <button type="button"
+                                                    class="w-10 h-10 text-error hover:bg-error-container rounded-lg transition-colors flex items-center justify-center"
+                                                    title="Tolak"
+                                                    data-open-modal="tolak-pengajuan-{{ $item->id }}">
+                                                    <span class="material-symbols-outlined">cancel</span>
+                                                </button>
                                             @endif
                                         </div>
                                     </td>
@@ -426,6 +424,57 @@
                             </div>
                         </div>
                     </dialog>
+
+                    @if(in_array($item->status, ['menunggu', 'diproses']))
+                        <dialog id="tolak-pengajuan-{{ $item->id }}"
+                            class="m-auto w-[min(92vw,560px)] rounded-xl border border-outline-variant bg-white p-0 text-left shadow-2xl">
+                            <form method="POST" action="{{ route('admin.pengajuan.status', $item) }}" class="overflow-hidden">
+                                @csrf
+                                @method('PATCH')
+                                <input type="hidden" name="status" value="ditolak">
+
+                                <div class="flex items-start justify-between gap-4 border-b border-outline-variant bg-red-50 px-5 py-4">
+                                    <div>
+                                        <p class="text-sm font-semibold uppercase tracking-wide text-red-700">Tolak Permohonan</p>
+                                        <h2 class="mt-1 text-xl font-bold text-on-surface">{{ $item->nama_pemohon }}</h2>
+                                    </div>
+                                    <button type="button"
+                                        class="w-10 h-10 shrink-0 rounded-lg text-slate-600 hover:bg-white hover:text-error transition-colors flex items-center justify-center"
+                                        title="Tutup"
+                                        data-close-modal="tolak-pengajuan-{{ $item->id }}">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                </div>
+
+                                <div class="p-5">
+                                    <div class="mb-4 rounded-xl border border-red-100 bg-red-50 p-3 text-sm text-red-800">
+                                        Catatan ini akan tersimpan sebagai alasan penolakan dan tampil di detail permohonan.
+                                    </div>
+                                    <label class="block text-sm font-bold text-on-surface-variant mb-2" for="catatan-admin-{{ $item->id }}">
+                                        Catatan Admin
+                                    </label>
+                                    <textarea id="catatan-admin-{{ $item->id }}"
+                                        name="catatan_admin"
+                                        required
+                                        rows="5"
+                                        class="w-full rounded-xl border border-outline-variant bg-white p-4 text-base text-on-surface focus:border-red-400 focus:ring-2 focus:ring-red-100 outline-none"
+                                        placeholder="Contoh: Dokumen KTP tidak jelas, mohon unggah ulang berkas yang lebih terbaca.">{{ old('catatan_admin') }}</textarea>
+                                </div>
+
+                                <div class="flex flex-col-reverse gap-3 border-t border-outline-variant bg-slate-50 px-5 py-4 sm:flex-row sm:justify-end">
+                                    <button type="button"
+                                        class="h-11 px-5 rounded-xl border border-outline-variant bg-white text-slate-700 font-semibold hover:bg-slate-100"
+                                        data-close-modal="tolak-pengajuan-{{ $item->id }}">
+                                        Batal
+                                    </button>
+                                    <button type="submit"
+                                        class="h-11 px-5 rounded-xl bg-error text-white font-bold hover:bg-red-700">
+                                        Tolak Permohonan
+                                    </button>
+                                </div>
+                            </form>
+                        </dialog>
+                    @endif
                 @endforeach
 
                 <div class="mt-6 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -450,6 +499,11 @@
             <span class="material-symbols-outlined">description</span>
             <span class="text-[11px] font-semibold">Permohonan</span>
         </a>
+        <a class="flex flex-col items-center justify-center text-slate-500 px-4 py-1.5 hover:bg-slate-50 transition-transform active:scale-90"
+            href="{{ route('admin.laporan.index') }}">
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="text-[11px] font-semibold">Laporan</span>
+        </a>
     </nav>
 
     <script>
@@ -468,7 +522,7 @@
             });
         });
 
-        document.querySelectorAll('dialog[id^="detail-pengajuan-"]').forEach((modal) => {
+        document.querySelectorAll('dialog').forEach((modal) => {
             modal.addEventListener('click', (event) => {
                 if (event.target === modal) {
                     modal.close();

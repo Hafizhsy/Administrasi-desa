@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\PengajuanSuratController;
@@ -35,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
             ->name('admin.dashboard');
         Route::get('/admin/activity-logs', [ActivityLogController::class, 'index'])
             ->name('admin.activity-logs.index');
+        Route::get('/admin/laporan', [LaporanController::class, 'index'])
+            ->name('admin.laporan.index');
         Route::get('/admin/pengajuan', [PengajuanSuratController::class, 'adminIndex'])->name('admin.pengajuan.index');
         Route::patch('/admin/pengajuan/{pengajuanSurat}/status', [PengajuanSuratController::class, 'updateStatus'])->name('admin.pengajuan.status');
     });
@@ -45,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user/pengajuan', [PengajuanSuratController::class, 'index'])->name('user.pengajuan.index');
         Route::get('/user/pengajuan/create', [PengajuanSuratController::class, 'create'])->name('user.pengajuan.create');
         Route::post('/user/pengajuan', [PengajuanSuratController::class, 'store'])->name('user.pengajuan.store');
+        Route::get('/user/pengajuan/{pengajuanSurat}/cetak', [PengajuanSuratController::class, 'cetak'])->name('user.pengajuan.cetak');
     });
 });
 
