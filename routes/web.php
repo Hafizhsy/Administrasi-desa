@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
             ->name('admin.activity-logs.index');
         Route::get('/admin/laporan', [LaporanController::class, 'index'])
             ->name('admin.laporan.index');
+        Route::get('/admin/laporan/rekap', [LaporanController::class, 'rekap'])
+            ->name('admin.laporan.rekap');
         Route::get('/admin/pengajuan', [PengajuanSuratController::class, 'adminIndex'])->name('admin.pengajuan.index');
         Route::patch('/admin/pengajuan/{pengajuanSurat}/status', [PengajuanSuratController::class, 'updateStatus'])->name('admin.pengajuan.status');
     });

@@ -5,10 +5,9 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Civic Horizon - Detail Layanan</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;family=Work+Sans:wght@400;500;600&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;family=Work+Sans:wght@500;600&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -22,53 +21,53 @@
             theme: {
                 extend: {
                     "colors": {
-                        "primary-container": "#0d3b2e",
-                        "secondary-container": "#e0e3e5",
-                        "tertiary": "#735c00",
-                        "tertiary-fixed-dim": "#e9c349",
-                        "tertiary-fixed": "#ffe088",
-                        "secondary-fixed": "#e0e3e5",
-                        "surface-dim": "#cbdbf5",
-                        "primary": "#00241a",
-                        "inverse-on-surface": "#eaf1ff",
-                        "tertiary-container": "#cba72f",
-                        "on-tertiary-fixed": "#241a00",
-                        "on-surface-variant": "#414845",
-                        "on-error-container": "#93000a",
-                        "on-background": "#0b1c30",
-                        "surface-container": "#e5eeff",
-                        "secondary-fixed-dim": "#c4c7c9",
-                        "on-primary-fixed-variant": "#234e40",
-                        "on-error": "#ffffff",
-                        "surface-container-low": "#eff4ff",
-                        "inverse-surface": "#213145",
-                        "primary-fixed": "#beedd9",
-                        "error-container": "#ffdad6",
-                        "on-secondary-fixed": "#191c1e",
+                        "surface-container-highest": "#d3e4fe",
+                        "outline": "#717974",
                         "on-secondary": "#ffffff",
-                        "on-primary": "#ffffff",
-                        "inverse-primary": "#a3d0be",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "secondary": "#5c5f61",
+                        "tertiary-container": "#cba72f",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#444749",
+                        "secondary-fixed": "#e0e3e5",
+                        "tertiary-fixed": "#ffe088",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed": "#191c1e",
+                        "surface-bright": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-fixed-dim": "#c4c7c9",
+                        "inverse-surface": "#213145",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#4e3d00",
+                        "on-secondary-container": "#626567",
+                        "on-primary-container": "#79a694",
+                        "primary-container": "#0d3b2e",
                         "outline-variant": "#c0c8c3",
                         "on-primary-fixed": "#002117",
-                        "on-primary-container": "#79a694",
-                        "outline": "#717974",
+                        "secondary-container": "#e0e3e5",
+                        "error": "#ba1a1a",
+                        "tertiary": "#735c00",
+                        "error-container": "#ffdad6",
                         "primary-fixed-dim": "#a3d0be",
-                        "surface-container-highest": "#d3e4fe",
-                        "surface-container-high": "#dce9ff",
-                        "surface-bright": "#f8f9ff",
-                        "secondary": "#5c5f61",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-tint": "#3c6658",
-                        "on-tertiary-fixed-variant": "#574500",
-                        "on-secondary-fixed-variant": "#444749",
-                        "surface-variant": "#d3e4fe",
-                        "background": "#f8f9ff",
                         "on-surface": "#0b1c30",
-                        "surface": "#f8f9ff",
-                        "on-tertiary-container": "#4e3d00",
-                        "on-tertiary": "#ffffff",
-                        "on-secondary-container": "#626567",
-                        "error": "#ba1a1a"
+                        "primary": "#00241a",
+                        "on-surface-variant": "#414845",
+                        "on-primary-fixed-variant": "#234e40",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-primary": "#a3d0be",
+                        "background": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#beedd9",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container": "#e5eeff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-tint": "#3c6658"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.125rem",
@@ -77,32 +76,32 @@
                         "full": "0.75rem"
                     },
                     "spacing": {
-                        "stack-lg": "48px",
-                        "stack-md": "24px",
-                        "gutter": "24px",
+                        "stack-sm": "12px",
                         "margin-mobile": "16px",
-                        "margin-desktop": "48px",
+                        "gutter": "24px",
                         "container-max": "1280px",
                         "base": "8px",
-                        "stack-sm": "12px"
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "margin-desktop": "48px"
                     },
                     "fontFamily": {
-                        "h2": ["Public Sans"],
+                        "button": ["Work Sans"],
+                        "body-lg": ["Public Sans"],
                         "h1": ["Public Sans"],
                         "body-md": ["Public Sans"],
-                        "body-lg": ["Public Sans"],
                         "label-sm": ["Work Sans"],
-                        "button": ["Work Sans"],
-                        "h3": ["Public Sans"]
+                        "h3": ["Public Sans"],
+                        "h2": ["Public Sans"]
                     },
                     "fontSize": {
-                        "h2": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "button": ["16px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
                         "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
                         "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
                         "label-sm": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
-                        "button": ["16px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600" }],
-                        "h3": ["24px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600" }]
+                        "h3": ["24px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600" }],
+                        "h2": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }]
                     }
                 },
             },
@@ -113,24 +112,16 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             display: inline-block;
             line-height: 1;
-        }
-
-        .step-line::after {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 40px;
-            bottom: -20px;
-            width: 2px;
-            background-color: #e0e3e5;
-        }
-
-        .step-line:last-child::after {
-            display: none;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
         }
 
         body {
             background-color: #f8f9ff;
+            color: #0b1c30;
         }
     </style>
     <style>
@@ -140,136 +131,147 @@
     </style>
 </head>
 
-<body class="font-body-md text-on-surface">
+<body class="font-body-md text-body-md antialiased">
     <!-- TopAppBar -->
-    <header class="fixed top-0 left-0 w-full z-50 flex items-center px-4 h-16 bg-white border-b border-slate-200">
-        <button class="mr-4 p-2 hover:bg-slate-50 transition-colors duration-200 rounded-full" onclick="history.back()">
-            <span class="material-symbols-outlined text-[#0D3B2E]">arrow_back</span>
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex items-center px-4 h-16 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+        <button class="mr-4 p-2 transition-colors duration-200 hover:bg-slate-50 dark:hover:bg-slate-900 rounded-full">
+            <span class="material-symbols-outlined text-[#0D3B2E] dark:text-emerald-400"
+                onclick="window.history.back()">arrow_back</span>
         </button>
-        <h1 class="font-['Public_Sans'] font-semibold tracking-tight text-[#0D3B2E] text-lg">Surat Keterangan Lunas PBB
-        </h1>
+        <h1 class="font-['Public_Sans'] font-semibold tracking-tight text-lg text-[#0D3B2E] dark:text-emerald-50">Detail
+            Layanan</h1>
     </header>
-    <main class="pt-16 pb-32">
-        <!-- Hero Section -->
-        <section class="relative w-full h-[300px] overflow-hidden">
-            <img class="w-full h-full object-cover"
-                data-alt="A professional architectural photograph of a modern government administrative building exterior under bright morning sunlight. The scene features clean lines, large glass windows reflecting a clear blue sky, and a sense of institutional stability. The color palette is dominated by soft whites and professional teals, creating a trustworthy and accessible atmosphere for public service."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2NG3qkX2AuTLlCXAGr9Sn1R__j80y3nj0cAvF7TkJowlMSywBukv3e2KE7oKD8Hbh1alkLynyQqxR32F0azXvgDWXpbVPhAzevOFMV0VrVht952ExjnBm2x9YIGqKPa5S5pGLA6V6musuITiKm0jt39IzKFG5ZV2FTlVD7Q2_34j9rWZCyoKhjD2g-ApLPNK04I7Xs46yQ3V9EGxRwJ4A6KB_VYKFeZ3pT_lH8F5AMKNXLlWx_kSDNCF0QbwjX7Xwqq243KXmgO8" />
-            <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-margin-mobile md:p-margin-desktop">
-                <div class="max-w-container-max mx-auto w-full">
-                    <span
-                        class="bg-tertiary text-white text-label-sm font-label-sm px-3 py-1 rounded-full mb-2 inline-block">Layanan
-                        Pertanahan</span>
-                    <h2 class="font-h1 text-h1 text-white mb-2 text-shadow-sm">Detail Layanan Pajak</h2>
+    <main class="mt-16 mb-32 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+            <!-- Hero Card Section -->
+            <div class="lg:col-span-8">
+                <div
+                    class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-none mb-stack-md">
+                    <div class="h-48 w-full bg-primary-container relative">
+                        <img alt="Government administrative building" class="w-full h-full object-cover opacity-60"
+                            data-alt="Bangunan administrasi pemerintahan yang modern dan terang untuk layanan publik"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2NG3qkX2AuTLlCXAGr9Sn1R__j80y3nj0cAvF7TkJowlMSywBukv3e2KE7oKD8Hbh1alkLynyQqxR32F0azXvgDWXpbVPhAzevOFMV0VrVht952ExjnBm2x9YIGqKPa5S5pGLA6V6musuITiKm0jt39IzKFG5ZV2FTlVD7Q2_34j9rWZCyoKhjD2g-ApLPNK04I7Xs46yQ3V9EGxRwJ4A6KB_VYKFeZ3pT_lH8F5AMKNXLlWx_kSDNCF0QbwjX7Xwqq243KXmgO8" />
+                        <div
+                            class="absolute bottom-0 left-0 p-stack-md w-full bg-gradient-to-t from-primary-container to-transparent">
+                            <span
+                                class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm rounded-full mb-2">Layanan Pertanahan</span>
+                            <h2 class="font-h2 text-h2 text-white leading-tight">Surat Keterangan Lunas PBB</h2>
+                        </div>
+                    </div>
+                    <div class="p-stack-md">
+                        <h3 class="font-h3 text-h3 mb-stack-sm text-primary-container">Deskripsi Layanan</h3>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant">
+                            Layanan ini membantu warga memperoleh surat keterangan bukti pelunasan Pajak Bumi dan Bangunan (PBB) untuk keperluan administrasi pertanahan atau transaksi properti.
+                        </p>
+                    </div>
+                </div>
+                <!-- Persyaratan Section -->
+                <div
+                    class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-md shadow-none mb-stack-md">
+                    <div class="flex items-center gap-2 mb-stack-md">
+                        <span class="material-symbols-outlined text-primary-container">description</span>
+                        <h3 class="font-h3 text-h3">Persyaratan Dokumen</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li
+                            class="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-outline-variant transition-colors">
+                            <div class="mt-1">
+                                <span class="material-symbols-outlined text-primary-container"
+                                    style="font-variation-settings: 'FILL' 1;">check_box</span>
+                            </div>
+                            <div>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi KTP Pemohon</p>
+                                <p class="text-label-sm font-label-sm text-outline">Pastikan KTP masih berlaku dan terbaca dengan jelas.</p>
+                            </div>
+                        </li>
+                        <li
+                            class="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-outline-variant transition-colors">
+                            <div class="mt-1">
+                                <span class="material-symbols-outlined text-primary-container"
+                                    style="font-variation-settings: 'FILL' 1;">check_box</span>
+                            </div>
+                            <div>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi Kartu Keluarga (KK)</p>
+                                <p class="text-label-sm font-label-sm text-outline">Sertakan KK terbaru yang sudah terdata di sistem kependudukan.</p>
+                            </div>
+                        </li>
+                        <li
+                            class="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-outline-variant transition-colors">
+                            <div class="mt-1">
+                                <span class="material-symbols-outlined text-primary-container"
+                                    style="font-variation-settings: 'FILL' 1;">check_box</span>
+                            </div>
+                            <div>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Surat Pengantar RT/RW
+                                </p>
+                                <p class="text-label-sm font-label-sm text-outline">Surat pengantar membantu pencocokan data wilayah objek pajak.</p>
+                            </div>
+                        </li>
+                        <li
+                            class="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-outline-variant transition-colors">
+                            <div class="mt-1">
+                                <span class="material-symbols-outlined text-primary-container"
+                                    style="font-variation-settings: 'FILL' 1;">check_box</span>
+                            </div>
+                            <div>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Bukti Bayar PBB Tahun Berjalan</p>
+                                <p class="text-label-sm font-label-sm text-outline">Lampirkan bukti pembayaran yang jelas dan sesuai tahun berjalan.</p>
+                            </div>
+                        </li>
+                        <li
+                            class="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-outline-variant transition-colors">
+                            <div class="mt-1">
+                                <span class="material-symbols-outlined text-primary-container"
+                                    style="font-variation-settings: 'FILL' 1;">check_box</span>
+                            </div>
+                            <div>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi SPPT PBB Terakhir</p>
+                                <p class="text-label-sm font-label-sm text-outline">SPPT digunakan untuk verifikasi nomor objek pajak.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </section>
-        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-stack-md">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
-                <!-- Main Content Column -->
-                <div class="lg:col-span-2 space-y-stack-md">
-                    <!-- Description -->
-                    <div class="bg-surface-container-lowest p-stack-md border border-outline-variant rounded-xl">
-                        <h3 class="font-h3 text-h3 text-primary-container mb-stack-sm">Deskripsi Layanan</h3>
-                        <p class="font-body-lg text-body-lg text-on-surface-variant">
-                            Layanan ini membantu warga dalam memperoleh surat keterangan bukti pelunasan Pajak Bumi dan
-                            Bangunan (PBB) untuk keperluan administrasi pertanahan atau transaksi properti.
-                        </p>
-                    </div>
-                    <!-- Requirements Checklist -->
-                    <div class="bg-surface-container-lowest p-stack-md border border-outline-variant rounded-xl">
-                        <h3 class="font-h3 text-h3 text-primary-container mb-stack-sm">Persyaratan Berkas</h3>
-                        <div class="space-y-4">
-                            <div
-                                class="flex items-start gap-3 p-3 bg-surface-bright border border-outline-variant rounded-lg">
-                                <span class="material-symbols-outlined text-primary-container"
-                                    style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                                <p class="font-body-md text-body-md">Fotokopi KTP Pemohon</p>
+            <!-- Sidebar / Alur Proses -->
+            <div class="lg:col-span-4">
+                <div class="sticky top-24 space-y-stack-md">
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-md shadow-none">
+                        <div class="flex items-center gap-2 mb-stack-md">
+                            <span class="material-symbols-outlined text-primary-container">account_tree</span>
+                            <h3 class="font-h3 text-h3">Alur Proses</h3>
+                        </div>
+                        <div
+                            class="relative space-y-6 before:content-[''] before:absolute before:left-4 before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant">
+                            <div class="relative pl-10">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold z-10">
+                                    1</div>
+                                <p class="font-body-md text-body-md text-on-surface">Lengkapi berkas persyaratan.</p>
                             </div>
-                            <div
-                                class="flex items-start gap-3 p-3 bg-surface-bright border border-outline-variant rounded-lg">
-                                <span class="material-symbols-outlined text-primary-container"
-                                    style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                                <p class="font-body-md text-body-md">Fotokopi Kartu Keluarga</p>
+                            <div class="relative pl-10">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold z-10">
+                                    2</div>
+                                <p class="font-body-md text-body-md text-on-surface">Ajukan permohonan melalui sistem
+                                    ini.</p>
                             </div>
-                            <div
-                                class="flex items-start gap-3 p-3 bg-surface-bright border border-outline-variant rounded-lg">
-                                <span class="material-symbols-outlined text-primary-container"
-                                    style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                                <p class="font-body-md text-body-md">Bukti Bayar PBB Tahun Berjalan</p>
+                            <div class="relative pl-10">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold z-10">
+                                    3</div>
+                                <p class="font-body-md text-body-md text-on-surface">Verifikasi data oleh admin desa
+                                    (1-2 hari kerja).</p>
                             </div>
-                            <div
-                                class="flex items-start gap-3 p-3 bg-surface-bright border border-outline-variant rounded-lg">
-                                <span class="material-symbols-outlined text-primary-container"
-                                    style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                                <p class="font-body-md text-body-md">Fotokopi SPPT PBB Terakhir</p>
+                            <div class="relative pl-10">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold z-10">
+                                    4</div>
+                                <p class="font-body-md text-body-md text-on-surface">Unduh atau ambil surat di balai
+                                    desa.</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- Sidebar Content Column -->
-                <div class="space-y-stack-md">
-                    <!-- Process Flow Card -->
-                    <div class="bg-surface-container-low p-stack-md border border-outline-variant rounded-xl">
-                        <h3 class="font-h3 text-h3 text-primary-container mb-stack-sm">Alur Pengajuan</h3>
-                        <div class="relative space-y-8">
-                            <div class="flex gap-4 items-start relative step-line">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white z-10 shrink-0">
-                                    <span class="font-bold">1</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-h3 text-body-lg font-bold">Lengkapi berkas</h4>
-                                    <p class="text-on-surface-variant text-label-sm">Pastikan semua dokumen dalam format
-                                        PDF atau JPG yang jelas.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4 items-start relative step-line">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white z-10 shrink-0">
-                                    <span class="font-bold">2</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-h3 text-body-lg font-bold">Ajukan permohonan</h4>
-                                    <p class="text-on-surface-variant text-label-sm">Unggah berkas melalui portal Civic
-                                        Horizon atau tombol di bawah.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4 items-start relative step-line">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container z-10 shrink-0">
-                                    <span class="material-symbols-outlined text-sm">schedule</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-h3 text-body-lg font-bold">Verifikasi data pajak</h4>
-                                    <p class="text-on-surface-variant text-label-sm">Estimasi penyelesaian 1-2 hari
-                                        kerja oleh petugas administrasi.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4 items-start">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary z-10 shrink-0">
-                                    <span class="material-symbols-outlined">flag</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-h3 text-body-lg font-bold">Ambil surat</h4>
-                                    <p class="text-on-surface-variant text-label-sm">Ambil fisik surat di balai desa
-                                        setelah mendapat notifikasi selesai.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Information Card -->
-                    <div class="bg-primary-fixed p-stack-md rounded-xl border border-primary-fixed-dim">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="material-symbols-outlined text-on-primary-fixed">info</span>
-                            <span class="font-button text-on-primary-fixed">Informasi Penting</span>
-                        </div>
-                        <p class="text-on-primary-fixed-variant text-label-sm">
-                            Layanan ini bebas biaya (Gratis). Pastikan Anda tidak memiliki tunggakan PBB tahun-tahun
-                            sebelumnya untuk mempercepat proses verifikasi.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -295,6 +297,8 @@
             </a>
         </div>
     </div>
+    <!-- BottomNavBar (Only for top-level destinations, but included as per requirements structure, we hide it here as this is a sub-page/detail-page based on "The Destination Rule") -->
+    <!-- Suppression logic applied for detail page focus -->
 </body>
 
 </html>

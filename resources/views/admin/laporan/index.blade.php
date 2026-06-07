@@ -169,10 +169,10 @@
                     <h1 class="text-[40px] leading-tight font-bold tracking-normal text-primary mb-2">Laporan Administrasi</h1>
                     <p class="text-base text-secondary">Rekap permohonan surat periode {{ $monthNames[$bulan] }} {{ $tahun }}.</p>
                 </div>
-                <a href="{{ route('admin.pengajuan.index') }}"
+                <a href="{{ route('admin.laporan.rekap', ['tahun' => $tahun]) }}" target="_blank"
                     class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 text-base font-bold text-on-primary hover:bg-emerald-900">
-                    <span class="material-symbols-outlined">folder_shared</span>
-                    Kelola Permohonan
+                    <span class="material-symbols-outlined">download</span>
+                    Download Rekap
                 </a>
             </div>
 

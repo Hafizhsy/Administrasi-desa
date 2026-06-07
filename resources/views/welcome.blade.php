@@ -303,10 +303,10 @@
       <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <div class="flex flex-col lg:flex-row items-center gap-24">
           <div class="lg:w-1/2 relative">
-            <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl rotate-2">
-              <img alt="Village Meeting" class="w-full h-[500px] object-cover"
+            <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+              <img alt="Tugu Kopandakan" class="w-full h-[500px] object-cover"
                 data-alt="Traditional Indonesian village elders and youth having a community meeting in a clean, open-air wooden gazebo during a bright afternoon."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQW4PAu6LqgMLNX2XMkrJRUcqPgQNKkqGufTSwkvcaGNDsDJ2RmnWYbkZSpjCL87tT3t6DYHyRQfWcuB51wTX9JkBbLlQy5YR5Jwfx69zFnUiACJaPZgMWwCAyR_m71oM-8j05AQyMmjhrAyr6rRN5h68-KBkuG9TfZAbdqOAsEC8pMzmOsxHcgTnDyu6NHoJqem1rQfehUOtdRd4PToWbM2-rUQYLi1BVS2fXj52iinoOJJDyhnzP1Pz9yLDXJrMRzmc4MWxDE1A" />
+                src="{{ asset('images/tugu-kope.jpg') }}" />
             </div>
             <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-tertiary-container/30 rounded-full blur-3xl z-0"></div>
             <div class="absolute -top-8 -right-8 w-64 h-64 bg-primary-fixed/20 rounded-full blur-3xl z-0"></div>
