@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PengajuanSurat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\PengajuanDokumen;
 use App\Models\ActivityLog;
 use Illuminate\Validation\ValidationException;
@@ -70,16 +71,14 @@ class PengajuanSuratController extends Controller
 
     public function create()
     {
-        return view('user.pengajuan.create');
+        $profile = Auth::User()->select('name', 'nik', 'alamat')->find(Auth::id());
+        return view('user.pengajuan.create', compact('profile'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'jenis_surat' => 'required|in:' . implode(',', array_keys(self::JENIS_SURAT)),
-            'nama_pemohon' => 'required|string|max:255',
-            'nik' => 'required|string|max:20',
-            'alamat' => 'required|string',
             'keperluan' => 'nullable|string',
             'dokumen' => 'required|array',
             'dokumen.*' => 'file|mimes:pdf,jpg,jpeg,png|max:2048',
@@ -88,7 +87,7 @@ class PengajuanSuratController extends Controller
         $requiredDokumen = self::DOKUMEN_PERSYARATAN[$request->jenis_surat];
         $uploadedDokumen = $request->file('dokumen', []);
         $missingDokumen = collect($requiredDokumen)
-            ->reject(fn ($namaDokumen) => isset($uploadedDokumen[$namaDokumen]) && $uploadedDokumen[$namaDokumen]->isValid())
+            ->reject(fn($namaDokumen) => isset($uploadedDokumen[$namaDokumen]) && $uploadedDokumen[$namaDokumen]->isValid())
             ->values();
 
         if ($missingDokumen->isNotEmpty()) {
@@ -100,9 +99,9 @@ class PengajuanSuratController extends Controller
         $pengajuan = PengajuanSurat::create([
             'user_id' => Auth::id(),
             'jenis_surat' => self::JENIS_SURAT[$request->jenis_surat],
-            'nama_pemohon' => $request->nama_pemohon,
-            'nik' => $request->nik,
-            'alamat' => $request->alamat,
+            'nama_pemohon' => Auth::user()->name,
+            'nik' => Auth::user()->nik,
+            'alamat' => Auth::user()->alamat,
             'keperluan' => $request->keperluan,
             'status' => 'menunggu',
         ]);

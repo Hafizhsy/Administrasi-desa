@@ -183,7 +183,7 @@
                                     style="font-variation-settings: 'FILL' 1;">check_box</span>
                             </div>
                             <div>
-                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi KTP Pemohon
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Scan KTP Pemohon
                                     (Suami &amp; Istri)</p>
                                 <p class="text-label-sm font-label-sm text-outline">Pastikan KTP masih berlaku dan
                                     terbaca dengan jelas.</p>
@@ -196,7 +196,7 @@
                                     style="font-variation-settings: 'FILL' 1;">check_box</span>
                             </div>
                             <div>
-                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi Kartu
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Scan Kartu
                                     Keluarga (KK)</p>
                                 <p class="text-label-sm font-label-sm text-outline">Sertakan KK terbaru yang sudah
                                     terdata di sistem kependudukan.</p>
@@ -222,7 +222,7 @@
                                     style="font-variation-settings: 'FILL' 1;">check_box</span>
                             </div>
                             <div>
-                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi Akta Nikah /
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Scan Akta Nikah /
                                     Buku Nikah</p>
                                 <p class="text-label-sm font-label-sm text-outline">Halaman identitas dan halaman
                                     pengesahan.</p>
@@ -279,8 +279,7 @@
                                 <div
                                     class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold z-10">
                                     4</div>
-                                <p class="font-body-md text-body-md text-on-surface">Unduh atau ambil surat di balai
-                                    desa.</p>
+                                <p class="font-body-md text-body-md text-on-surface">Cetak atau Unduh Surat</p>
                             </div>
                         </div>
                     </div>

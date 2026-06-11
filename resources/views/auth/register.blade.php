@@ -200,6 +200,33 @@
                         </div>
 
                         <div class="space-y-2">
+                            <label class="font-label-sm text-label-sm text-on-surface-variant block ml-1" for="nik">
+                                NIK
+                            </label>
+                            <input id="nik" name="nik" type="text" value="{{ old('nik') }}" required minlength="16"
+                                maxlength="16" inputmode="numeric" pattern="[0-9]*"
+                                oninvalid="this.setCustomValidity(this.validity.valueMissing ? 'NIK wajib diisi.' : this.validity.tooShort ? 'NIK min 16 karakter.' : 'NIK hanya boleh berisi angka.')"
+                                oninput="this.setCustomValidity('')"
+                                placeholder="Masukkan NIK"
+                                class="w-full h-[56px] px-4 bg-surface-bright border border-outline-variant rounded-xl focus:ring-2 focus:ring-surface-tint focus:border-transparent transition-all outline-none font-body-md">
+                            @error('nik')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="font-label-sm text-label-sm text-on-surface-variant block ml-1" for="alamat">
+                                Alamat
+                            </label>
+                            <input id="alamat" name="alamat" type="text" value="{{ old('alamat') }}" required
+                                placeholder="Masukkan alamat"
+                                class="w-full h-[56px] px-4 bg-surface-bright border border-outline-variant rounded-xl focus:ring-2 focus:ring-surface-tint focus:border-transparent transition-all outline-none font-body-md">
+                            @error('alamat')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="space-y-2">
                             <label class="font-label-sm text-label-sm text-on-surface-variant block ml-1"
                                 for="password">
                                 Kata Sandi

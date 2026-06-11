@@ -359,30 +359,6 @@
                         </select>
                     </div> -->
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="font-label-sm text-on-surface-variant block">Nama Lengkap Sesuai
-                                    KTP</label>
-                                <input name="nama_pemohon" value="{{ old('nama_pemohon') }}" required
-                                    class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
-                                    placeholder="Masukkan nama lengkap" type="text" />
-                            </div>
-
-                            <div class="space-y-2">
-                                <label class="font-label-sm text-on-surface-variant block">NIK</label>
-                                <input name="nik" value="{{ old('nik') }}" required
-                                    class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
-                                    placeholder="16 digit nomor NIK" type="text" />
-                            </div>
-                        </div>
-
-                        <div class="space-y-2 mt-6">
-                            <label class="font-label-sm text-on-surface-variant block">Alamat Lengkap</label>
-                            <textarea name="alamat" required
-                                class="w-full p-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all resize-none"
-                                placeholder="Jl. Raya Kopandakan I, No..." rows="3">{{ old('alamat') }}</textarea>
-                        </div>
-
                         <div class="border-t border-slate-100 pt-6 mt-6">
                             <h3 class="font-bold text-on-surface mb-4">Informasi Khusus Surat</h3>
                             <div class="space-y-2">
