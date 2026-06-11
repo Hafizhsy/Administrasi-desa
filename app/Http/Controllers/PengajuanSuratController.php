@@ -21,31 +21,31 @@ class PengajuanSuratController extends Controller
 
     private const DOKUMEN_PERSYARATAN = [
         'nikah' => [
-            'Fotokopi KTP Pemohon Suami dan Istri',
-            'Fotokopi Kartu Keluarga',
+            'Scan KTP Pemohon Suami dan Istri',
+            'Scan Kartu Keluarga',
             'Surat Pengantar RT RW',
-            'Fotokopi Akta Nikah atau Buku Nikah',
+            'Scan Akta Nikah atau Buku Nikah',
             'Pas Foto 3x4 Background Biru',
         ],
         'usaha' => [
-            'Fotokopi KTP Pemohon',
-            'Fotokopi Kartu Keluarga',
+            'Scan KTP Pemohon',
+            'Scan Kartu Keluarga',
             'Surat Pengantar RT RW',
             'Foto Tempat Usaha',
             'Surat Pernyataan Kepemilikan Usaha',
         ],
         'sktm' => [
-            'Fotokopi KTP Pemohon',
-            'Fotokopi Kartu Keluarga',
+            'Scan KTP Pemohon',
+            'Scan Kartu Keluarga',
             'Surat Pengantar RT RW',
             'Foto Rumah Tampak Depan',
             'Slip Gaji atau Surat Pernyataan Penghasilan',
         ],
         'pbb' => [
-            'Fotokopi KTP Pemohon',
-            'Fotokopi Kartu Keluarga',
+            'Scan KTP Pemohon',
+            'Scan Kartu Keluarga',
             'Bukti Bayar PBB Tahun Berjalan',
-            'Fotokopi SPPT PBB Terakhir',
+            'Scan SPPT PBB Terakhir',
         ],
     ];
 
@@ -156,7 +156,7 @@ class PengajuanSuratController extends Controller
             ->when($request->filled('status'), function ($query) use ($request) {
                 $query->where('status', $request->status);
             })
-            ->latest()
+            ->oldest()
             ->paginate(10)
             ->withQueryString();
 
@@ -166,7 +166,7 @@ class PengajuanSuratController extends Controller
     public function updateStatus(Request $request, PengajuanSurat $pengajuanSurat)
     {
         $request->validate([
-            'status' => 'required|in:menunggu,diproses,disetujui,ditolak',
+            'status' => 'required|in:menunggu,disetujui,ditolak',
             'catatan_admin' => 'required_if:status,ditolak|nullable|string',
         ], [
             'catatan_admin.required_if' => 'Catatan admin wajib diisi jika permohonan ditolak.',

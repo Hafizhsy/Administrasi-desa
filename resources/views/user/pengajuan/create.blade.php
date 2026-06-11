@@ -377,14 +377,14 @@
                                 <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Nikah</h3>
 
                                 <div>
-                                    <label class="block font-semibold mb-2">Fotokopi KTP Pemohon Suami dan Istri</label>
-                                    <input type="file" name="dokumen[Fotokopi KTP Pemohon Suami dan Istri]"
+                                    <label class="block font-semibold mb-2">Scan KTP Pemohon Suami dan Istri</label>
+                                    <input type="file" name="dokumen[Scan KTP Pemohon Suami dan Istri]"
                                         class="w-full border rounded-lg p-3">
                                 </div>
 
                                 <div>
-                                    <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
-                                    <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                    <label class="block font-semibold mb-2">Scan Kartu Keluarga</label>
+                                    <input type="file" name="dokumen[Scan Kartu Keluarga]"
                                         class="w-full border rounded-lg p-3">
                                 </div>
 
@@ -395,8 +395,8 @@
                                 </div>
 
                                 <div>
-                                    <label class="block font-semibold mb-2">Fotokopi Akta Nikah / Buku Nikah</label>
-                                    <input type="file" name="dokumen[Fotokopi Akta Nikah atau Buku Nikah]"
+                                    <label class="block font-semibold mb-2">Scan Akta Nikah / Buku Nikah</label>
+                                    <input type="file" name="dokumen[Scan Akta Nikah atau Buku Nikah]"
                                         class="w-full border rounded-lg p-3">
                                 </div>
 
@@ -412,14 +412,14 @@
                                 </h3>
 
                                 <div>
-                                    <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
-                                    <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
+                                    <label class="block font-semibold mb-2">Scan KTP Pemohon</label>
+                                    <input type="file" name="dokumen[Scan KTP Pemohon]"
                                         class="w-full border rounded-lg p-3">
                                 </div>
 
                                 <div>
-                                    <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
-                                    <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                    <label class="block font-semibold mb-2">Scan Kartu Keluarga</label>
+                                    <input type="file" name="dokumen[Scan Kartu Keluarga]"
                                         class="w-full border rounded-lg p-3">
                                 </div>
 
@@ -446,14 +446,14 @@
                                 <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan SKTM</h3>
 
                                 <div>
-                                    <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
-                                    <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
+                                    <label class="block font-semibold mb-2">Scan KTP Pemohon</label>
+                                    <input type="file" name="dokumen[Scan KTP Pemohon]"
                                         class="w-full border rounded-lg p-3">
                                 </div>
 
                                 <div>
-                                    <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
-                                    <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                    <label class="block font-semibold mb-2">Scan Kartu Keluarga</label>
+                                    <input type="file" name="dokumen[Scan Kartu Keluarga]"
                                         class="w-full border rounded-lg p-3">
                                 </div>
 
@@ -482,14 +482,14 @@
                                     PBB</h3>
 
                                 <div>
-                                    <label class="block font-semibold mb-2">Fotokopi KTP Pemohon</label>
-                                    <input type="file" name="dokumen[Fotokopi KTP Pemohon]"
+                                    <label class="block font-semibold mb-2">Scan KTP Pemohon</label>
+                                    <input type="file" name="dokumen[Scan KTP Pemohon]"
                                         class="w-full border rounded-lg p-3">
                                 </div>
 
                                 <div>
-                                    <label class="block font-semibold mb-2">Fotokopi Kartu Keluarga</label>
-                                    <input type="file" name="dokumen[Fotokopi Kartu Keluarga]"
+                                    <label class="block font-semibold mb-2">Scan Kartu Keluarga</label>
+                                    <input type="file" name="dokumen[Scan Kartu Keluarga]"
                                         class="w-full border rounded-lg p-3">
                                 </div>
 
@@ -500,8 +500,8 @@
                                 </div>
 
                                 <div>
-                                    <label class="block font-semibold mb-2">Fotokopi SPPT PBB Terakhir</label>
-                                    <input type="file" name="dokumen[Fotokopi SPPT PBB Terakhir]"
+                                    <label class="block font-semibold mb-2">Scan SPPT PBB Terakhir</label>
+                                    <input type="file" name="dokumen[Scan SPPT PBB Terakhir]"
                                         class="w-full border rounded-lg p-3">
                                 </div>
                             </div>

@@ -94,14 +94,12 @@
         $statusCards = [
             ['label' => 'Total Permohonan', 'value' => $summary['total'], 'icon' => 'description', 'class' => 'bg-tertiary-fixed text-on-tertiary-fixed'],
             ['label' => 'Menunggu', 'value' => $summary['menunggu'], 'icon' => 'pending_actions', 'class' => 'bg-error-container text-error'],
-            ['label' => 'Diproses', 'value' => $summary['diproses'], 'icon' => 'hourglass_top', 'class' => 'bg-surface-container-high text-blue-700'],
             ['label' => 'Disetujui', 'value' => $summary['disetujui'], 'icon' => 'task_alt', 'class' => 'bg-primary-fixed-dim text-primary'],
             ['label' => 'Ditolak', 'value' => $summary['ditolak'], 'icon' => 'cancel', 'class' => 'bg-red-100 text-red-700'],
         ];
 
         $statusOptions = [
             'menunggu' => ['label' => 'Menunggu', 'class' => 'bg-slate-100 text-slate-700 border-slate-200'],
-            'diproses' => ['label' => 'Diproses', 'class' => 'bg-blue-50 text-blue-700 border-blue-100'],
             'disetujui' => ['label' => 'Disetujui', 'class' => 'bg-emerald-100 text-emerald-800 border-emerald-100'],
             'ditolak' => ['label' => 'Ditolak', 'class' => 'bg-red-100 text-red-700 border-red-100'],
         ];

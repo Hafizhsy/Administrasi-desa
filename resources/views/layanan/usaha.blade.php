@@ -155,14 +155,16 @@
                         <div
                             class="absolute bottom-0 left-0 p-stack-md w-full bg-gradient-to-t from-primary-container to-transparent">
                             <span
-                                class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm rounded-full mb-2">Legalitas Usaha</span>
+                                class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm rounded-full mb-2">Legalitas
+                                Usaha</span>
                             <h2 class="font-h2 text-h2 text-white leading-tight">Surat Keterangan Usaha</h2>
                         </div>
                     </div>
                     <div class="p-stack-md">
                         <h3 class="font-h3 text-h3 mb-stack-sm text-primary-container">Deskripsi Layanan</h3>
                         <p class="font-body-lg text-body-lg text-on-surface-variant">
-                            Layanan ini diberikan kepada warga Desa Kopandakan I yang memiliki usaha untuk keperluan legalitas, pengajuan bantuan UMKM, atau persyaratan kredit perbankan.
+                            Layanan ini diberikan kepada warga Desa Kopandakan I yang memiliki usaha untuk keperluan
+                            legalitas, pengajuan bantuan UMKM, atau persyaratan kredit perbankan.
                         </p>
                     </div>
                 </div>
@@ -173,6 +175,8 @@
                         <span class="material-symbols-outlined text-primary-container">description</span>
                         <h3 class="font-h3 text-h3">Persyaratan Dokumen</h3>
                     </div>
+                    <p class="text-label-sm font-label-sm text-outline mb-stack-md">Format file: PDF, JPG, JPEG, atau
+                        PNG. Ukuran maksimal 2 MB per file.</p>
                     <ul class="space-y-4">
                         <li
                             class="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-outline-variant transition-colors">
@@ -181,8 +185,9 @@
                                     style="font-variation-settings: 'FILL' 1;">check_box</span>
                             </div>
                             <div>
-                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi KTP Pemohon</p>
-                                <p class="text-label-sm font-label-sm text-outline">Pastikan data KTP sesuai dengan domisili pemohon.</p>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Scan KTP Pemohon</p>
+                                <p class="text-label-sm font-label-sm text-outline">Pastikan data KTP sesuai dengan
+                                    domisili pemohon.</p>
                             </div>
                         </li>
                         <li
@@ -192,8 +197,10 @@
                                     style="font-variation-settings: 'FILL' 1;">check_box</span>
                             </div>
                             <div>
-                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi Kartu Keluarga (KK)</p>
-                                <p class="text-label-sm font-label-sm text-outline">Sertakan KK terbaru yang sudah terdata di sistem kependudukan.</p>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Scan Kartu Keluarga
+                                    (KK)</p>
+                                <p class="text-label-sm font-label-sm text-outline">Sertakan KK terbaru yang sudah
+                                    terdata di sistem kependudukan.</p>
                             </div>
                         </li>
                         <li
@@ -205,7 +212,8 @@
                             <div>
                                 <p class="font-body-md text-body-md font-semibold text-on-surface">Surat Pengantar RT/RW
                                 </p>
-                                <p class="text-label-sm font-label-sm text-outline">Surat pengantar ditandatangani dan distempel oleh RT/RW setempat.</p>
+                                <p class="text-label-sm font-label-sm text-outline">Surat pengantar ditandatangani dan
+                                    distempel oleh RT/RW setempat.</p>
                             </div>
                         </li>
                         <li
@@ -216,7 +224,8 @@
                             </div>
                             <div>
                                 <p class="font-body-md text-body-md font-semibold text-on-surface">Foto Tempat Usaha</p>
-                                <p class="text-label-sm font-label-sm text-outline">Lampirkan foto tampak depan dan aktivitas usaha.</p>
+                                <p class="text-label-sm font-label-sm text-outline">Lampirkan foto tampak depan dan
+                                    aktivitas usaha.</p>
                             </div>
                         </li>
                         <li
@@ -226,8 +235,10 @@
                                     style="font-variation-settings: 'FILL' 1;">check_box</span>
                             </div>
                             <div>
-                                <p class="font-body-md text-body-md font-semibold text-on-surface">Surat Pernyataan Kepemilikan Usaha</p>
-                                <p class="text-label-sm font-label-sm text-outline">Gunakan surat pernyataan bermaterai sesuai ketentuan.</p>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Surat Pernyataan
+                                    Kepemilikan Usaha</p>
+                                <p class="text-label-sm font-label-sm text-outline">Gunakan surat pernyataan bermaterai
+                                    sesuai ketentuan.</p>
                             </div>
                         </li>
                     </ul>
@@ -268,8 +279,7 @@
                                 <div
                                     class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold z-10">
                                     4</div>
-                                <p class="font-body-md text-body-md text-on-surface">Unduh atau ambil surat di balai
-                                    desa.</p>
+                                <p class="font-body-md text-body-md text-on-surface">Cetak atau unduh surat.</p>
                             </div>
                         </div>
                     </div>

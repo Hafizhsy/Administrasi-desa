@@ -155,14 +155,16 @@
                         <div
                             class="absolute bottom-0 left-0 p-stack-md w-full bg-gradient-to-t from-primary-container to-transparent">
                             <span
-                                class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm rounded-full mb-2">Layanan Pertanahan</span>
+                                class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm rounded-full mb-2">Layanan
+                                Pertanahan</span>
                             <h2 class="font-h2 text-h2 text-white leading-tight">Surat Keterangan Lunas PBB</h2>
                         </div>
                     </div>
                     <div class="p-stack-md">
                         <h3 class="font-h3 text-h3 mb-stack-sm text-primary-container">Deskripsi Layanan</h3>
                         <p class="font-body-lg text-body-lg text-on-surface-variant">
-                            Layanan ini membantu warga memperoleh surat keterangan bukti pelunasan Pajak Bumi dan Bangunan (PBB) untuk keperluan administrasi pertanahan atau transaksi properti.
+                            Layanan ini membantu warga memperoleh surat keterangan bukti pelunasan Pajak Bumi dan
+                            Bangunan (PBB) untuk keperluan administrasi pertanahan atau transaksi properti.
                         </p>
                     </div>
                 </div>
@@ -173,6 +175,8 @@
                         <span class="material-symbols-outlined text-primary-container">description</span>
                         <h3 class="font-h3 text-h3">Persyaratan Dokumen</h3>
                     </div>
+                    <p class="text-label-sm font-label-sm text-outline mb-stack-md">Format file: PDF, JPG, JPEG, atau
+                        PNG. Ukuran maksimal 2 MB per file.</p>
                     <ul class="space-y-4">
                         <li
                             class="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-outline-variant transition-colors">
@@ -181,8 +185,9 @@
                                     style="font-variation-settings: 'FILL' 1;">check_box</span>
                             </div>
                             <div>
-                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi KTP Pemohon</p>
-                                <p class="text-label-sm font-label-sm text-outline">Pastikan KTP masih berlaku dan terbaca dengan jelas.</p>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Scan KTP Pemohon</p>
+                                <p class="text-label-sm font-label-sm text-outline">Pastikan KTP masih berlaku dan
+                                    terbaca dengan jelas.</p>
                             </div>
                         </li>
                         <li
@@ -192,8 +197,10 @@
                                     style="font-variation-settings: 'FILL' 1;">check_box</span>
                             </div>
                             <div>
-                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi Kartu Keluarga (KK)</p>
-                                <p class="text-label-sm font-label-sm text-outline">Sertakan KK terbaru yang sudah terdata di sistem kependudukan.</p>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Scan Kartu Keluarga
+                                    (KK)</p>
+                                <p class="text-label-sm font-label-sm text-outline">Sertakan KK terbaru yang sudah
+                                    terdata di sistem kependudukan.</p>
                             </div>
                         </li>
                         <li
@@ -205,7 +212,8 @@
                             <div>
                                 <p class="font-body-md text-body-md font-semibold text-on-surface">Surat Pengantar RT/RW
                                 </p>
-                                <p class="text-label-sm font-label-sm text-outline">Surat pengantar membantu pencocokan data wilayah objek pajak.</p>
+                                <p class="text-label-sm font-label-sm text-outline">Surat pengantar membantu pencocokan
+                                    data wilayah objek pajak.</p>
                             </div>
                         </li>
                         <li
@@ -215,8 +223,10 @@
                                     style="font-variation-settings: 'FILL' 1;">check_box</span>
                             </div>
                             <div>
-                                <p class="font-body-md text-body-md font-semibold text-on-surface">Bukti Bayar PBB Tahun Berjalan</p>
-                                <p class="text-label-sm font-label-sm text-outline">Lampirkan bukti pembayaran yang jelas dan sesuai tahun berjalan.</p>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Bukti Bayar PBB Tahun
+                                    Berjalan</p>
+                                <p class="text-label-sm font-label-sm text-outline">Lampirkan bukti pembayaran yang
+                                    jelas dan sesuai tahun berjalan.</p>
                             </div>
                         </li>
                         <li
@@ -226,8 +236,10 @@
                                     style="font-variation-settings: 'FILL' 1;">check_box</span>
                             </div>
                             <div>
-                                <p class="font-body-md text-body-md font-semibold text-on-surface">Fotokopi SPPT PBB Terakhir</p>
-                                <p class="text-label-sm font-label-sm text-outline">SPPT digunakan untuk verifikasi nomor objek pajak.</p>
+                                <p class="font-body-md text-body-md font-semibold text-on-surface">Scan SPPT PBB
+                                    Terakhir</p>
+                                <p class="text-label-sm font-label-sm text-outline">SPPT digunakan untuk verifikasi
+                                    nomor objek pajak.</p>
                             </div>
                         </li>
                     </ul>
@@ -268,8 +280,7 @@
                                 <div
                                     class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold z-10">
                                     4</div>
-                                <p class="font-body-md text-body-md text-on-surface">Unduh atau ambil surat di balai
-                                    desa.</p>
+                                <p class="font-body-md text-body-md text-on-surface">Cetak atua unduh surat.</p>
                             </div>
                         </div>
                     </div>

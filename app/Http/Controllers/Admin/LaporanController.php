@@ -52,7 +52,6 @@ class LaporanController extends Controller
         $summary = [
             'total' => (clone $baseQuery)->count(),
             'menunggu' => (int) ($statusCounts['menunggu'] ?? 0),
-            'diproses' => (int) ($statusCounts['diproses'] ?? 0),
             'disetujui' => (int) ($statusCounts['disetujui'] ?? 0),
             'ditolak' => (int) ($statusCounts['ditolak'] ?? 0),
         ];
@@ -80,7 +79,7 @@ class LaporanController extends Controller
         $maxDailyTotal = max(1, $dailyReport->max('total'));
 
         $recentPengajuan = (clone $baseQuery)
-            ->latest()
+            ->oldest()
             ->limit(8)
             ->get();
 
@@ -92,7 +91,7 @@ class LaporanController extends Controller
             ->filter()
             ->values();
 
-        if ($availableYears->isEmpty() || ! $availableYears->contains($tahun)) {
+        if ($availableYears->isEmpty() || !$availableYears->contains($tahun)) {
             $availableYears = $availableYears->push($tahun)->unique()->sortDesc()->values();
         }
 
@@ -129,7 +128,6 @@ class LaporanController extends Controller
                 'bulan' => self::MONTH_NAMES[$bulan],
                 'total' => (int) $statusCounts->sum(),
                 'menunggu' => (int) ($statusCounts['menunggu'] ?? 0),
-                'diproses' => (int) ($statusCounts['diproses'] ?? 0),
                 'disetujui' => (int) ($statusCounts['disetujui'] ?? 0),
                 'ditolak' => (int) ($statusCounts['ditolak'] ?? 0),
             ];
@@ -138,7 +136,6 @@ class LaporanController extends Controller
         $yearlySummary = [
             'total' => $monthlyReports->sum('total'),
             'menunggu' => $monthlyReports->sum('menunggu'),
-            'diproses' => $monthlyReports->sum('diproses'),
             'disetujui' => $monthlyReports->sum('disetujui'),
             'ditolak' => $monthlyReports->sum('ditolak'),
         ];
@@ -154,7 +151,7 @@ class LaporanController extends Controller
             ->whereYear('created_at', $tahun)
             ->orderBy('created_at')
             ->get()
-            ->groupBy(fn ($item) => $item->created_at->month);
+            ->groupBy(fn($item) => $item->created_at->month);
 
         return view('admin.laporan.rekap', compact(
             'tahun',

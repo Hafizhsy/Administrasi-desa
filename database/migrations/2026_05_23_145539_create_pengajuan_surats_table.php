@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->text('alamat');
             $table->text('keperluan')->nullable();
             $table->string('file_persyaratan')->nullable();
-            $table->enum('status', ['menunggu', 'diproses', 'disetujui', 'ditolak'])->default('menunggu');
+            $table->enum('status', ['menunggu', 'disetujui', 'ditolak'])->default('menunggu');
             $table->text('catatan_admin')->nullable();
             $table->timestamps();
         });

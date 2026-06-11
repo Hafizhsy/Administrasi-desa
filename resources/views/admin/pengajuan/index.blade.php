@@ -93,7 +93,6 @@
     @php
         $statusOptions = [
             'menunggu' => ['label' => 'Menunggu', 'class' => 'bg-slate-100 text-slate-700 border-slate-200'],
-            'diproses' => ['label' => 'Diproses', 'class' => 'bg-blue-50 text-blue-700 border-blue-100'],
             'disetujui' => ['label' => 'Disetujui', 'class' => 'bg-emerald-100 text-emerald-800 border-emerald-100'],
             'ditolak' => ['label' => 'Ditolak', 'class' => 'bg-red-100 text-red-700 border-red-100'],
         ];
@@ -286,17 +285,6 @@
                                                 <form method="POST" action="{{ route('admin.pengajuan.status', $item) }}">
                                                     @csrf
                                                     @method('PATCH')
-                                                    <input type="hidden" name="status" value="diproses">
-                                                    <button
-                                                        class="w-10 h-10 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors flex items-center justify-center"
-                                                        title="Proses">
-                                                        <span class="material-symbols-outlined">hourglass_top</span>
-                                                    </button>
-                                                </form>
-                                            @elseif($item->status === 'diproses')
-                                                <form method="POST" action="{{ route('admin.pengajuan.status', $item) }}">
-                                                    @csrf
-                                                    @method('PATCH')
                                                     <input type="hidden" name="status" value="disetujui">
                                                     <button
                                                         class="w-10 h-10 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors flex items-center justify-center"
@@ -311,7 +299,7 @@
                                                 </button>
                                             @endif
 
-                                            @if(in_array($item->status, ['menunggu', 'diproses']))
+                                            @if($item->status === 'menunggu')
                                                 <button type="button"
                                                     class="w-10 h-10 text-error hover:bg-error-container rounded-lg transition-colors flex items-center justify-center"
                                                     title="Tolak" data-open-modal="tolak-pengajuan-{{ $item->id }}">
@@ -469,7 +457,7 @@
                         </div>
                     </dialog>
 
-                    @if(in_array($item->status, ['menunggu', 'diproses']))
+                    @if($item->status === 'menunggu')
                         <dialog id="tolak-pengajuan-{{ $item->id }}"
                             class="m-auto w-[min(92vw,560px)] rounded-xl border border-outline-variant bg-white p-0 text-left shadow-2xl">
                             <form method="POST" action="{{ route('admin.pengajuan.status', $item) }}" class="overflow-hidden">

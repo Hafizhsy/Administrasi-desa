@@ -46,7 +46,6 @@
                             <td class="p-4">
                                 <span class="px-3 py-1 rounded-full text-sm
                                     @if($item->status == 'menunggu') bg-yellow-100 text-yellow-700
-                                    @elseif($item->status == 'diproses') bg-blue-100 text-blue-700
                                     @elseif($item->status == 'disetujui') bg-green-100 text-green-700
                                     @else bg-red-100 text-red-700
                                     @endif">

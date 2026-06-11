@@ -211,19 +211,6 @@
           </div>
         </a>
         <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
-          href="{{ route('admin.pengajuan.index', ['status' => 'diproses']) }}">
-          <div class="flex justify-between items-start">
-            <div class="p-3 bg-surface-container-high rounded-lg">
-              <span class="material-symbols-outlined text-blue-700">hourglass_top</span>
-            </div>
-            <span class="text-blue-700 font-bold text-sm">Sedang berjalan</span>
-          </div>
-          <div>
-            <p class="text-slate-500 font-label-sm text-label-sm">Diproses</p>
-            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $progress }}</h4>
-          </div>
-        </a>
-        <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
           href="{{ route('admin.pengajuan.index', ['status' => 'disetujui']) }}">
           <div class="flex justify-between items-start">
             <div class="p-3 bg-primary-fixed rounded-lg">
@@ -263,7 +250,6 @@
                 $status = $activity->metadata['status'] ?? null;
                 $statusMeta = [
                   'menunggu' => ['label' => 'Menunggu', 'class' => 'bg-red-50 text-red-700 border-red-100'],
-                  'diproses' => ['label' => 'Diproses', 'class' => 'bg-blue-50 text-blue-700 border-blue-100'],
                   'disetujui' => ['label' => 'Disetujui', 'class' => 'bg-emerald-50 text-emerald-700 border-emerald-100'],
                   'ditolak' => ['label' => 'Ditolak', 'class' => 'bg-red-100 text-red-700 border-red-200'],
                 ][$status] ?? null;

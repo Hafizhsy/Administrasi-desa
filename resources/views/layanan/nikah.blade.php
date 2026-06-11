@@ -175,6 +175,8 @@
                         <span class="material-symbols-outlined text-primary-container">description</span>
                         <h3 class="font-h3 text-h3">Persyaratan Dokumen</h3>
                     </div>
+                    <p class="text-label-sm font-label-sm text-outline mb-stack-md">Format file: PDF, JPG, JPEG, atau
+                        PNG. Ukuran maksimal 2 MB per file.</p>
                     <ul class="space-y-4">
                         <li
                             class="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-outline-variant transition-colors">
@@ -279,7 +281,7 @@
                                 <div
                                     class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold z-10">
                                     4</div>
-                                <p class="font-body-md text-body-md text-on-surface">Cetak atau Unduh Surat</p>
+                                <p class="font-body-md text-body-md text-on-surface">Cetak atau Unduh surat.</p>
                             </div>
                         </div>
                     </div>

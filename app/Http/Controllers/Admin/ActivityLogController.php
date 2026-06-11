@@ -10,7 +10,7 @@ class ActivityLogController extends Controller
     public function index()
     {
         $activities = ActivityLog::with(['user', 'pengajuanSurat'])
-            ->latest()
+            ->oldest()
             ->paginate(15);
 
         return view('admin.activities.index', compact('activities'));

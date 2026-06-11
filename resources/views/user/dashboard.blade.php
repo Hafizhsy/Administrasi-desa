@@ -229,7 +229,6 @@
                 @php
                   $statusMeta = [
                     'menunggu' => ['label' => 'Menunggu', 'class' => 'bg-yellow-100 text-yellow-700'],
-                    'diproses' => ['label' => 'Diproses', 'class' => 'bg-blue-100 text-blue-700'],
                     'disetujui' => ['label' => 'Disetujui', 'class' => 'bg-green-100 text-green-700'],
                     'ditolak' => ['label' => 'Ditolak', 'class' => 'bg-red-100 text-red-700'],
                   ][$item->status] ?? ['label' => ucfirst($item->status), 'class' => 'bg-slate-100 text-slate-600'];
@@ -276,7 +275,7 @@
                     <p class="text-label-sm text-slate-500">24 Okt 2024 • ID: 10293</p>
                   </div>
                 </div>
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">Diproses</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">Menunggu</span>
               </div>
               <!-- List Item 2 -->
               <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
@@ -314,7 +313,6 @@
             @php
               $statusMeta = [
                 'menunggu' => ['label' => 'Menunggu', 'class' => 'bg-yellow-100 text-yellow-700'],
-                'diproses' => ['label' => 'Diproses', 'class' => 'bg-blue-100 text-blue-700'],
                 'disetujui' => ['label' => 'Disetujui', 'class' => 'bg-green-100 text-green-700'],
                 'ditolak' => ['label' => 'Ditolak', 'class' => 'bg-red-100 text-red-700'],
               ][$item->status] ?? ['label' => ucfirst($item->status), 'class' => 'bg-slate-100 text-slate-600'];

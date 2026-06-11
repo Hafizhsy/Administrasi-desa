@@ -199,11 +199,6 @@
             color: #475569;
         }
 
-        .status-diproses {
-            background: #dbeafe;
-            color: #1d4ed8;
-        }
-
         .status-disetujui {
             background: #dcfce7;
             color: #047857;
@@ -281,7 +276,6 @@
                 <div class="meta">
                     <span>Total permohonan: {{ $yearlySummary['total'] }}</span>
                     <span>Menunggu: {{ $yearlySummary['menunggu'] }}</span>
-                    <span>Diproses: {{ $yearlySummary['diproses'] }}</span>
                     <span>Disetujui: {{ $yearlySummary['disetujui'] }}</span>
                     <span>Ditolak: {{ $yearlySummary['ditolak'] }}</span>
                 </div>
@@ -301,7 +295,6 @@
                         <div class="month-summary">
                             <span class="pill">Total {{ $report['total'] }}</span>
                             <span class="pill">Menunggu {{ $report['menunggu'] }}</span>
-                            <span class="pill">Diproses {{ $report['diproses'] }}</span>
                             <span class="pill">Disetujui {{ $report['disetujui'] }}</span>
                             <span class="pill">Ditolak {{ $report['ditolak'] }}</span>
                         </div>
