@@ -244,9 +244,7 @@
             <span class="font-public-sans font-bold text-lg text-emerald-900">Kopandakan I</span>
         </div>
         <div class="flex items-center gap-3">
-            <button class="p-2 rounded-full hover:bg-slate-100 transition-colors active:scale-95 duration-150">
-                <span class="material-symbols-outlined text-slate-600">notifications</span>
-            </button>
+            <x-notification-dropdown />
             <a href="{{ route('user.dashboard') }}"
                 class="h-10 px-4 rounded-xl bg-primary-container text-white font-button text-sm flex items-center gap-2 hover:bg-primary transition-all active:scale-95">
                 <span class="material-symbols-outlined text-lg">arrow_back</span>

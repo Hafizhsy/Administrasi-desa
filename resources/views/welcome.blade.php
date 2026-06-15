@@ -155,7 +155,7 @@
       <div class="absolute inset-0 z-0">
         <img alt="Indonesian Village Scenery" class="w-full h-full object-cover"
           data-alt="Stunning aerial view of a vibrant Indonesian village surrounded by lush green rice terraces and tropical trees at sunrise."
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_UIPdfW-NwVXF3XLbRUVGL_H5FOu2TQI2Vmj9aqjFKtBRb3awH1mEt5v4KhZffoR49pAxKcKF4HxoPmQ8941hl1SCTCtLLPAa9jc3WL49xksrWyvWA8aE7zLsLc5T4O_9I_4v2IL67NWF98eAT6ofO6Vea4wDA4d1Ei14jW7qW9yFE3RM3Z77EfZMSyaZyq55Bwq-vGSeAx8xSSTDPga0O2KSZB58yI5KnEYg9wwDqL_wS_qAU9xs2JgikfGWs82LeQKpegK-oVA" />
+          src="{{ asset('images/kantor.jpeg') }}" />
         <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent"></div>
       </div>
       <div class="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">

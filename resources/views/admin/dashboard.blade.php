@@ -138,9 +138,7 @@
       <h1 class="font-public-sans font-bold text-lg text-emerald-900">Kopandakan I</h1>
     </div>
     <div class="flex items-center gap-2">
-      <button class="p-2 rounded-full hover:bg-slate-100 transition-colors active:scale-95 duration-150">
-        <span class="material-symbols-outlined text-slate-600">notifications</span>
-      </button>
+      <x-notification-dropdown />
       <form method="POST" action="{{ route('logout') }}">
         @csrf
         <button type="submit" class="px-4 py-2 rounded-lg bg-red-50 text-red-700 font-semibold hover:bg-red-100">

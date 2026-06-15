@@ -132,7 +132,7 @@
                 <div class="flex items-center gap-4 mb-4">
                     <img alt="Logo Desa" class="w-16 h-16 rounded-xl shadow-sm"
                         data-alt="Official village emblem of Kopandakan I featuring administrative symbols in deep emerald green and white tones"
-                        src="" />
+                        src="https://tse2.mm.bing.net/th/id/OIP.e3qAPtdwr3_s22nmrHur3AHaIo?rs=1&pid=ImgDetMain&o=7&rm=3" />
                     <div>
                         <h2 class="font-h2 text-h2 text-primary">Kopandakan I</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant">Layanan Mandiri Masyarakat</p>
@@ -206,8 +206,7 @@
                             <input id="nik" name="nik" type="text" value="{{ old('nik') }}" required minlength="16"
                                 maxlength="16" inputmode="numeric" pattern="[0-9]*"
                                 oninvalid="this.setCustomValidity(this.validity.valueMissing ? 'NIK wajib diisi.' : this.validity.tooShort ? 'NIK min 16 karakter.' : 'NIK hanya boleh berisi angka.')"
-                                oninput="this.setCustomValidity('')"
-                                placeholder="Masukkan NIK"
+                                oninput="this.setCustomValidity('')" placeholder="Masukkan NIK"
                                 class="w-full h-[56px] px-4 bg-surface-bright border border-outline-variant rounded-xl focus:ring-2 focus:ring-surface-tint focus:border-transparent transition-all outline-none font-body-md">
                             @error('nik')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -267,7 +266,7 @@
                     <footer
                         class="w-full flex flex-col md:flex-row justify-between items-center px-8 gap-4 py-8 border-t border-slate-200 bg-slate-50">
                         <div class="flex flex-col md:flex-row items-center gap-6">
-                            <span class="font-bold text-slate-900 font-public-sans text-xs">Pemerintah Desa Kopandakan
+                            <span class="font-bold text-slate-900 font-public-sans text-xs">Desa Kopandakan
                                 I</span>
                             <div class="flex gap-4">
                                 <a class="font-public-sans text-xs text-slate-500 hover:text-emerald-700 transition-colors"
