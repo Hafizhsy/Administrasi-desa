@@ -154,9 +154,10 @@
     <aside class="hidden md:flex flex-col gap-2 p-4 h-screen w-64 border-r border-slate-200 bg-white sticky top-16">
       <div class="mb-6 px-2 py-4 flex items-center gap-3">
         <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center">
-          <img alt="Admin Avatar" class="w-10 h-10 rounded-lg object-cover"
-            data-alt="Professional portrait of a male administrative official in business attire, clean background"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxqattrOzrZ_z2WWKGe_agUgoqox-CBpdIg9lsc1hbn9hA-QCx80aUDIz4nNDagzOfJ-28c9J1oWbtGNZd-7ka_2Po3GraS4VSrfHNB_ToMyofZWKXrJQbjWDBdPfMGToCQZFsgnAwQGXlP-Sub1D99fLZh_YZ06obtHNCEj7X3Na7gTrdkVkUQg5SWRVJejMLUFzyTtV4B9NPT6NxvJIY28XNj1UjIiDXAm5BUfxn2tuS32IdFer_Hd7Wzv0SdO2NqTTFYYtH0LE" />
+          <!-- <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"> -->
+          <span class="material-symbols-outlined text-primary text-3xl">
+            account_circle
+          </span>
         </div>
         <div>
           <h3 class="text-sm font-bold text-emerald-900">Admin Desa</h3>
@@ -189,15 +190,9 @@
           <h2 class="font-h1 text-h1 text-on-background">Beranda Admin</h2>
           <p class="font-body-md text-body-md text-slate-500">Ringkasan aktivitas dan administrasi hari ini.</p>
         </div>
-        <button
-          class="bg-primary-container text-on-primary-fixed-variant px-6 py-3 rounded-xl font-button text-button flex items-center gap-2 hover:bg-primary transition-colors active:scale-95 shadow-sm"
-          onclick="window.location.href='{{ route('admin.pengajuan.index', ['status' => 'menunggu']) }}'">
-          <span class="material-symbols-outlined">rate_review</span>
-          Review Pending Requests
-        </button>
       </div>
       <!-- Stats Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
         <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
           href="{{ route('admin.pengajuan.index', ['status' => 'menunggu']) }}">
           <div class="flex justify-between items-start">
@@ -329,8 +324,9 @@
       <div class="flex gap-6">
         <a class="font-public-sans text-xs text-slate-500 hover:text-emerald-700 transition-opacity opacity-80 hover:opacity-100"
           href="#">Kontak</a>
-        <a class="font-public-sans text-xs text-slate-500 hover:text-emerald-700 transition-opacity opacity-80 hover:opacity-100"
-          href="#">Peta Desa</a>
+        <button
+          class="font-public-sans text-xs text-slate-500 hover:text-emerald-700 transition-opacity opacity-80 hover:opacity-100"
+          onclick="window.open('https://maps.app.goo.gl/LtfdfQzweUsmArGP8', '_blank')">Peta Desa</button>
         <a class="font-public-sans text-xs text-slate-500 hover:text-emerald-700 transition-opacity opacity-80 hover:opacity-100"
           href="#">Kebijakan Privasi</a>
       </div>

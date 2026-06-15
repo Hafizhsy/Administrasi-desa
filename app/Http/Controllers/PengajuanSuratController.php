@@ -8,47 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\PengajuanDokumen;
 use App\Models\ActivityLog;
+use App\Support\LayananSurat;
 use Illuminate\Validation\ValidationException;
 
 class PengajuanSuratController extends Controller
 {
-    private const JENIS_SURAT = [
-        'nikah' => 'Surat Pernyataan Nikah',
-        'usaha' => 'Surat Keterangan Usaha',
-        'sktm' => 'Surat Keterangan Tidak Mampu',
-        'pbb' => 'Surat Keterangan Lunas PBB',
-    ];
-
-    private const DOKUMEN_PERSYARATAN = [
-        'nikah' => [
-            'Scan KTP Pemohon Suami dan Istri',
-            'Scan Kartu Keluarga',
-            'Surat Pengantar RT RW',
-            'Scan Akta Nikah atau Buku Nikah',
-            'Pas Foto 3x4 Background Biru',
-        ],
-        'usaha' => [
-            'Scan KTP Pemohon',
-            'Scan Kartu Keluarga',
-            'Surat Pengantar RT RW',
-            'Foto Tempat Usaha',
-            'Surat Pernyataan Kepemilikan Usaha',
-        ],
-        'sktm' => [
-            'Scan KTP Pemohon',
-            'Scan Kartu Keluarga',
-            'Surat Pengantar RT RW',
-            'Foto Rumah Tampak Depan',
-            'Slip Gaji atau Surat Pernyataan Penghasilan',
-        ],
-        'pbb' => [
-            'Scan KTP Pemohon',
-            'Scan Kartu Keluarga',
-            'Bukti Bayar PBB Tahun Berjalan',
-            'Scan SPPT PBB Terakhir',
-        ],
-    ];
-
     public function index()
     {
         $pengajuan = PengajuanSurat::where('user_id', Auth::id())
@@ -72,19 +36,26 @@ class PengajuanSuratController extends Controller
     public function create()
     {
         $profile = Auth::User()->select('name', 'nik', 'alamat')->find(Auth::id());
-        return view('user.pengajuan.create', compact('profile'));
+        $jenisSurat = LayananSurat::labels();
+        $dokumenPersyaratan = LayananSurat::documents();
+        $layananData = LayananSurat::all();
+
+        return view('user.pengajuan.create', compact('profile', 'jenisSurat', 'dokumenPersyaratan', 'layananData'));
     }
 
     public function store(Request $request)
     {
+        $jenisSurat = LayananSurat::labels();
+        $dokumenPersyaratan = LayananSurat::documents();
+
         $request->validate([
-            'jenis_surat' => 'required|in:' . implode(',', array_keys(self::JENIS_SURAT)),
+            'jenis_surat' => 'required|in:' . implode(',', array_keys($jenisSurat)),
             'keperluan' => 'nullable|string',
             'dokumen' => 'required|array',
             'dokumen.*' => 'file|mimes:pdf,jpg,jpeg,png|max:2048',
         ]);
 
-        $requiredDokumen = self::DOKUMEN_PERSYARATAN[$request->jenis_surat];
+        $requiredDokumen = $dokumenPersyaratan[$request->jenis_surat];
         $uploadedDokumen = $request->file('dokumen', []);
         $missingDokumen = collect($requiredDokumen)
             ->reject(fn($namaDokumen) => isset($uploadedDokumen[$namaDokumen]) && $uploadedDokumen[$namaDokumen]->isValid())
@@ -98,7 +69,7 @@ class PengajuanSuratController extends Controller
 
         $pengajuan = PengajuanSurat::create([
             'user_id' => Auth::id(),
-            'jenis_surat' => self::JENIS_SURAT[$request->jenis_surat],
+            'jenis_surat' => $jenisSurat[$request->jenis_surat],
             'nama_pemohon' => Auth::user()->name,
             'nik' => Auth::user()->nik,
             'alamat' => Auth::user()->alamat,

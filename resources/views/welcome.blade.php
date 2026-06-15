@@ -191,7 +191,7 @@
       <div
         class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-gutter text-center">
         <div class="py-4">
-          <p class="text-h3 font-h3 text-primary">15+</p>
+          <p class="text-h3 font-h3 text-primary">16</p>
           <p class="text-label-sm font-label-sm text-secondary">Jenis Layanan</p>
         </div>
         <div class="py-4">
@@ -218,83 +218,22 @@
             secara real-time.
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-          <!-- Service Card 1 -->
-          <div
-            class="md:col-span-8 bg-white p-stack-md rounded-xl border border-outline-variant hover:shadow-lg transition-all group relative overflow-hidden">
-            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-              <span class="material-symbols-outlined text-[120px]"
-                data-icon="volunteer_activism">volunteer_activism</span>
-            </div>
-            <div class="relative z-10 flex flex-col h-full justify-between">
-              <div>
-                <div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center text-primary mb-4">
-                  <span class="material-symbols-outlined" data-icon="volunteer_activism">volunteer_activism</span>
-                </div>
-                <h3 class="font-h3 text-h3 mb-2">Marriage Statement</h3>
-                <p class="text-body-md text-on-surface-variant mb-6 max-w-md">Pengurusan surat keterangan nikah dan
-                  persyaratan administrasi pernikahan lainnya untuk warga Desa Kopandakan I.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+          @foreach ($layananUtama as $slug => $layanan)
+            <div
+              class="bg-white p-stack-md rounded-xl border border-outline-variant hover:shadow-lg transition-all flex flex-col group">
+              <div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center text-primary mb-4">
+                <span class="material-symbols-outlined" data-icon="{{ $layanan['icon'] }}">{{ $layanan['icon'] }}</span>
               </div>
-              <a href="{{ route('layanan.nikah') }}"
-                class="w-fit px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors">
-                Pilih Layanan
-              </a>
-            </div>
-          </div>
-          <!-- Service Card 2 -->
-          <div
-            class="md:col-span-4 bg-white p-stack-md rounded-xl border border-outline-variant hover:shadow-lg transition-all flex flex-col group">
-            <div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center text-primary mb-4">
-              <span class="material-symbols-outlined" data-icon="storefront">storefront</span>
-            </div>
-            <h3 class="font-h3 text-h3 mb-2">Business Certificate</h3>
-            <p class="text-body-md text-on-surface-variant mb-6">Surat Keterangan Usaha (SKU) untuk keperluan perizinan
-              atau pengajuan bantuan UMKM.</p>
-            <div class="mt-auto">
-              <a href="{{ route('layanan.usaha') }}"
-                class="w-full px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors text-center block">
-                Pilih Layanan
-              </a>
-            </div>
-          </div>
-          <!-- Service Card 3 -->
-          <div
-            class="md:col-span-4 bg-white p-stack-md rounded-xl border border-outline-variant hover:shadow-lg transition-all flex flex-col group">
-            <div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center text-primary mb-4">
-              <span class="material-symbols-outlined" data-icon="badge">badge</span>
-            </div>
-            <h3 class="font-h3 text-h3 mb-2">Certificate of Inability (SKTM)</h3>
-            <p class="text-body-md text-on-surface-variant mb-6">Dokumen untuk warga yang memerlukan keringanan biaya
-              pendidikan atau kesehatan.</p>
-            <div class="mt-auto">
-              <a href="{{ route('layanan.sktm') }}"
-                class="w-full px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors text-center block">
-                Pilih Layanan
-              </a>
-
-            </div>
-          </div>
-          <!-- Service Card 4 -->
-          <div
-            class="md:col-span-8 bg-white p-stack-md rounded-xl border border-outline-variant hover:shadow-lg transition-all group relative overflow-hidden">
-            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-              <span class="material-symbols-outlined text-[120px]" data-icon="home_work">home_work</span>
-            </div>
-            <div class="relative z-10 flex flex-col h-full justify-between">
-              <div>
-                <div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center text-primary mb-4">
-                  <span class="material-symbols-outlined" data-icon="home_work">home_work</span>
-                </div>
-                <h3 class="font-h3 text-h3 mb-2">Land &amp; Building Tax (PBB)</h3>
-                <p class="text-body-md text-on-surface-variant mb-6 max-w-md">Layanan administrasi terkait Pajak Bumi
-                  dan Bangunan serta surat pengantar kepemilikan tanah.</p>
+              <h3 class="font-h3 text-xl mb-4 leading-snug">{{ $layanan['label'] }}</h3>
+              <div class="mt-auto">
+                <a href="{{ route('layanan.detail', $slug) }}"
+                  class="w-full px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors text-center block">
+                  Lihat Detail
+                </a>
               </div>
-              <a href="{{ route('layanan.pbb') }}"
-                class="w-fit px-6 py-2 border-2 border-primary text-primary font-button rounded-lg hover:bg-primary hover:text-white transition-colors">
-                Pilih Layanan
-              </a>
             </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </section>

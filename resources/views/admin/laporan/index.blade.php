@@ -9,7 +9,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;family=Work+Sans:wght@400;500;600&amp;display=swap"
         rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap"
         rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
@@ -120,7 +121,8 @@
             </button>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="px-4 py-2 rounded-lg bg-red-50 text-red-700 font-semibold hover:bg-red-100">
+                <button type="submit"
+                    class="px-4 py-2 rounded-lg bg-red-50 text-red-700 font-semibold hover:bg-red-100">
                     Logout
                 </button>
             </form>
@@ -131,8 +133,10 @@
         <aside class="hidden md:flex flex-col gap-2 p-4 h-screen w-64 border-r border-slate-200 bg-white sticky top-16">
             <div class="mb-6 px-2 py-4 flex items-center gap-3">
                 <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center">
-                    <img alt="Admin Avatar" class="w-10 h-10 rounded-lg object-cover"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxqattrOzrZ_z2WWKGe_agUgoqox-CBpdIg9lsc1hbn9hA-QCx80aUDIz4nNDagzOfJ-28c9J1oWbtGNZd-7ka_2Po3GraS4VSrfHNB_ToMyofZWKXrJQbjWDBdPfMGToCQZFsgnAwQGXlP-Sub1D99fLZh_YZ06obtHNCEj7X3Na7gTrdkVkUQg5SWRVJejMLUFzyTtV4B9NPT6NxvJIY28XNj1UjIiDXAm5BUfxn2tuS32IdFer_Hd7Wzv0SdO2NqTTFYYtH0LE" />
+                    <!-- <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"> -->
+                    <span class="material-symbols-outlined text-primary text-3xl">
+                        account_circle
+                    </span>
                 </div>
                 <div>
                     <h3 class="text-sm font-bold text-emerald-900">Admin Desa</h3>
@@ -164,8 +168,10 @@
         <main class="flex-1 p-4 md:p-8 max-w-7xl mx-auto w-full pb-24 md:pb-8">
             <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
-                    <h1 class="text-[40px] leading-tight font-bold tracking-normal text-primary mb-2">Laporan Administrasi</h1>
-                    <p class="text-base text-secondary">Rekap permohonan surat periode {{ $monthNames[$bulan] }} {{ $tahun }}.</p>
+                    <h1 class="text-[40px] leading-tight font-bold tracking-normal text-primary mb-2">Laporan
+                        Administrasi</h1>
+                    <p class="text-base text-secondary">Rekap permohonan surat periode {{ $monthNames[$bulan] }}
+                        {{ $tahun }}.</p>
                 </div>
                 <a href="{{ route('admin.laporan.rekap', ['tahun' => $tahun]) }}" target="_blank"
                     class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 text-base font-bold text-on-primary hover:bg-emerald-900">
@@ -175,9 +181,11 @@
             </div>
 
             <section class="mb-6 rounded-xl border border-outline-variant bg-white p-4 shadow-sm md:p-6">
-                <form method="GET" action="{{ route('admin.laporan.index') }}" class="flex flex-col gap-4 md:flex-row md:items-end">
+                <form method="GET" action="{{ route('admin.laporan.index') }}"
+                    class="flex flex-col gap-4 md:flex-row md:items-end">
                     <div class="w-full md:w-64">
-                        <label class="mb-2 block text-sm font-semibold tracking-wide text-on-surface-variant">Bulan</label>
+                        <label
+                            class="mb-2 block text-sm font-semibold tracking-wide text-on-surface-variant">Bulan</label>
                         <select name="bulan"
                             class="h-12 w-full rounded-xl border border-outline-variant bg-surface-container-lowest px-4 text-base outline-none focus:ring-2 focus:ring-primary-fixed-dim">
                             @foreach($monthNames as $number => $name)
@@ -186,7 +194,8 @@
                         </select>
                     </div>
                     <div class="w-full md:w-52">
-                        <label class="mb-2 block text-sm font-semibold tracking-wide text-on-surface-variant">Tahun</label>
+                        <label
+                            class="mb-2 block text-sm font-semibold tracking-wide text-on-surface-variant">Tahun</label>
                         <select name="tahun"
                             class="h-12 w-full rounded-xl border border-outline-variant bg-surface-container-lowest px-4 text-base outline-none focus:ring-2 focus:ring-primary-fixed-dim">
                             @foreach($availableYears as $year)
@@ -251,7 +260,8 @@
                             @endphp
                             <div>
                                 <div class="mb-2 flex items-center justify-between gap-3">
-                                    <p class="min-w-0 truncate text-sm font-bold text-on-surface">{{ $jenis->jenis_surat }}</p>
+                                    <p class="min-w-0 truncate text-sm font-bold text-on-surface">{{ $jenis->jenis_surat }}
+                                    </p>
                                     <span class="text-sm font-bold text-primary">{{ $jenis->total }}</span>
                                 </div>
                                 <div class="h-2 overflow-hidden rounded-full bg-surface-container-low">
@@ -259,10 +269,12 @@
                                 </div>
                             </div>
                         @empty
-                            <div class="rounded-xl border border-dashed border-outline-variant bg-surface-container-lowest p-8 text-center">
+                            <div
+                                class="rounded-xl border border-dashed border-outline-variant bg-surface-container-lowest p-8 text-center">
                                 <span class="material-symbols-outlined mb-2 text-slate-400">bar_chart_off</span>
                                 <p class="font-bold text-on-surface">Belum ada data laporan</p>
-                                <p class="mt-1 text-sm text-secondary">Data akan muncul ketika ada permohonan pada periode ini.</p>
+                                <p class="mt-1 text-sm text-secondary">Data akan muncul ketika ada permohonan pada periode
+                                    ini.</p>
                             </div>
                         @endforelse
                     </div>
@@ -294,10 +306,13 @@
                                         <p class="font-bold text-on-surface">{{ $item->nama_pemohon }}</p>
                                         <p class="text-sm text-secondary">{{ $item->nik }}</p>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-secondary">{{ $item->created_at->format('d M Y') }}</td>
-                                    <td class="px-6 py-4 text-sm font-semibold text-on-surface">{{ $item->jenis_surat }}</td>
+                                    <td class="px-6 py-4 text-sm text-secondary">{{ $item->created_at->format('d M Y') }}
+                                    </td>
+                                    <td class="px-6 py-4 text-sm font-semibold text-on-surface">{{ $item->jenis_surat }}
+                                    </td>
                                     <td class="px-6 py-4">
-                                        <span class="rounded-full border px-3 py-1.5 text-sm font-bold {{ $meta['class'] }}">
+                                        <span
+                                            class="rounded-full border px-3 py-1.5 text-sm font-bold {{ $meta['class'] }}">
                                             {{ $meta['label'] }}
                                         </span>
                                     </td>
@@ -305,8 +320,10 @@
                             @empty
                                 <tr>
                                     <td colspan="4" class="px-6 py-12 text-center">
-                                        <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-surface-container">
-                                            <span class="material-symbols-outlined text-on-surface-variant">folder_open</span>
+                                        <div
+                                            class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-surface-container">
+                                            <span
+                                                class="material-symbols-outlined text-on-surface-variant">folder_open</span>
                                         </div>
                                         <p class="font-bold text-on-surface">Belum ada permohonan</p>
                                         <p class="mt-1 text-sm text-secondary">Tidak ada data pada periode yang dipilih.</p>

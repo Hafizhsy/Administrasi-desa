@@ -6,12 +6,12 @@ use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\PengajuanSuratController;
+use App\Support\LayananSurat;
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'layananUtama' => LayananSurat::all(),
+    ]);
 })->name('welcome');
 
 Route::middleware('guest')->group(function () {
@@ -69,5 +69,25 @@ Route::get('/layanan/sktm', function () {
 Route::get('/layanan/pbb', function () {
     return view('layanan.pbb');
 })->name('layanan.pbb');
+
+Route::get('/layanan/kitir_nikah', function () {
+    return view('layanan.kitir_nikah');
+});
+
+Route::get('/layanan/kurang_mampu', function () {
+    return view('layanan.kurang_mampu');
+});
+
+Route::get('/layanan/lunas_pbb', function () {
+    return view('layanan.lunas_pbb');
+});
+
+Route::get('/layanan/{jenis}', function (string $jenis) {
+    $view = 'layanan.' . $jenis;
+
+    abort_unless(LayananSurat::find($jenis) && view()->exists($view), 404);
+
+    return view($view);
+})->name('layanan.detail');
 
 require __DIR__ . '/auth.php';

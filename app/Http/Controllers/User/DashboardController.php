@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\PengajuanSurat;
+use App\Support\LayananSurat;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -15,7 +16,8 @@ class DashboardController extends Controller
             ->latest()
             ->take(5)
             ->get();
+        $layananDashboard = LayananSurat::all();
 
-        return view('user.dashboard', compact('pengajuanTerbaru'));
+        return view('user.dashboard', compact('pengajuanTerbaru', 'layananDashboard'));
     }
 }

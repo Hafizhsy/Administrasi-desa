@@ -1,5 +1,5 @@
 @php
-    $layanan = \App\Support\LayananSurat::find('kitir_nikah');
+    $layanan = \App\Support\LayananSurat::find('kematian');
 @endphp
 
 @include('layanan.partials.detail-page', ['layanan' => $layanan])

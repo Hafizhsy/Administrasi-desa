@@ -172,50 +172,8 @@
       </div>
     </section>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-      <!-- Left Column: Services & Status -->
+      <!-- Left Column: Status -->
       <div class="lg:col-span-8 flex flex-col gap-stack-md">
-        <!-- Layanan Tersedia Section -->
-        <section>
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="font-h2 text-h2 text-primary">Layanan Tersedia</h2>
-            <button class="text-on-primary-container font-button text-label-sm hover:underline">Lihat Semua</button>
-          </div>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <!-- Card: Nikah -->
-            <div
-              class="bg-white p-6 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors cursor-pointer flex flex-col items-center text-center gap-3">
-              <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-900" data-icon="favorite">favorite</span>
-              </div>
-              <span class="font-h3 text-label-sm font-bold text-slate-900">Surat Nikah</span>
-            </div>
-            <!-- Card: Usaha -->
-            <div
-              class="bg-white p-6 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors cursor-pointer flex flex-col items-center text-center gap-3">
-              <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-900" data-icon="store">store</span>
-              </div>
-              <span class="font-h3 text-label-sm font-bold text-slate-900">Izin Usaha</span>
-            </div>
-            <!-- Card: SKTM -->
-            <div
-              class="bg-white p-6 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors cursor-pointer flex flex-col items-center text-center gap-3">
-              <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-900"
-                  data-icon="assignment_ind">assignment_ind</span>
-              </div>
-              <span class="font-h3 text-label-sm font-bold text-slate-900">SKTM</span>
-            </div>
-            <!-- Card: PBB -->
-            <div
-              class="bg-white p-6 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors cursor-pointer flex flex-col items-center text-center gap-3">
-              <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-900" data-icon="payments">payments</span>
-              </div>
-              <span class="font-h3 text-label-sm font-bold text-slate-900">PBB Desa</span>
-            </div>
-          </div>
-        </section>
         <!-- Status Permohonan Section -->
         <section>
           <div class="flex items-center justify-between mb-4">
@@ -263,48 +221,48 @@
                 </div>
               @endforelse
               @if(false)
-              <!-- List Item 1 -->
-              <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
-                <div class="flex items-center gap-4">
-                  <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
-                    <span class="material-symbols-outlined text-on-surface-variant"
-                      data-icon="description">description</span>
+                <!-- List Item 1 -->
+                <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                  <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
+                      <span class="material-symbols-outlined text-on-surface-variant"
+                        data-icon="description">description</span>
+                    </div>
+                    <div>
+                      <h4 class="font-body-md font-semibold text-slate-900">Permohonan SKTM</h4>
+                      <p class="text-label-sm text-slate-500">24 Okt 2024 • ID: 10293</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 class="font-body-md font-semibold text-slate-900">Permohonan SKTM</h4>
-                    <p class="text-label-sm text-slate-500">24 Okt 2024 • ID: 10293</p>
-                  </div>
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">Menunggu</span>
                 </div>
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">Menunggu</span>
-              </div>
-              <!-- List Item 2 -->
-              <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
-                <div class="flex items-center gap-4">
-                  <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
-                    <span class="material-symbols-outlined text-on-surface-variant"
-                      data-icon="description">description</span>
+                <!-- List Item 2 -->
+                <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                  <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
+                      <span class="material-symbols-outlined text-on-surface-variant"
+                        data-icon="description">description</span>
+                    </div>
+                    <div>
+                      <h4 class="font-body-md font-semibold text-slate-900">Izin Usaha Mikro</h4>
+                      <p class="text-label-sm text-slate-500">20 Okt 2024 • ID: 10245</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 class="font-body-md font-semibold text-slate-900">Izin Usaha Mikro</h4>
-                    <p class="text-label-sm text-slate-500">20 Okt 2024 • ID: 10245</p>
-                  </div>
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">Selesai</span>
                 </div>
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">Selesai</span>
-              </div>
-              <!-- List Item 3 -->
-              <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
-                <div class="flex items-center gap-4">
-                  <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
-                    <span class="material-symbols-outlined text-on-surface-variant"
-                      data-icon="description">description</span>
+                <!-- List Item 3 -->
+                <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                  <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
+                      <span class="material-symbols-outlined text-on-surface-variant"
+                        data-icon="description">description</span>
+                    </div>
+                    <div>
+                      <h4 class="font-body-md font-semibold text-slate-900">Surat Keterangan Nikah</h4>
+                      <p class="text-label-sm text-slate-500">18 Okt 2024 • ID: 10188</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 class="font-body-md font-semibold text-slate-900">Surat Keterangan Nikah</h4>
-                    <p class="text-label-sm text-slate-500">18 Okt 2024 • ID: 10188</p>
-                  </div>
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600">Pending</span>
                 </div>
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600">Pending</span>
-              </div>
               @endif
             </div>
           </div>

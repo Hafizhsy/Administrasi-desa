@@ -239,7 +239,7 @@
                 class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary-container overflow-hidden">
                 <img class="w-full h-full object-cover"
                     data-alt="Official village emblem of Kopandakan I featuring traditional motifs and a shield design in gold and green colors"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtw5mkuliLkGyPLjSvXL0YgiV3b71v8Ya-nWfs7V8XZopYLCPhi8j3Sdw0KcLXG3JW8nbRDaUMgzXZvLfUUpnT2PDSqbPyKqG88skFpY_1wbTbprPPkfsAfx8wx55amHnle7OOK2wiVDAyt3ci-R9qbNaSNSaopin8yp1io05v5M3dG8ewBupV2urByUpoI4jHZLBGA1kl6xC3hLSPJAKsJfZc9o3jKBlnIehi2DwW-JBijtBrLUbbful1BG1X6kDShGBaEexAH90" />
+                    src="https://tse2.mm.bing.net/th/id/OIP.e3qAPtdwr3_s22nmrHur3AHaIo?rs=1&pid=ImgDetMain&o=7&rm=3" />
             </div>
             <span class="font-public-sans font-bold text-lg text-emerald-900">Kopandakan I</span>
         </div>
@@ -272,302 +272,146 @@
             </div>
         @endif
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-            <section class="lg:col-span-12 mb-stack-md">
-                <div class="flex items-center gap-2 mb-stack-sm overflow-x-auto hide-scrollbar pb-2">
-                    <div
-                        class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-tertiary text-white font-bold text-sm">
-                        1
-                    </div>
-                    <h2 class="font-h3 text-h3 text-on-surface whitespace-nowrap">Pilih Jenis Surat</h2>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-                    <div class="surat-card cursor-pointer group relative bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50"
-                        data-surat="nikah">
-                        <div
-                            class="w-12 h-12 bg-primary-fixed/30 rounded-lg flex items-center justify-center mb-4 text-primary">
-                            <span class="material-symbols-outlined text-3xl"
-                                style="font-variation-settings: 'FILL' 1;">favorite</span>
-                        </div>
-                        <h3 class="font-bold text-on-surface text-lg leading-tight">Surat Pernyataan Nikah</h3>
-                        <div class="check-icon hidden absolute top-4 right-4 text-white">
-                            <span class="material-symbols-outlined">check_circle</span>
-                        </div>
-                    </div>
-
-                    <div class="surat-card cursor-pointer group relative bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50"
-                        data-surat="usaha">
-                        <div
-                            class="w-12 h-12 bg-primary-fixed/30 rounded-lg flex items-center justify-center mb-4 text-primary">
-                            <span class="material-symbols-outlined text-3xl">storefront</span>
-                        </div>
-                        <h3 class="font-bold text-on-surface text-lg leading-tight">Surat Keterangan Usaha</h3>
-                        <div class="check-icon hidden absolute top-4 right-4 text-white">
-                            <span class="material-symbols-outlined">check_circle</span>
-                        </div>
-                    </div>
-
-                    <div class="surat-card cursor-pointer group relative bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50"
-                        data-surat="sktm">
-                        <div
-                            class="w-12 h-12 bg-primary-fixed/30 rounded-lg flex items-center justify-center mb-4 text-primary">
-                            <span class="material-symbols-outlined text-3xl">volunteer_activism</span>
-                        </div>
-                        <h3 class="font-bold text-on-surface text-lg leading-tight">Surat Keterangan Tidak Mampu</h3>
-                        <div class="check-icon hidden absolute top-4 right-4 text-white">
-                            <span class="material-symbols-outlined">check_circle</span>
-                        </div>
-                    </div>
-
-                    <div class="surat-card cursor-pointer group relative bg-white border border-slate-200 p-5 rounded-xl shadow-sm transition-all hover:border-primary-fixed-dim hover:bg-slate-50"
-                        data-surat="pbb">
-                        <div
-                            class="w-12 h-12 bg-primary-fixed/30 rounded-lg flex items-center justify-center mb-4 text-primary">
-                            <span class="material-symbols-outlined text-3xl">receipt_long</span>
-                        </div>
-                        <h3 class="font-bold text-on-surface text-lg leading-tight">Surat Keterangan Lunas PBB</h3>
-                        <div class="check-icon hidden absolute top-4 right-4 text-white">
-                            <span class="material-symbols-outlined">check_circle</span>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-            <div id="form-area" class="hidden lg:col-span-12 grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-                <section class="lg:col-span-8 bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-sm">
-                    <div class="flex items-center gap-2 mb-stack-md">
-                        <div
-                            class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-tertiary text-white font-bold text-sm">
-                            2</div>
-                        <h2 class="font-h3 text-h3 text-on-surface">Detail Data Diri</h2>
-                    </div>
-                    <form action="{{ route('user.pengajuan.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="jenis_surat" id="jenis_surat" value="{{ old('jenis_surat') }}" />
-
-                        <!-- <div class="space-y-2 mb-6">
-                        <label class="font-label-sm text-on-surface-variant block">Jenis Surat</label>
-                        <select name="jenis_surat" required
-                            class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all">
-                            <option value="">Pilih jenis surat</option>
-                            <option value="Surat Pernyataan Nikah">Surat Pernyataan Nikah</option>
-                            <option value="Surat Keterangan Usaha">Surat Keterangan Usaha</option>
-                            <option value="Surat Keterangan Tidak Mampu">Surat Keterangan Tidak Mampu</option>
-                            <option value="Surat Keterangan Lunas PBB">Surat Keterangan Lunas PBB</option>
-                        </select>
-                    </div> -->
-
-                        <div class="border-t border-slate-100 pt-6 mt-6">
-                            <h3 class="font-bold text-on-surface mb-4">Informasi Khusus Surat</h3>
-                            <div class="space-y-2">
-                                <label class="font-label-sm text-on-surface-variant block">Tujuan Pengajuan
-                                    Surat</label>
-                                <input name="keperluan" value="{{ old('keperluan') }}"
-                                    class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
-                                    placeholder="Contoh: Persyaratan pendaftaran pernikahan" type="text" />
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+            <aside class="lg:col-span-4 xl:col-span-3 lg:sticky lg:top-24 lg:self-start">
+                <div
+                    class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm lg:max-h-[calc(100vh-7rem)] lg:flex lg:flex-col">
+                    <div class="p-5 border-b border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="flex h-9 w-9 items-center justify-center rounded-full bg-tertiary text-sm font-bold text-white">
+                                1</div>
+                            <div>
+                                <h2 class="font-h3 text-xl text-primary">Pilih Surat</h2>
+                                <p class="text-sm text-on-surface-variant">Klik salah satu layanan.</p>
                             </div>
                         </div>
-
-                        <div class="border-t border-slate-100 pt-6 mt-6">
-                            <h2 class="font-h3 text-h3 text-on-surface mb-4">Lampiran Dokumen</h2>
-
-                            <div id="dokumen-nikah" class="dokumen-group hidden space-y-4">
-                                <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Nikah</h3>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Scan KTP Pemohon Suami dan Istri</label>
-                                    <input type="file" name="dokumen[Scan KTP Pemohon Suami dan Istri]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Scan Kartu Keluarga</label>
-                                    <input type="file" name="dokumen[Scan Kartu Keluarga]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
-                                    <input type="file" name="dokumen[Surat Pengantar RT RW]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Scan Akta Nikah / Buku Nikah</label>
-                                    <input type="file" name="dokumen[Scan Akta Nikah atau Buku Nikah]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Pas Foto 3x4 Background Biru</label>
-                                    <input type="file" name="dokumen[Pas Foto 3x4 Background Biru]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-                            </div>
-
-                            <div id="dokumen-usaha" class="dokumen-group hidden space-y-4">
-                                <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Keterangan Usaha
-                                </h3>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Scan KTP Pemohon</label>
-                                    <input type="file" name="dokumen[Scan KTP Pemohon]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Scan Kartu Keluarga</label>
-                                    <input type="file" name="dokumen[Scan Kartu Keluarga]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
-                                    <input type="file" name="dokumen[Surat Pengantar RT RW]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Foto Tempat Usaha</label>
-                                    <input type="file" name="dokumen[Foto Tempat Usaha]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Surat Pernyataan Kepemilikan Usaha</label>
-                                    <input type="file" name="dokumen[Surat Pernyataan Kepemilikan Usaha]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-                            </div>
-
-                            <div id="dokumen-sktm" class="dokumen-group hidden space-y-4">
-                                <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan SKTM</h3>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Scan KTP Pemohon</label>
-                                    <input type="file" name="dokumen[Scan KTP Pemohon]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Scan Kartu Keluarga</label>
-                                    <input type="file" name="dokumen[Scan Kartu Keluarga]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Surat Pengantar RT/RW</label>
-                                    <input type="file" name="dokumen[Surat Pengantar RT RW]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Foto Rumah Tampak Depan</label>
-                                    <input type="file" name="dokumen[Foto Rumah Tampak Depan]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Slip Gaji atau Surat Pernyataan
-                                        Penghasilan</label>
-                                    <input type="file" name="dokumen[Slip Gaji atau Surat Pernyataan Penghasilan]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-                            </div>
-
-                            <div id="dokumen-pbb" class="dokumen-group hidden space-y-4">
-                                <h3 class="font-bold text-lg text-emerald-900">Upload Persyaratan Surat Keterangan Lunas
-                                    PBB</h3>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Scan KTP Pemohon</label>
-                                    <input type="file" name="dokumen[Scan KTP Pemohon]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Scan Kartu Keluarga</label>
-                                    <input type="file" name="dokumen[Scan Kartu Keluarga]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Bukti Bayar PBB Tahun Berjalan</label>
-                                    <input type="file" name="dokumen[Bukti Bayar PBB Tahun Berjalan]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-
-                                <div>
-                                    <label class="block font-semibold mb-2">Scan SPPT PBB Terakhir</label>
-                                    <input type="file" name="dokumen[Scan SPPT PBB Terakhir]"
-                                        class="w-full border rounded-lg p-3">
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="pt-6">
-                            <button
-                                class="w-full md:w-auto px-10 h-14 bg-primary text-white font-button rounded-xl hover:bg-primary-container transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95"
-                                type="submit">
-                                <span>Kirim Permohonan</span>
-                                <span class="material-symbols-outlined">send</span>
-                            </button>
-                        </div>
-                    </form>
-                </section>
-                <aside class="lg:col-span-4 space-y-gutter">
-                    <div class="bg-primary-container text-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-h3 text-lg mb-4 flex items-center gap-2">
-                            <span class="material-symbols-outlined">info</span>
-                            Informasi Penting
-                        </h3>
-                        <ul class="space-y-4 text-sm opacity-90">
-                            <li class="flex gap-3">
-                                <span class="material-symbols-outlined text-tertiary-fixed text-lg">history</span>
-                                <span>Proses verifikasi dokumen memerlukan waktu 1-2 hari kerja.</span>
-                            </li>
-                            <li class="flex gap-3">
-                                <span class="material-symbols-outlined text-tertiary-fixed text-lg">check_circle</span>
-                                <span>Pastikan file scan terlihat jelas dan tidak terpotong.</span>
-                            </li>
-                            <li class="flex gap-3">
+                    </div>
+                    <div class="max-h-[360px] overflow-y-auto p-2 lg:max-h-none lg:flex-1">
+                        @foreach ($jenisSurat as $slug => $namaSurat)
+                            <button type="button"
+                                class="surat-card w-full cursor-pointer group relative flex items-center gap-3 rounded-lg px-3 py-3 text-left transition-all hover:bg-emerald-50"
+                                data-surat="{{ $slug }}" data-label="{{ $namaSurat }}">
                                 <span
-                                    class="material-symbols-outlined text-tertiary-fixed text-lg">notifications_active</span>
-                                <span>Notifikasi status akan dikirimkan melalui dashboard atau WhatsApp
-                                    terdaftar.</span>
-                            </li>
-                        </ul>
+                                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-fixed/30 text-primary">
+                                    <span
+                                        class="material-symbols-outlined text-[22px]">{{ $layananData[$slug]['icon'] ?? 'description' }}</span>
+                                </span>
+                                <span class="min-w-0 flex-1">
+                                    <h3 class="font-semibold leading-tight text-on-surface">{{ $namaSurat }}</h3>
+                                </span>
+                                <span class="check-icon hidden text-primary">
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                </span>
+                            </button>
+                        @endforeach
                     </div>
-                    <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-on-surface mb-4">Statistik Layanan</h3>
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm text-on-surface-variant">Hari Ini</span>
-                                <span class="font-bold text-primary">12 Permohonan</span>
-                            </div>
-                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                                <div class="bg-primary h-full w-[65%]"></div>
-                            </div>
-                            <p class="text-xs text-on-surface-variant italic">Kapasitas harian kantor desa Kopandakan I
-                                saat
-                                ini beroperasi normal.</p>
+                </div>
+            </aside>
+
+            <section id="form-area"
+                class="lg:col-span-8 xl:col-span-6 bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-sm">
+                <div
+                    class="flex flex-col gap-3 border-b border-slate-100 pb-5 md:flex-row md:items-start md:justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div
+                                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-tertiary text-white font-bold text-sm">
+                                2</div>
+                            <p class="font-label-sm text-on-surface-variant">Form Pengajuan</p>
                         </div>
+                        <h2 id="selected-service-title" class="font-h3 text-h3 text-primary">Pilih jenis surat terlebih
+                            dahulu</h2>
                     </div>
-                    <div class="relative rounded-xl overflow-hidden aspect-video group">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Modern government office interior with clean wooden desks, minimalist shelving, and soft natural lighting creating a professional atmosphere"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWntktMU2IsWGjUSdM1-zqcBP7WF39dhGq1E--jIYDwBU3Qt6aI3eEgarr1YttJkIedtbjtoQOEqv4Z1xNA9CFwA-gDbG5BloiO0LijLae14cSqP9IAw9kBnJ6rqzdivcumnkwDJjCzzavhyf7zDsLR73Dzy2g5aRPqQrNrYoSPQaJSRqYLVGTyQoO8k-kNT-SK7bFGU4xtzJGM-3kWFya_HnFxO9ydyG7Kd7lkTp8iqiffNqfc7-ym4LfxcIcPv4mCYzuvb7OTw" />
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-4">
-                            <p class="text-white font-bold">Butuh bantuan?</p>
-                            <p class="text-white/80 text-xs">Hubungi operator desa via WhatsApp</p>
+                    <span
+                        class="rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-900">PDF/JPG/PNG
+                        maks 2 MB</span>
+                </div>
+
+                <form action="{{ route('user.pengajuan.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="jenis_surat" id="jenis_surat" value="{{ old('jenis_surat') }}" />
+
+                    <div class="pt-6">
+                        <label class="font-label-sm text-on-surface-variant block mb-2">Tujuan Pengajuan Surat</label>
+                        <input name="keperluan" value="{{ old('keperluan') }}"
+                            class="w-full h-12 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-200 focus:border-sky-500 outline-none transition-all"
+                            placeholder="Contoh: Persyaratan administrasi keluarga" type="text" />
+                    </div>
+
+                    <div class="border-t border-slate-100 pt-6 mt-6">
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <h2 class="font-h3 text-h3 text-on-surface">Lampiran Dokumen</h2>
+                            <span class="text-sm text-on-surface-variant">Wajib diunggah semua</span>
                         </div>
+
+                        <div id="document-placeholder"
+                            class="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center">
+                            <span class="material-symbols-outlined text-4xl text-slate-400">touch_app</span>
+                            <p class="mt-2 font-semibold text-slate-700">Pilih layanan di sebelah kiri</p>
+                            <p class="text-sm text-slate-500">Daftar dokumen yang harus diunggah akan muncul di sini.
+                            </p>
+                        </div>
+
+                        @foreach ($dokumenPersyaratan as $slug => $dokumenLayanan)
+                            <div id="dokumen-{{ $slug }}" class="dokumen-group hidden space-y-4">
+                                @foreach ($dokumenLayanan as $namaDokumen)
+                                    <div class="rounded-xl border border-slate-200 p-4">
+                                        <label class="block font-semibold mb-2">{{ $namaDokumen }}</label>
+                                        <input type="file" name="dokumen[{{ $namaDokumen }}]"
+                                            class="w-full border rounded-lg p-3">
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endforeach
                     </div>
-                </aside>
-            </div>
+
+                    <div
+                        class="sticky bottom-0 -mx-6 mt-6 border-t border-slate-100 bg-white/95 px-6 py-4 backdrop-blur md:-mx-8 md:px-8">
+                        <button id="submit-button"
+                            class="w-full md:w-auto px-10 h-14 bg-primary text-white font-button rounded-xl hover:bg-primary-container transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none"
+                            type="submit" disabled>
+                            <span>Kirim Permohonan</span>
+                            <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <aside class="lg:col-span-12 xl:col-span-3 space-y-gutter">
+                <div class="bg-primary-container text-white rounded-xl p-6 shadow-sm">
+                    <h3 class="font-h3 text-lg mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined">info</span>
+                        Informasi Penting
+                    </h3>
+                    <ul class="space-y-4 text-sm opacity-90">
+                        <li class="flex gap-3">
+                            <span class="material-symbols-outlined text-tertiary-fixed text-lg">history</span>
+                            <span>Proses verifikasi dokumen memerlukan waktu 1-2 hari kerja.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="material-symbols-outlined text-tertiary-fixed text-lg">check_circle</span>
+                            <span>Pastikan file scan terlihat jelas dan tidak terpotong.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span
+                                class="material-symbols-outlined text-tertiary-fixed text-lg">notifications_active</span>
+                            <span>Notifikasi status akan dikirimkan melalui dashboard.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="font-bold text-on-surface mb-4">Alur Singkat</h3>
+                    <ol class="space-y-3 text-sm text-on-surface-variant">
+                        <li class="flex gap-3"><span class="font-bold text-primary">1</span><span>Pilih jenis
+                                surat.</span></li>
+                        <li class="flex gap-3"><span class="font-bold text-primary">2</span><span>Isi tujuan
+                                pengajuan.</span></li>
+                        <li class="flex gap-3"><span class="font-bold text-primary">3</span><span>Unggah semua
+                                dokumen.</span></li>
+                    </ol>
+                </div>
+            </aside>
         </div>
     </main>
     <footer class="w-full bg-slate-50 py-8 border-t border-slate-200">
@@ -606,6 +450,9 @@
         const dokumenGroups = document.querySelectorAll('.dokumen-group');
         const dokumenInputs = document.querySelectorAll('.dokumen-group input[type="file"]');
         const formArea = document.getElementById('form-area');
+        const documentPlaceholder = document.getElementById('document-placeholder');
+        const selectedServiceTitle = document.getElementById('selected-service-title');
+        const submitButton = document.getElementById('submit-button');
 
         dokumenInputs.forEach((input) => {
             input.disabled = true;
@@ -643,31 +490,21 @@
 
         cards.forEach(card => {
             card.addEventListener('click', function () {
-                if (formArea) {
-                    formArea.classList.remove('hidden');
-                }
-
                 cards.forEach(c => {
                     c.classList.remove(
                         'bg-primary-container',
-                        'border-2',
-                        'border-primary',
-                        'hover:shadow-md',
+                        'text-white',
                         'ring-2',
                         'ring-primary',
                         'ring-offset-2'
                     );
 
                     c.classList.add(
-                        'bg-white',
-                        'border',
-                        'border-slate-200',
-                        'hover:border-primary-fixed-dim',
-                        'hover:bg-slate-50'
+                        'hover:bg-emerald-50'
                     );
 
                     const title = c.querySelector('h3');
-                    const iconBox = c.querySelector('div');
+                    const iconBox = c.querySelector('span');
                     const icon = c.querySelector('.check-icon');
 
                     if (title) {
@@ -686,24 +523,18 @@
                 });
 
                 this.classList.remove(
-                    'bg-white',
-                    'border',
-                    'border-slate-200',
-                    'hover:border-primary-fixed-dim',
-                    'hover:bg-slate-50'
+                    'hover:bg-emerald-50'
                 );
                 this.classList.add(
                     'bg-primary-container',
-                    'border-2',
-                    'border-primary',
-                    'hover:shadow-md',
                     'ring-2',
                     'ring-primary',
-                    'ring-offset-2'
+                    'ring-offset-2',
+                    'text-white'
                 );
 
                 const title = this.querySelector('h3');
-                const iconBox = this.querySelector('div');
+                const iconBox = this.querySelector('span');
                 const icon = this.querySelector('.check-icon');
 
                 if (title) {
@@ -722,6 +553,15 @@
 
                 const jenis = this.dataset.surat;
                 jenisSuratInput.value = jenis;
+                if (selectedServiceTitle) {
+                    selectedServiceTitle.textContent = this.dataset.label || 'Form Pengajuan';
+                }
+                if (documentPlaceholder) {
+                    documentPlaceholder.classList.add('hidden');
+                }
+                if (submitButton) {
+                    submitButton.disabled = false;
+                }
 
                 dokumenGroups.forEach(group => {
                     group.classList.add('hidden');
@@ -739,6 +579,10 @@
                         input.disabled = false;
                         input.required = true;
                     });
+                }
+
+                if (formArea) {
+                    formArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });

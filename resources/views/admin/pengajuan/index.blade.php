@@ -126,10 +126,11 @@
         <aside class="hidden md:flex flex-col gap-2 p-4 h-screen w-64 border-r border-slate-200 bg-white sticky top-16">
             <div class="mb-6 px-2 py-4 flex items-center gap-3">
                 <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center">
-                    <img alt="Admin Avatar" class="w-10 h-10 rounded-lg object-cover"
-                        data-alt="Professional portrait of a male administrative official in business attire, clean background"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxqattrOzrZ_z2WWKGe_agUgoqox-CBpdIg9lsc1hbn9hA-QCx80aUDIz4nNDagzOfJ-28c9J1oWbtGNZd-7ka_2Po3GraS4VSrfHNB_ToMyofZWKXrJQbjWDBdPfMGToCQZFsgnAwQGXlP-Sub1D99fLZh_YZ06obtHNCEj7X3Na7gTrdkVkUQg5SWRVJejMLUFzyTtV4B9NPT6NxvJIY28XNj1UjIiDXAm5BUfxn2tuS32IdFer_Hd7Wzv0SdO2NqTTFYYtH0LE" />
-                </div>
+          <!-- <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"> -->
+          <span class="material-symbols-outlined text-primary text-3xl">
+            account_circle
+          </span>
+        </div>
                 <div>
                     <h3 class="text-sm font-bold text-emerald-900">Admin Desa</h3>
                     <p class="text-xs text-slate-500">Administrator</p>

@@ -14,7 +14,7 @@ class DashboardController extends Controller
         $approved = PengajuanSurat::where('status', 'disetujui')->count();
         $all = PengajuanSurat::count();
         $recentActivities = ActivityLog::with(['user', 'pengajuanSurat'])
-            ->latest()
+            ->oldest()
             ->limit(5)
             ->get();
 
