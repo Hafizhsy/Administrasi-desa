@@ -15,8 +15,20 @@ class PengajuanSurat extends Model
         'keperluan',
         'file_persyaratan',
         'status',
+        'nomor_surat',
+        'nama_penanda_tangan',
+        'nip_penanda_tangan',
+        'tanda_tangan_path',
+        'disetujui_at',
         'catatan_admin',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'disetujui_at' => 'datetime',
+        ];
+    }
 
     public function user()
     {

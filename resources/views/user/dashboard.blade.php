@@ -291,16 +291,6 @@
             </a>
           </button>
         </div>
-        <!-- Info Card -->
-        <div class="relative rounded-xl bg-white border border-slate-200 overflow-hidden aspect-video">
-          <img alt="Village Event" class="w-full h-full object-cover"
-            data-alt="Panoramic view of Kopandakan I village square with community members gathering for a traditional ceremony under a clear blue sky"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRVwFyd9iCcZLiRogVy1NIgMVVwPSqbiDBaGRrQlsC3nJCadCgUxc-VA5Ho8Q3eEGSGhl3eXqhc3rVbIREXGxAhKttiAdfXZ2A9j94Org3NlK8kefKlhwDjhJiosRoTTTAJuEyo1BBddVwzhCw-_gGvr_fZWuIaWNCJK7GARk6idevveVukP9bCu8f5Mww39eZ3q6DTmc1TpXpJC6oA879gQoR-hOGy3tLxoGN2MrqJrkPxo24PptKa9RK0bi8j_TBGSa3-NkH3l8" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-            <span class="text-white text-xs font-bold uppercase tracking-wider mb-1">Berita Desa</span>
-            <h4 class="text-white font-bold leading-tight">Gotong Royong Perbaikan Irigasi Sawah Selatan</h4>
-          </div>
-        </div>
         <!-- Peta Desa Card -->
         <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 border-dashed">
           <div class="flex items-center gap-3 mb-2">

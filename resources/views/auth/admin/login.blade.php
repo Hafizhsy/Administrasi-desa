@@ -131,7 +131,7 @@
             <div class="absolute inset-0 opacity-20">
                 <img alt="Official village building" class="w-full h-full object-cover"
                     data-alt="Modern architectural detail of a government building with clean lines, glass windows, and lush green tropical foliage during daylight"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLkMAjg3MI3l8s1Y1JmonoBIYAyeRRt1bR3osuLGviP_do2fPJNHxhbvALGzmw7rnwY9O1RBUij2A8DpD9NIeBQAZBMGrODFioU3txQhMAFcuRJShF8wfpa_vsBeCaOc3YhPMZSL7CEjCHQdUS8lERBCUBELtldsEgSbT0GUGaK5quZ3LZd7TBYtd-9HYPb64NjfF2uOIiegD2j-ffDPtnVUsKGqJ6CDxlsDCV2hiCIVyScjlFDpMLqHrDreeDqhjOySk8oF-aaTI" />
+                    src="{{ asset('images/kantordesa.jpg') }}" />
             </div>
             <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-transparent"></div>
             <div class="relative z-10 max-w-lg">

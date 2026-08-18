@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
             ->name('admin.laporan.rekap');
         Route::get('/admin/pengajuan', [PengajuanSuratController::class, 'adminIndex'])->name('admin.pengajuan.index');
         Route::patch('/admin/pengajuan/{pengajuanSurat}/status', [PengajuanSuratController::class, 'updateStatus'])->name('admin.pengajuan.status');
+        Route::get('/admin/pengajuan/{pengajuanSurat}/tanda-tangan', [PengajuanSuratController::class, 'signature'])->name('admin.pengajuan.signature');
     });
 
     Route::middleware(['user'])->group(function () {
@@ -51,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user/pengajuan/create', [PengajuanSuratController::class, 'create'])->name('user.pengajuan.create');
         Route::post('/user/pengajuan', [PengajuanSuratController::class, 'store'])->name('user.pengajuan.store');
         Route::get('/user/pengajuan/{pengajuanSurat}/cetak', [PengajuanSuratController::class, 'cetak'])->name('user.pengajuan.cetak');
+        Route::get('/user/pengajuan/{pengajuanSurat}/tanda-tangan', [PengajuanSuratController::class, 'signature'])->name('user.pengajuan.signature');
     });
 });
 

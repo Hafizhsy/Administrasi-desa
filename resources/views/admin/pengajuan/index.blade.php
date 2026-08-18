@@ -281,16 +281,19 @@
                                             </button>
 
                                             @if($item->status === 'menunggu')
-                                                <form method="POST" action="{{ route('admin.pengajuan.status', $item) }}">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <input type="hidden" name="status" value="disetujui">
-                                                    <button
-                                                        class="w-10 h-10 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors flex items-center justify-center"
-                                                        title="Setujui">
-                                                        <span class="material-symbols-outlined">check_circle</span>
-                                                    </button>
-                                                </form>
+                                                <button type="button"
+                                                    class="w-10 h-10 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors flex items-center justify-center"
+                                                    title="Setujui dan tanda tangani"
+                                                    data-open-modal="setujui-pengajuan-{{ $item->id }}">
+                                                    <span class="material-symbols-outlined">check_circle</span>
+                                                </button>
+                                            @elseif($item->status === 'disetujui' && !$item->tanda_tangan_path)
+                                                <button type="button"
+                                                    class="h-10 px-4 bg-amber-100 text-amber-800 rounded-lg text-sm font-bold flex items-center justify-center"
+                                                    title="Lengkapi tanda tangan"
+                                                    data-open-modal="setujui-pengajuan-{{ $item->id }}">
+                                                    Lengkapi TTD
+                                                </button>
                                             @elseif($item->status === 'disetujui')
                                                 <button type="button" disabled
                                                     class="h-10 px-4 bg-primary-fixed-dim text-primary rounded-lg text-sm font-bold flex items-center justify-center cursor-default">
@@ -455,6 +458,79 @@
                             </div>
                         </div>
                     </dialog>
+
+                    @if($item->status === 'menunggu' || ($item->status === 'disetujui' && !$item->tanda_tangan_path))
+                        <dialog id="setujui-pengajuan-{{ $item->id }}"
+                            class="m-auto w-[min(92vw,620px)] max-h-[90dvh] rounded-xl border border-outline-variant bg-white p-0 text-left shadow-2xl backdrop:bg-slate-950/60">
+                            <form method="POST" action="{{ route('admin.pengajuan.status', $item) }}"
+                                enctype="multipart/form-data" class="flex max-h-[90dvh] flex-col overflow-hidden">
+                                @csrf
+                                @method('PATCH')
+                                <input type="hidden" name="status" value="disetujui">
+
+                                <div class="flex items-start justify-between gap-4 border-b border-emerald-100 bg-emerald-50 px-5 py-4">
+                                    <div>
+                                        <p class="text-sm font-semibold uppercase tracking-wide text-emerald-700">Setujui dan Tanda Tangani</p>
+                                        <h2 class="mt-1 text-xl font-bold text-on-surface">{{ $item->nama_pemohon }}</h2>
+                                        <p class="mt-1 text-sm text-slate-600">{{ $item->jenis_surat }}</p>
+                                    </div>
+                                    <button type="button"
+                                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-600 hover:bg-white"
+                                        title="Tutup" data-close-modal="setujui-pengajuan-{{ $item->id }}">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                </div>
+
+                                <div class="space-y-4 overflow-y-auto p-5">
+                                    <div class="rounded-xl border border-emerald-100 bg-emerald-50 p-3 text-sm text-emerald-900">
+                                        Data berikut akan disimpan khusus pada surat ini dan tampil pada template cetak warga.
+                                    </div>
+
+                                    <div>
+                                        <label for="nomor-surat-{{ $item->id }}" class="mb-2 block text-sm font-bold">Nomor Surat <span class="text-red-600">*</span></label>
+                                        <input id="nomor-surat-{{ $item->id }}" name="nomor_surat" required maxlength="100"
+                                            value="{{ old('nomor_surat', $item->nomor_surat) }}"
+                                            placeholder="Contoh: 470/001/DK-I/VII/2026"
+                                            class="w-full rounded-xl border border-outline-variant p-3 focus:border-emerald-600 focus:ring-emerald-100">
+                                    </div>
+
+                                    <div>
+                                        <label for="nama-penanda-tangan-{{ $item->id }}" class="mb-2 block text-sm font-bold">Nama Kepala Desa <span class="text-red-600">*</span></label>
+                                        <input id="nama-penanda-tangan-{{ $item->id }}" name="nama_penanda_tangan" required maxlength="255"
+                                            value="{{ old('nama_penanda_tangan', $item->nama_penanda_tangan) }}"
+                                            placeholder="Nama lengkap kepala desa"
+                                            class="w-full rounded-xl border border-outline-variant p-3 focus:border-emerald-600 focus:ring-emerald-100">
+                                    </div>
+
+                                    <div>
+                                        <label for="nip-penanda-tangan-{{ $item->id }}" class="mb-2 block text-sm font-bold">NIP Kepala Desa <span class="font-normal text-slate-500">(opsional)</span></label>
+                                        <input id="nip-penanda-tangan-{{ $item->id }}" name="nip_penanda_tangan" maxlength="100"
+                                            value="{{ old('nip_penanda_tangan', $item->nip_penanda_tangan) }}" placeholder="Masukkan NIP jika ada"
+                                            class="w-full rounded-xl border border-outline-variant p-3 focus:border-emerald-600 focus:ring-emerald-100">
+                                    </div>
+
+                                    <div>
+                                        <label for="tanda-tangan-{{ $item->id }}" class="mb-2 block text-sm font-bold">Tanda Tangan Kepala Desa <span class="text-red-600">*</span></label>
+                                        <input id="tanda-tangan-{{ $item->id }}" name="tanda_tangan" type="file" required
+                                            accept="image/png,image/jpeg"
+                                            class="block w-full rounded-xl border border-outline-variant bg-white p-3 text-sm">
+                                        <p class="mt-2 text-xs text-slate-500">Gunakan PNG transparan agar hasil surat rapi. Format PNG/JPG/JPEG, maksimal 2 MB.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col-reverse gap-3 border-t border-outline-variant bg-slate-50 px-5 py-4 sm:flex-row sm:justify-end">
+                                    <button type="button"
+                                        class="h-11 rounded-xl border border-outline-variant bg-white px-5 font-semibold text-slate-700 hover:bg-slate-100"
+                                        data-close-modal="setujui-pengajuan-{{ $item->id }}">Batal</button>
+                                    <button type="submit"
+                                        class="h-11 rounded-xl bg-emerald-800 px-5 font-bold text-white hover:bg-emerald-700">
+                                        Setujui & Simpan Tanda Tangan
+                                    </button>
+                                </div>
+                            </form>
+                        </dialog>
+
+                    @endif
 
                     @if($item->status === 'menunggu')
                         <dialog id="tolak-pengajuan-{{ $item->id }}"
