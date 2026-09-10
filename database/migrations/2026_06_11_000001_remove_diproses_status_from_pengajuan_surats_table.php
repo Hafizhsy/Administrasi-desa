@@ -10,11 +10,15 @@ return new class extends Migration {
             ->where('status', 'diproses')
             ->update(['status' => 'menunggu']);
 
-        DB::statement("ALTER TABLE pengajuan_surats MODIFY status ENUM('menunggu', 'disetujui', 'ditolak') NOT NULL DEFAULT 'menunggu'");
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement("ALTER TABLE pengajuan_surats MODIFY status ENUM('menunggu', 'disetujui', 'ditolak') NOT NULL DEFAULT 'menunggu'");
+        }
     }
 
     public function down(): void
     {
-        DB::statement("ALTER TABLE pengajuan_surats MODIFY status ENUM('menunggu', 'diproses', 'disetujui', 'ditolak') NOT NULL DEFAULT 'menunggu'");
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement("ALTER TABLE pengajuan_surats MODIFY status ENUM('menunggu', 'diproses', 'disetujui', 'ditolak') NOT NULL DEFAULT 'menunggu'");
+        }
     }
 };

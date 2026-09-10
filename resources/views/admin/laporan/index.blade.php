@@ -152,6 +152,11 @@
                     <span class="material-symbols-outlined">folder_shared</span>
                     Permohonan
                 </a>
+                <a class="flex items-center gap-3 text-slate-600 hover:bg-slate-100 mx-2 rounded-lg px-4 py-3 font-medium text-sm transition-all duration-200"
+                    href="{{ route('admin.users.index') }}">
+                    <span class="material-symbols-outlined">verified_user</span>
+                    Verifikasi Akun
+                </a>
                 <a class="flex items-center gap-3 bg-emerald-900 text-white rounded-lg mx-2 px-4 py-3 font-medium text-sm transition-all duration-200"
                     href="{{ route('admin.laporan.index') }}">
                     <span class="material-symbols-outlined">analytics</span>
@@ -346,6 +351,11 @@
             href="{{ route('admin.pengajuan.index') }}">
             <span class="material-symbols-outlined">description</span>
             <span class="text-[11px] font-semibold">Permohonan</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-500 px-4 py-1.5 hover:bg-slate-50 transition-transform active:scale-90"
+            href="{{ route('admin.users.index') }}">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span class="text-[11px] font-semibold">Akun</span>
         </a>
         <a class="flex flex-col items-center justify-center bg-emerald-50 text-emerald-900 rounded-xl px-4 py-1.5 transition-transform active:scale-90"
             href="{{ route('admin.laporan.index') }}">

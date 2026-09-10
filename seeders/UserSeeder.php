@@ -23,8 +23,6 @@ class UserSeeder extends Seeder
             'alamat' => 'Jl. Admin No. 1',
             'password' => Hash::make('Kopandakan123!'),
             'role' => 'admin',
-            'account_status' => User::STATUS_ACTIVE,
-            'account_verified_at' => now(),
         ]);
     }
 }

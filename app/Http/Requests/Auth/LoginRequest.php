@@ -53,6 +53,15 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        if (Auth::user()->role === 'user' && ! Auth::user()->isActive()) {
+            Auth::logout();
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'login' => 'Akun Anda belum aktif. Silakan tunggu proses verifikasi oleh admin desa.',
+            ]);
+        }
+
         RateLimiter::clear($this->throttleKey());
     }
 

@@ -169,8 +169,8 @@
                         <h2 class="font-h2 text-h3 text-primary text-center">Kopandakan I</h2>
                     </div>
                     <div class="mb-8 text-center md:text-left">
-                        <h2 class="font-h2 text-h3 text-on-surface mb-2">Selamat Datang</h2>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Silakan masuk dengan akun Anda</p>
+                        <h2 class="font-h2 text-h3 text-on-surface mb-2">Daftar Akun Warga</h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Akun baru akan diverifikasi admin desa sebelum bisa login.</p>
                     </div>
                     <form method="POST" action="{{ route('register') }}" class="space-y-5">
                         @csrf

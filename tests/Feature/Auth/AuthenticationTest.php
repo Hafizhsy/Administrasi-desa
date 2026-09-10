@@ -43,6 +43,45 @@ test('users can not authenticate with invalid password', function () {
     $this->assertGuest();
 });
 
+test('pending users can not authenticate', function () {
+    $user = User::factory()->create([
+        'account_status' => User::STATUS_PENDING,
+        'account_verified_at' => null,
+        'account_verified_by' => null,
+    ]);
+
+    $this->post('/login', [
+        'login' => $user->email,
+        'password' => 'password',
+    ])->assertSessionHasErrors([
+        'login' => 'Akun Anda belum aktif. Silakan tunggu proses verifikasi oleh admin desa.',
+    ]);
+
+    $this->assertGuest();
+});
+
+test('admin can activate pending user account', function () {
+    $admin = User::factory()->create([
+        'role' => 'admin',
+        'account_status' => User::STATUS_ACTIVE,
+    ]);
+    $user = User::factory()->create([
+        'account_status' => User::STATUS_PENDING,
+        'account_verified_at' => null,
+        'account_verified_by' => null,
+    ]);
+
+    $this->actingAs($admin)
+        ->patch(route('admin.users.activate', $user))
+        ->assertSessionHas('success', 'Akun warga berhasil diaktifkan.');
+
+    $user->refresh();
+
+    expect($user->account_status)->toBe(User::STATUS_ACTIVE);
+    expect($user->account_verified_by)->toBe($admin->id);
+    expect($user->account_verified_at)->not->toBeNull();
+});
+
 test('users can logout', function () {
     $user = User::factory()->create();
 

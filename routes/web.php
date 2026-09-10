@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\LaporanController;
+use App\Http\Controllers\Admin\UserVerificationController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\PengajuanSuratController;
 use App\Support\LayananSurat;
@@ -33,6 +34,10 @@ Route::middleware(['auth'])->group(function () {
             ->name('admin.laporan.index');
         Route::get('/admin/laporan/rekap', [LaporanController::class, 'rekap'])
             ->name('admin.laporan.rekap');
+        Route::get('/admin/users', [UserVerificationController::class, 'index'])
+            ->name('admin.users.index');
+        Route::patch('/admin/users/{user}/activate', [UserVerificationController::class, 'activate'])
+            ->name('admin.users.activate');
         Route::get('/admin/pengajuan', [PengajuanSuratController::class, 'adminIndex'])->name('admin.pengajuan.index');
         Route::patch('/admin/pengajuan/{pengajuanSurat}/status', [PengajuanSuratController::class, 'updateStatus'])->name('admin.pengajuan.status');
         Route::get('/admin/pengajuan/{pengajuanSurat}/tanda-tangan', [PengajuanSuratController::class, 'signature'])->name('admin.pengajuan.signature');

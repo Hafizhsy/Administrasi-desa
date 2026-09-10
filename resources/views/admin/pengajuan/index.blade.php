@@ -146,6 +146,11 @@
                     Permohonan
                 </a>
                 <a class="flex items-center gap-3 text-slate-600 hover:bg-slate-100 mx-2 rounded-lg px-4 py-3 font-medium text-sm transition-all duration-200"
+                    href="{{ route('admin.users.index') }}">
+                    <span class="material-symbols-outlined">verified_user</span>
+                    Verifikasi Akun
+                </a>
+                <a class="flex items-center gap-3 text-slate-600 hover:bg-slate-100 mx-2 rounded-lg px-4 py-3 font-medium text-sm transition-all duration-200"
                     href="{{ route('admin.laporan.index') }}">
                     <span class="material-symbols-outlined">analytics</span>
                     Laporan

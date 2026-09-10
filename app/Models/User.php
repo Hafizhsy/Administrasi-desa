@@ -10,6 +10,9 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_ACTIVE = 'active';
+
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
@@ -25,6 +28,9 @@ class User extends Authenticatable
         'alamat',
         'password',
         'role',
+        'account_status',
+        'account_verified_at',
+        'account_verified_by',
     ];
 
     /**
@@ -46,7 +52,13 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'account_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isActive(): bool
+    {
+        return $this->account_status === self::STATUS_ACTIVE;
     }
 }

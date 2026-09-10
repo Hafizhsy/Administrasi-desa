@@ -174,6 +174,11 @@
           Permohonan
         </a>
         <a class="flex items-center gap-3 text-slate-600 hover:bg-slate-100 mx-2 rounded-lg px-4 py-3 font-medium text-sm transition-all duration-200"
+          href="{{ route('admin.users.index') }}">
+          <span class="material-symbols-outlined">verified_user</span>
+          Verifikasi Akun
+        </a>
+        <a class="flex items-center gap-3 text-slate-600 hover:bg-slate-100 mx-2 rounded-lg px-4 py-3 font-medium text-sm transition-all duration-200"
           href="{{ route('admin.laporan.index') }}">
           <span class="material-symbols-outlined">analytics</span>
           Laporan
@@ -190,7 +195,7 @@
         </div>
       </div>
       <!-- Stats Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-6 mb-10">
         <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
           href="{{ route('admin.pengajuan.index', ['status' => 'menunggu']) }}">
           <div class="flex justify-between items-start">
@@ -241,6 +246,19 @@
             <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $all }}</h4>
           </div>
         </div>
+        <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
+          href="{{ route('admin.users.index', ['status' => 'pending']) }}">
+          <div class="flex justify-between items-start">
+            <div class="p-3 bg-amber-100 rounded-lg">
+              <span class="material-symbols-outlined text-amber-700">verified_user</span>
+            </div>
+            <span class="text-amber-700 font-bold text-sm">Perlu aktivasi</span>
+          </div>
+          <div>
+            <p class="text-slate-500 font-label-sm text-label-sm">Akun Warga</p>
+            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $pendingUsers }}</h4>
+          </div>
+        </a>
       </div>
       <!-- Recent Activities -->
       <div class="mb-20">
@@ -323,6 +341,11 @@
       href="{{ route('admin.laporan.index') }}">
       <span class="material-symbols-outlined">analytics</span>
       <span class="font-public-sans text-[11px] font-semibold">Laporan</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-slate-500 px-4 py-1.5 hover:bg-slate-50 transition-transform active:scale-90"
+      href="{{ route('admin.users.index') }}">
+      <span class="material-symbols-outlined">verified_user</span>
+      <span class="font-public-sans text-[11px] font-semibold">Akun</span>
     </a>
   </nav>
   <!-- Footer -->

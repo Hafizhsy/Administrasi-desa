@@ -172,6 +172,11 @@
                         <h2 class="font-h2 text-h3 text-on-surface mb-2">Selamat Datang</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant">Silakan masuk dengan akun Anda</p>
                     </div>
+                    @if(session('status'))
+                        <div class="mb-6 rounded-xl bg-emerald-50 border border-emerald-100 p-4 text-sm font-semibold text-emerald-800">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('login') }}" class="space-y-6">
                         @csrf
                         <div class="space-y-2">
@@ -184,10 +189,10 @@
                                     class="w-full h-[56px] pl-12 pr-4 bg-surface-bright border border-outline-variant rounded-xl focus:ring-2 focus:ring-surface-tint focus:border-transparent transition-all outline-none font-body-md"
                                     id="login" name="login" type="text" inputmode="text" value="{{ old('login') }}" required autofocus
                                     placeholder="Masukkan email / NIK Anda" />
-                                @error('login')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
                             </div>
+                            @error('login')
+                                <p class="text-red-500 text-sm mt-2 leading-relaxed">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="space-y-2">
                             <div class="flex justify-between items-center px-1">
@@ -202,9 +207,6 @@
                                 <input
                                     class="w-full h-[56px] pl-12 pr-12 bg-surface-bright border border-outline-variant rounded-xl focus:ring-2 focus:ring-surface-tint focus:border-transparent transition-all outline-none font-body-md"
                                     id="password" name="password" type="password" required placeholder="••••••••" />
-                                @error('password')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
                                 <button id="togglePassword"
                                     class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface"
                                     type="button">
@@ -213,6 +215,9 @@
                                     </span>
                                 </button>
                             </div>
+                            @error('password')
+                                <p class="text-red-500 text-sm mt-2 leading-relaxed">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="flex items-center gap-3 px-1">
                             <input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-surface-tint"
