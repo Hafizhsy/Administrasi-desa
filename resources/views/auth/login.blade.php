@@ -176,15 +176,15 @@
                         @csrf
                         <div class="space-y-2">
                             <label class="font-label-sm text-label-sm text-on-surface-variant block ml-1"
-                                for="nik">Email / NIK</label>
+                                for="login">Email / NIK</label>
                             <div class="relative group">
                                 <span
                                     class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">person</span>
                                 <input
                                     class="w-full h-[56px] pl-12 pr-4 bg-surface-bright border border-outline-variant rounded-xl focus:ring-2 focus:ring-surface-tint focus:border-transparent transition-all outline-none font-body-md"
-                                    id="email" name="email" type="email" value="{{ old('email') }}" required autofocus
+                                    id="login" name="login" type="text" inputmode="text" value="{{ old('login') }}" required autofocus
                                     placeholder="Masukkan email / NIK Anda" />
-                                @error('email')
+                                @error('login')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>

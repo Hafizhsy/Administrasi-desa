@@ -151,7 +151,7 @@ class PengajuanSuratController extends Controller
             ->when($request->filled('status'), function ($query) use ($request) {
                 $query->where('status', $request->status);
             })
-            ->oldest()
+            ->latest()
             ->paginate(10)
             ->withQueryString();
 

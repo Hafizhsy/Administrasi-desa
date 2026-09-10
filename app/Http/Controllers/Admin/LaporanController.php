@@ -79,7 +79,7 @@ class LaporanController extends Controller
         $maxDailyTotal = max(1, $dailyReport->max('total'));
 
         $recentPengajuan = (clone $baseQuery)
-            ->oldest()
+            ->latest()
             ->limit(8)
             ->get();
 

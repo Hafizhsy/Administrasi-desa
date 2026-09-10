@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
-use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\PengajuanSuratController;
 use App\Support\LayananSurat;
 
@@ -14,13 +13,7 @@ Route::get('/', function () {
     ]);
 })->name('welcome');
 
-Route::middleware('guest')->group(function () {
-    Route::get('/admin/login', [AdminLoginController::class, 'create'])
-        ->name('admin.login');
-
-    Route::post('/admin/login', [AdminLoginController::class, 'store'])
-        ->name('admin.login.store');
-});
+Route::redirect('/admin/login', '/login')->middleware('guest');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {

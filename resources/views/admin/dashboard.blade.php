@@ -190,13 +190,13 @@
         </div>
       </div>
       <!-- Stats Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
         <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
           href="{{ route('admin.pengajuan.index', ['status' => 'menunggu']) }}">
           <div class="flex justify-between items-start">
-            <div class="p-3 bg-error-container rounded-lg"><span
-                class="material-symbols-outlined text-on-error-container">pending_actions</span></div><span
-              class="text-error font-bold text-sm">Perlu review</span>
+            <div class="p-3 bg-slate-100 rounded-lg"><span
+                class="material-symbols-outlined text-slate-700">pending_actions</span></div><span
+              class="text-slate-700 font-bold text-sm">Perlu review</span>
           </div>
           <div>
             <p class="text-slate-500 font-label-sm text-label-sm">Menunggu</p>
@@ -209,17 +209,30 @@
             <div class="p-3 bg-primary-fixed rounded-lg">
               <span class="material-symbols-outlined text-primary-container">task_alt</span>
             </div>
-            <span class="text-emerald-700 font-bold text-sm">Siap ambil</span>
+            <span class="text-emerald-700 font-bold text-sm">Siap Cetak</span>
           </div>
           <div>
             <p class="text-slate-500 font-label-sm text-label-sm">Disetujui</p>
             <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $approved }}</h4>
           </div>
         </a>
+        <a class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4 hover:shadow-md transition-shadow cursor-pointer"
+          href="{{ route('admin.pengajuan.index', ['status' => 'ditolak']) }}">
+          <div class="flex justify-between items-start">
+            <div class="p-3 bg-red-100 rounded-lg">
+              <span class="material-symbols-outlined text-red-700">cancel</span>
+            </div>
+            <span class="text-red-700 font-bold text-sm">Perlu perhatian</span>
+          </div>
+          <div>
+            <p class="text-slate-500 font-label-sm text-label-sm">Ditolak</p>
+            <h4 class="text-3xl font-h2 text-h2 text-emerald-900">{{ $rejected }}</h4>
+          </div>
+        </a>
         <div class="bg-white border border-slate-200 p-6 rounded-xl flex flex-col gap-4">
           <div class="flex justify-between items-start">
-            <div class="p-3 bg-tertiary-fixed rounded-lg">
-              <span class="material-symbols-outlined text-on-tertiary-fixed-variant">description</span>
+            <div class="p-3 bg-sky-100 rounded-lg">
+              <span class="material-symbols-outlined text-sky-800">description</span>
             </div>
             <span class="text-slate-500 font-bold text-sm">Semua data</span>
           </div>
@@ -242,7 +255,7 @@
               @php
                 $status = $activity->metadata['status'] ?? null;
                 $statusMeta = [
-                  'menunggu' => ['label' => 'Menunggu', 'class' => 'bg-red-50 text-red-700 border-red-100'],
+                  'menunggu' => ['label' => 'Menunggu', 'class' => 'bg-slate-100 text-slate-700 border-slate-200'],
                   'disetujui' => ['label' => 'Disetujui', 'class' => 'bg-emerald-50 text-emerald-700 border-emerald-100'],
                   'ditolak' => ['label' => 'Ditolak', 'class' => 'bg-red-100 text-red-700 border-red-200'],
                 ][$status] ?? null;

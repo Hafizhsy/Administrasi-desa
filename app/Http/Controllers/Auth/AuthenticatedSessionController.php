@@ -28,15 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if (auth()->user()->role === 'admin') {
-            auth()->logout();
-
-            return back()->withErrors([
-                'email' => 'Akun admin tidak dapat login melalui halaman masyarakat. Silakan gunakan portal admin.',
-            ]);
-        }
-
-        return redirect()->route('user.dashboard');
+        return redirect()->route('dashboard');
     }
     /**
      * Destroy an authenticated session.

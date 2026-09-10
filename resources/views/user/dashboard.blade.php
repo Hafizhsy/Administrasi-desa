@@ -146,13 +146,15 @@
       </div>
       <span class="font-public-sans font-bold text-lg text-emerald-900">Kopandakan I</span>
     </div>
-    <x-notification-dropdown />
-    <form method="POST" action="{{ route('logout') }}">
-      @csrf
-      <button type="submit" class="px-4 py-2 rounded-lg bg-red-50 text-red-700 font-semibold hover:bg-red-100">
-        Logout
-      </button>
-    </form>
+    <div class="flex items-center gap-2">
+      <x-notification-dropdown />
+      <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="px-4 py-2 rounded-lg bg-red-50 text-red-700 font-semibold hover:bg-red-100">
+          Logout
+        </button>
+      </form>
+    </div>
   </header>
   <main class="pt-20 pb-24 md:pb-8 max-w-container-max mx-auto px-4 md:px-margin-desktop">
     <!-- Welcome Hero Section -->

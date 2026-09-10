@@ -178,9 +178,9 @@
               <span class="material-symbols-outlined ml-2" data-icon="arrow_forward">arrow_forward</span>
             </a>
             <a class="inline-flex items-center justify-center px-8 py-4 glass-card border border-white/30 text-white font-button text-button rounded-xl hover:bg-white/20 active:scale-95 transition-all"
-              href="{{route('admin.login')}}">
-              Portal Admin
-              <span class="material-symbols-outlined ml-2" data-icon="admin_panel_settings">admin_panel_settings</span>
+              href="{{route('login')}}">
+              Masuk ke Sistem
+              <span class="material-symbols-outlined ml-2" data-icon="login">login</span>
             </a>
           </div>
         </div>

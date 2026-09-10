@@ -279,34 +279,13 @@
                                                 title="Lihat detail" data-open-modal="detail-pengajuan-{{ $item->id }}">
                                                 <span class="material-symbols-outlined">visibility</span>
                                             </button>
-
-                                            @if($item->status === 'menunggu')
-                                                <button type="button"
-                                                    class="w-10 h-10 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors flex items-center justify-center"
-                                                    title="Setujui dan tanda tangani"
-                                                    data-open-modal="setujui-pengajuan-{{ $item->id }}">
-                                                    <span class="material-symbols-outlined">check_circle</span>
-                                                </button>
-                                            @elseif($item->status === 'disetujui' && !$item->tanda_tangan_path)
-                                                <button type="button"
-                                                    class="h-10 px-4 bg-amber-100 text-amber-800 rounded-lg text-sm font-bold flex items-center justify-center"
-                                                    title="Lengkapi tanda tangan"
-                                                    data-open-modal="setujui-pengajuan-{{ $item->id }}">
-                                                    Lengkapi TTD
-                                                </button>
-                                            @elseif($item->status === 'disetujui')
-                                                <button type="button" disabled
-                                                    class="h-10 px-4 bg-primary-fixed-dim text-primary rounded-lg text-sm font-bold flex items-center justify-center cursor-default">
+                                            @if($item->status === 'disetujui' && $item->tanda_tangan_path)
+                                                <span
+                                                    class="inline-flex h-10 items-center gap-1.5 rounded-lg bg-primary-fixed-dim px-3 text-sm font-bold text-primary"
+                                                    title="Surat siap dicetak">
+                                                    <span class="material-symbols-outlined !text-[18px]">print</span>
                                                     Siap Cetak
-                                                </button>
-                                            @endif
-
-                                            @if($item->status === 'menunggu')
-                                                <button type="button"
-                                                    class="w-10 h-10 text-error hover:bg-error-container rounded-lg transition-colors flex items-center justify-center"
-                                                    title="Tolak" data-open-modal="tolak-pengajuan-{{ $item->id }}">
-                                                    <span class="material-symbols-outlined">cancel</span>
-                                                </button>
+                                                </span>
                                             @endif
                                         </div>
                                     </td>
@@ -456,6 +435,31 @@
                                     </section>
                                 </div>
                             </div>
+                            @if($item->status === 'menunggu')
+                                <div class="flex flex-col-reverse gap-3 border-t border-outline-variant bg-slate-50 px-5 py-4 sm:flex-row sm:justify-end md:px-6">
+                                    <button type="button"
+                                        class="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-red-200 bg-white px-5 font-bold text-red-700 hover:bg-red-50"
+                                        data-open-modal="tolak-pengajuan-{{ $item->id }}">
+                                        <span class="material-symbols-outlined">cancel</span>
+                                        Tolak
+                                    </button>
+                                    <button type="button"
+                                        class="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-emerald-800 px-5 font-bold text-white hover:bg-emerald-700"
+                                        data-open-modal="setujui-pengajuan-{{ $item->id }}">
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        Setujui
+                                    </button>
+                                </div>
+                            @elseif($item->status === 'disetujui' && !$item->tanda_tangan_path)
+                                <div class="flex justify-end border-t border-outline-variant bg-slate-50 px-5 py-4 md:px-6">
+                                    <button type="button"
+                                        class="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-amber-100 px-5 font-bold text-amber-800 hover:bg-amber-200"
+                                        data-open-modal="setujui-pengajuan-{{ $item->id }}">
+                                        <span class="material-symbols-outlined">draw</span>
+                                        Lengkapi Tanda Tangan
+                                    </button>
+                                </div>
+                            @endif
                         </div>
                     </dialog>
 

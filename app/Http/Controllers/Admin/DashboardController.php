@@ -12,12 +12,13 @@ class DashboardController extends Controller
     {
         $pending = PengajuanSurat::where('status', 'menunggu')->count();
         $approved = PengajuanSurat::where('status', 'disetujui')->count();
+        $rejected = PengajuanSurat::where('status', 'ditolak')->count();
         $all = PengajuanSurat::count();
         $recentActivities = ActivityLog::with(['user', 'pengajuanSurat'])
-            ->oldest()
+            ->latest()
             ->limit(5)
             ->get();
 
-        return view('admin.dashboard', compact('pending', 'approved', 'all', 'recentActivities'));
+        return view('admin.dashboard', compact('pending', 'approved', 'rejected', 'all', 'recentActivities'));
     }
 }
