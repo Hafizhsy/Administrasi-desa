@@ -148,6 +148,11 @@
     </div>
     <div class="flex items-center gap-2">
       <x-notification-dropdown />
+      <a href="{{ route('profile.edit') }}"
+        class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-50 text-emerald-900 font-semibold hover:bg-emerald-100">
+        <span class="material-symbols-outlined text-lg" data-icon="account_circle">account_circle</span>
+        Profil
+      </a>
       <form method="POST" action="{{ route('logout') }}">
         @csrf
         <button type="submit" class="px-4 py-2 rounded-lg bg-red-50 text-red-700 font-semibold hover:bg-red-100">
@@ -311,10 +316,10 @@
     </div>
   </main>
   <!-- Floating Action Button (Mobile Only) -->
-  <button
+  <a href="{{ route('user.pengajuan.create') }}"
     class="md:hidden fixed bottom-24 right-4 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-40 active:scale-90 transition-transform">
     <span class="material-symbols-outlined !text-3xl" data-icon="add">add</span>
-  </button>
+  </a>
   <!-- BottomNavBar -->
   <nav
     class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 flex justify-around items-center px-2 pb-safe py-2 z-50 shadow-lg">
@@ -324,14 +329,14 @@
       <span class="font-public-sans text-[11px] font-semibold">Beranda</span>
     </a>
     <a class="flex flex-col items-center justify-center text-slate-500 px-4 py-1.5 active:scale-90 transition-transform hover:bg-slate-50"
-      href="#">
+      href="{{ route('user.pengajuan.index') }}">
       <span class="material-symbols-outlined" data-icon="description">description</span>
       <span class="font-public-sans text-[11px] font-semibold">Layanan</span>
     </a>
     <a class="flex flex-col items-center justify-center text-slate-500 px-4 py-1.5 active:scale-90 transition-transform hover:bg-slate-50"
-      href="#">
+      href="{{ route('profile.edit') }}">
       <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
-      <span class="font-public-sans text-[11px] font-semibold">Status</span>
+      <span class="font-public-sans text-[11px] font-semibold">Profil</span>
     </a>
   </nav>
   <!-- Footer -->
