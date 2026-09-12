@@ -2,8 +2,13 @@
 
 namespace App\Support;
 
+use App\Models\PengajuanSurat;
+use Illuminate\Support\Carbon;
+
 class LayananSurat
 {
+    private const KODE_INSTANSI = 'DK.I';
+
     public static function all(): array
     {
         return [
@@ -153,5 +158,90 @@ class LayananSurat
     public static function documents(): array
     {
         return collect(self::all())->map(fn(array $layanan) => $layanan['documents'])->all();
+    }
+
+    public static function letterCodes(): array
+    {
+        return [
+            'Keterangan Belum Menikah' => 'KBM',
+            'Keterangan Pernah Menikah' => 'SK',
+            'Keterangan Kematian' => 'SKM',
+            'Kitir Nikah' => 'PN',
+            'Keterangan Waris' => 'SPW',
+            'Keterangan Pindah Penduduk' => 'KP',
+            'Keterangan Domisili' => 'SKD',
+            'Keterangan Beda Nama' => 'SK',
+            'Keterangan Kurang Mampu' => 'SKKM',
+            'Keterangan Penghasilan' => 'SKP',
+            'Keterangan Usaha' => 'SKU',
+            'Surat Pengantar Puspaga' => 'K',
+            'Keterangan Lain-lain' => 'K',
+            'Keterangan Kepemilikan' => 'SKKT',
+            'Keterangan Lunas PBB' => 'SK',
+        ];
+    }
+
+    public static function letterCodeFor(string $jenisSurat): ?string
+    {
+        return self::letterCodes()[$jenisSurat] ?? null;
+    }
+
+    public static function previewNomorSurat(PengajuanSurat $pengajuanSurat, ?Carbon $date = null): string
+    {
+        return self::formatNomorSurat(
+            self::nextSequenceFor($pengajuanSurat),
+            $pengajuanSurat->jenis_surat,
+            $date
+        );
+    }
+
+    public static function generateNomorSurat(PengajuanSurat $pengajuanSurat, ?Carbon $date = null): string
+    {
+        return self::previewNomorSurat($pengajuanSurat, $date);
+    }
+
+    private static function nextSequenceFor(PengajuanSurat $pengajuanSurat): int
+    {
+        return PengajuanSurat::query()
+            ->where('jenis_surat', $pengajuanSurat->jenis_surat)
+            ->whereNotNull('nomor_surat')
+            ->when($pengajuanSurat->exists, fn($query) => $query->whereKeyNot($pengajuanSurat->id))
+            ->count() + 1;
+    }
+
+    private static function formatNomorSurat(int $nomorUrut, string $jenisSurat, ?Carbon $date = null): string
+    {
+        $date ??= now();
+        $kodeSurat = self::letterCodeFor($jenisSurat);
+
+        if (!$kodeSurat) {
+            throw new \InvalidArgumentException("Kode surat untuk {$jenisSurat} belum terdaftar.");
+        }
+
+        return implode('/', [
+            $nomorUrut,
+            self::KODE_INSTANSI,
+            $kodeSurat,
+            self::romanMonth((int) $date->month),
+            $date->year,
+        ]);
+    }
+
+    private static function romanMonth(int $month): string
+    {
+        return [
+            1 => 'I',
+            2 => 'II',
+            3 => 'III',
+            4 => 'IV',
+            5 => 'V',
+            6 => 'VI',
+            7 => 'VII',
+            8 => 'VIII',
+            9 => 'IX',
+            10 => 'X',
+            11 => 'XI',
+            12 => 'XII',
+        ][$month];
     }
 }

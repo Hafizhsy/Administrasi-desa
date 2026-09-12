@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\PengajuanDokumen;
 use App\Models\ActivityLog;
 use App\Support\LayananSurat;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
@@ -155,6 +156,13 @@ class PengajuanSuratController extends Controller
             ->paginate(10)
             ->withQueryString();
 
+        $pengajuan->getCollection()->each(function (PengajuanSurat $item) {
+            $item->nomor_surat_otomatis = $item->nomor_surat
+                ?: (LayananSurat::letterCodeFor($item->jenis_surat)
+                    ? LayananSurat::previewNomorSurat($item)
+                    : 'Kode surat belum diatur');
+        });
+
         return view('admin.pengajuan.index', compact('pengajuan', 'jenisSurat'));
     }
 
@@ -163,13 +171,11 @@ class PengajuanSuratController extends Controller
         $request->validate([
             'status' => 'required|in:menunggu,disetujui,ditolak',
             'catatan_admin' => 'required_if:status,ditolak|nullable|string',
-            'nomor_surat' => 'required_if:status,disetujui|nullable|string|max:100',
             'nama_penanda_tangan' => 'required_if:status,disetujui|nullable|string|max:255',
             'nip_penanda_tangan' => 'nullable|string|max:100',
             'tanda_tangan' => 'required_if:status,disetujui|nullable|image|mimes:png,jpg,jpeg|max:2048',
         ], [
             'catatan_admin.required_if' => 'Catatan admin wajib diisi jika permohonan ditolak.',
-            'nomor_surat.required_if' => 'Nomor surat wajib diisi saat permohonan disetujui.',
             'nama_penanda_tangan.required_if' => 'Nama kepala desa wajib diisi saat permohonan disetujui.',
             'tanda_tangan.required_if' => 'Tanda tangan kepala desa wajib diunggah saat permohonan disetujui.',
             'tanda_tangan.image' => 'Tanda tangan harus berupa gambar.',
@@ -179,37 +185,45 @@ class PengajuanSuratController extends Controller
 
         $statusLama = $pengajuanSurat->status;
 
-        $approvalData = [];
+        DB::transaction(function () use ($request, $pengajuanSurat, $statusLama) {
+            $approvalData = [];
 
-        if ($request->status === 'disetujui') {
-            $approvalData = [
-                'nomor_surat' => $request->nomor_surat,
-                'nama_penanda_tangan' => $request->nama_penanda_tangan,
-                'nip_penanda_tangan' => $request->nip_penanda_tangan,
-                'tanda_tangan_path' => $request->file('tanda_tangan')
-                    ->store('letter-assets/signatures/' . $pengajuanSurat->id, 'public'),
-                'disetujui_at' => now(),
-            ];
-        }
+            if ($request->status === 'disetujui') {
+                if (!LayananSurat::letterCodeFor($pengajuanSurat->jenis_surat)) {
+                    throw ValidationException::withMessages([
+                        'jenis_surat' => 'Kode surat untuk ' . $pengajuanSurat->jenis_surat . ' belum diatur.',
+                    ]);
+                }
 
-        $pengajuanSurat->update([
-            'status' => $request->status,
-            'catatan_admin' => $request->catatan_admin,
-            ...$approvalData,
-        ]);
+                $approvalData = [
+                    'nomor_surat' => $pengajuanSurat->nomor_surat ?: LayananSurat::generateNomorSurat($pengajuanSurat),
+                    'nama_penanda_tangan' => $request->nama_penanda_tangan,
+                    'nip_penanda_tangan' => $request->nip_penanda_tangan,
+                    'tanda_tangan_path' => $request->file('tanda_tangan')
+                        ->store('letter-assets/signatures/' . $pengajuanSurat->id, 'public'),
+                    'disetujui_at' => $pengajuanSurat->disetujui_at ?: now(),
+                ];
+            }
 
-        ActivityLog::create([
-            'user_id' => Auth::id(),
-            'pengajuan_surat_id' => $pengajuanSurat->id,
-            'type' => 'pengajuan_status_updated',
-            'title' => $pengajuanSurat->nama_pemohon,
-            'description' => 'Status ' . $pengajuanSurat->jenis_surat . ' diubah dari ' . $statusLama . ' menjadi ' . $pengajuanSurat->status,
-            'metadata' => [
-                'status' => $pengajuanSurat->status,
-                'status_lama' => $statusLama,
-                'jenis_surat' => $pengajuanSurat->jenis_surat,
-            ],
-        ]);
+            $pengajuanSurat->update([
+                'status' => $request->status,
+                'catatan_admin' => $request->catatan_admin,
+                ...$approvalData,
+            ]);
+
+            ActivityLog::create([
+                'user_id' => Auth::id(),
+                'pengajuan_surat_id' => $pengajuanSurat->id,
+                'type' => 'pengajuan_status_updated',
+                'title' => $pengajuanSurat->nama_pemohon,
+                'description' => 'Status ' . $pengajuanSurat->jenis_surat . ' diubah dari ' . $statusLama . ' menjadi ' . $pengajuanSurat->status,
+                'metadata' => [
+                    'status' => $pengajuanSurat->status,
+                    'status_lama' => $statusLama,
+                    'jenis_surat' => $pengajuanSurat->jenis_surat,
+                ],
+            ]);
+        });
 
         return back()->with('success', 'Status pengajuan berhasil diperbarui.');
     }

@@ -492,15 +492,14 @@
 
                                 <div class="space-y-4 overflow-y-auto p-5">
                                     <div class="rounded-xl border border-emerald-100 bg-emerald-50 p-3 text-sm text-emerald-900">
-                                        Data berikut akan disimpan khusus pada surat ini dan tampil pada template cetak warga.
+                                        Nomor surat dibuat otomatis berdasarkan jenis surat, bulan, dan tahun saat persetujuan.
                                     </div>
 
                                     <div>
-                                        <label for="nomor-surat-{{ $item->id }}" class="mb-2 block text-sm font-bold">Nomor Surat <span class="text-red-600">*</span></label>
-                                        <input id="nomor-surat-{{ $item->id }}" name="nomor_surat" required maxlength="100"
-                                            value="{{ old('nomor_surat', $item->nomor_surat) }}"
-                                            placeholder="Contoh: 470/001/DK-I/VII/2026"
-                                            class="w-full rounded-xl border border-outline-variant p-3 focus:border-emerald-600 focus:ring-emerald-100">
+                                        <span class="mb-2 block text-sm font-bold">Nomor Surat Otomatis</span>
+                                        <div class="rounded-xl border border-outline-variant bg-slate-50 p-3 font-bold text-primary">
+                                            {{ $item->nomor_surat_otomatis }}
+                                        </div>
                                     </div>
 
                                     <div>
